@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 
-export function Cadastro() {
+export function ListagemUsers() {
   return (
     <View>
       

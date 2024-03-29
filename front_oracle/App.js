@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { NavigationContainer } from "@react-navigation/native";
+import { RoutesAdm } from "./src/routes/routes_adm";
+import { RoutesFunc } from "./src/routes/routes_func";
+import { Login } from "./src/views/login/index";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    const [userType, setUserType] = useState(null);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    const handleLogin = (email) => {
+        // Verifica o tipo de usuário com base no email
+        if (email === 'adm@email.com') {
+            setUserType('admin');
+        } else if (email === 'func@email.com') {
+            setUserType('funcionario');
+        } else {
+            alert('Usuário não reconhecido.');
+        }
+    };
+
+    return (
+        <NavigationContainer>
+            { userType === 'admin' ? (
+                <RoutesAdm />
+            ) : userType === 'funcionario' ? (
+                <RoutesFunc />
+            ) : (
+                <Login onLogin={handleLogin} />
+            )}
+        </NavigationContainer>
+    );
+}
