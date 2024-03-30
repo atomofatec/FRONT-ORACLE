@@ -2,17 +2,20 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as Views from "../views/index";
 import { Ionicons } from "@expo/vector-icons";
+import * as Styles from "../styles/index";
 
 const Tab = createBottomTabNavigator();
 
 export function RoutesFunc() {
     return (
+        // Barra de navegação
         <Tab.Navigator
             screenOptions={{
                 tabBarStyle: { height: 65 },
                 tabBarLabelStyle: { display: "none" },
             }}
         >
+            {/* Início dos ícones da barra de navegação */}
             <Tab.Screen
                 name="Painel Inicial"
                 component={Views.Dashboard}
@@ -24,7 +27,7 @@ export function RoutesFunc() {
                             return (
                                 <Ionicons
                                     size={(size = 30)} // Tamanho do ícone
-                                    color={(color = "#C74634")} // Cor do ícone
+                                    color={(color = Styles.colors.vermelho)} // Cor do ícone
                                     name="home" // Nome do ícone
                                 />
                             );
@@ -33,7 +36,7 @@ export function RoutesFunc() {
                         return (
                             <Ionicons
                                 size={(size = 30)}
-                                color={(color = "#C74634")}
+                                color={(color = Styles.colors.vermelho)}
                                 name="home-outline"
                             />
                         );
@@ -50,7 +53,7 @@ export function RoutesFunc() {
                             return (
                                 <Ionicons
                                     size={(size = 30)}
-                                    color={(color = "#C74634")}
+                                    color={(color = Styles.colors.vermelho)}
                                     name="stats-chart"
                                 />
                             );
@@ -59,7 +62,7 @@ export function RoutesFunc() {
                         return (
                             <Ionicons
                                 size={(size = 30)}
-                                color={(color = "#C74634")}
+                                color={(color = Styles.colors.vermelho)}
                                 name="stats-chart-outline"
                             />
                         );
@@ -76,7 +79,7 @@ export function RoutesFunc() {
                             return (
                                 <Ionicons
                                     size={(size = 30)}
-                                    color={(color = "#C74634")}
+                                    color={(color = Styles.colors.vermelho)}
                                     name="person-add"
                                 />
                             );
@@ -85,13 +88,14 @@ export function RoutesFunc() {
                         return (
                             <Ionicons
                                 size={(size = 30)}
-                                color={(color = "#C74634")}
+                                color={(color = Styles.colors.vermelho)}
                                 name="person-add-outline"
                             />
                         );
                     },
                 }}
             />
+            {/* Fim dos ícones da barra de navegação */}
         </Tab.Navigator>
     );
 }

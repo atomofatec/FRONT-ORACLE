@@ -2,6 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as Views from "../views/index";
 import { Ionicons } from "@expo/vector-icons";
+import * as Styles from "../styles/index";
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +27,7 @@ export function RoutesAdm() {
                             return (
                                 <Ionicons
                                     size={(size = 30)} // Tamanho do ícone
-                                    color={(color = "#C74634")} // Cor do ícone
+                                    color={(color = Styles.colors.vermelho)} // Cor do ícone
                                     name="list" // Nome do ícone
                                 />
                             );
@@ -35,7 +36,7 @@ export function RoutesAdm() {
                         return (
                             <Ionicons
                                 size={(size = 30)}
-                                color={(color = "#C74634")}
+                                color={(color = Styles.colors.vermelho)}
                                 name="list-outline"
                             />
                         );
@@ -52,7 +53,7 @@ export function RoutesAdm() {
                             return (
                                 <Ionicons
                                     size={(size = 30)}
-                                    color={(color = "#C74634")}
+                                    color={(color = Styles.colors.vermelho)}
                                     name="person-add"
                                 />
                             );
@@ -61,7 +62,7 @@ export function RoutesAdm() {
                         return (
                             <Ionicons
                                 size={(size = 30)}
-                                color={(color = "#C74634")}
+                                color={(color = Styles.colors.vermelho)}
                                 name="person-add-outline"
                             />
                         );

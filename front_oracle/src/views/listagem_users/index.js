@@ -4,11 +4,19 @@ import * as Components from "../../components/index";
 import stylesListagem from "./stylesListagemUsers";
 
 export function ListagemUsers() {
+    const handleSearch = (term) => {
+        // Lógica para buscar usando o termo
+        console.log("Buscando por:", term);
+    };
+
     return (
         <SafeAreaView style={stylesListagem.background}>
             <ScrollView>
                 <Components.Cabecalho />
-                <Text>Lista de Usuários</Text>
+                <View style={stylesListagem.container}>
+                        <Components.Buscar onSearch={handleSearch}/>
+                    <Text>Lista de usuários</Text>
+                </View>
             </ScrollView>
         </SafeAreaView>
     );

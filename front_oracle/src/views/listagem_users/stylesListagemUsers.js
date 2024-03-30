@@ -1,5 +1,7 @@
 import * as Styles from "../../styles/index";
-import { StyleSheet, Platform, StatusBar } from "react-native";
+import { StyleSheet, StatusBar, Dimensions } from "react-native";
+
+const windowHeight = Dimensions.get('window').height;
 
 const stylesListagem = StyleSheet.create({
     background: {
@@ -8,13 +10,14 @@ const stylesListagem = StyleSheet.create({
     },
     container: {
         flex: 1,
-        flexDirection: "row",
-        justifyContent: "space-between",
+        flexDirection: "line",
         alignItems: "center",
         backgroundColor: Styles.colors.branco_fundo,
-        marginLeft: 10,
-        marginRight: 10,
-        marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+        borderTopRightRadius: 40,
+        borderTopLeftRadius: 40,
+        marginTop: 20,
+        minHeight: windowHeight - StatusBar.currentHeight,
+        padding: 20,
     },
 });
 
