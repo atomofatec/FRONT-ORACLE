@@ -16,7 +16,7 @@ export function Cabecalho() {
             <Ionicons
                 name="person-circle"
                 size={40}
-                color={Styles.colors.branco_fundo}
+                color={Styles.colors.brancoFundo}
             />
         </SafeAreaView>
     );

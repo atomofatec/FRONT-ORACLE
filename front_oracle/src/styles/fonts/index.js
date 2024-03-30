@@ -1,5 +1,5 @@
 const fonts = {
-    regular: 'Inter'
+    regular: "Inter",
 };
 
 export default fonts;

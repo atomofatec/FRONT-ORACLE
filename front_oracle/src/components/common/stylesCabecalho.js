@@ -10,15 +10,15 @@ const stylesCabecalho = StyleSheet.create({
         backgroundColor: Styles.colors.vermelho,
         marginLeft: 10,
         marginRight: 10,
-        marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+        marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     logoContainer: {
         flexDirection: "row",
         alignItems: "center",
     },
     tituloPag: {
-        color: Styles.colors.branco_fundo,
-        fontSize: 30,
+        color: Styles.colors.brancoFundo,
+        fontSize: Styles.sizes.xLarge,
         fontWeight: "bold",
         fontFamily: Styles.fonts.Inter,
         marginLeft: 10,
