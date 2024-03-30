@@ -1,11 +1,11 @@
-import { View, Text, SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { colors } from "../../styles/colors";
-import * as Components from "../../components/common";
+import * as Components from "../../components/index";
+import stylesListagem from "./stylesListagemUsers";
 
 export function ListagemUsers() {
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={stylesListagem.background}>
             <ScrollView>
                 <Components.Cabecalho />
                 <Text>Lista de Usuários</Text>
@@ -13,10 +13,3 @@ export function ListagemUsers() {
         </SafeAreaView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#C74634",
-    },
-});
