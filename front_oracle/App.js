@@ -25,7 +25,8 @@ export default function App() {
             ) : userType === 'funcionario' ? (
                 <RoutesFunc />
             ) : (
-                <Login onLogin={handleLogin} />
+                <RoutesAdm />
+                // <Login onLogin={handleLogin} />
             )}
         </NavigationContainer>
     );

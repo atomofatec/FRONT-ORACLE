@@ -1,31 +1,45 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as Views from "../views/index";
-import { Image } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
 export function RoutesAdm() {
     return (
+        // Barra de navegação
         <Tab.Navigator
             screenOptions={{
-                tabBarStyle: { height: 80 },
-            }}
-            tabBarOptions={{
-                labelStyle: { display: "none" }, // Oculta o texto da aba
+                tabBarStyle: { height: 65 },
+                tabBarLabelStyle: { display: "none" },
             }}
         >
+            {/* Início dos ícones da barra de navegação */}
             <Tab.Screen
                 name="Lista de Usuários"
                 component={Views.ListagemUsers}
                 options={{
                     headerShown: false,
-                    tabBarIcon: ({ focused, color, size }) => (
-                        <Image
-                            source={require("../assets/imgs/listaUsers.png")}
-                            style={{ width: 30, height: 30 }}
-                        />
-                    ),
+                    // focused = se a tela estiver ativa, color = cor do ícone, size = tamanho do ícone
+                    tabBarIcon: ({ focused, color, size }) => {
+                        if (focused) {
+                            return (
+                                <Ionicons
+                                    size={(size = 30)} // Tamanho do ícone
+                                    color={(color = "#C74634")} // Cor do ícone
+                                    name="list" // Nome do ícone
+                                />
+                            );
+                        }
+
+                        return (
+                            <Ionicons
+                                size={(size = 30)}
+                                color={(color = "#C74634")}
+                                name="list-outline"
+                            />
+                        );
+                    },
                 }}
             />
             <Tab.Screen
@@ -33,14 +47,28 @@ export function RoutesAdm() {
                 component={Views.Cadastro}
                 options={{
                     headerShown: false,
-                    tabBarIcon: ({ focused, color, size }) => (
-                        <Image
-                            source={require("../assets/imgs/cadastro.png")}
-                            style={{ width: 30, height: 30 }}
-                        />
-                    ),
+                    tabBarIcon: ({ focused, color, size }) => {
+                        if (focused) {
+                            return (
+                                <Ionicons
+                                    size={(size = 30)}
+                                    color={(color = "#C74634")}
+                                    name="person-add"
+                                />
+                            );
+                        }
+
+                        return (
+                            <Ionicons
+                                size={(size = 30)}
+                                color={(color = "#C74634")}
+                                name="person-add-outline"
+                            />
+                        );
+                    },
                 }}
             />
+            {/* Fim dos ícones da barra de navegação */}
         </Tab.Navigator>
     );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as Views from "../views/index";
-import { Image } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -9,10 +9,8 @@ export function RoutesFunc() {
     return (
         <Tab.Navigator
             screenOptions={{
-                tabBarStyle: { height: 80 },
-            }}
-            tabBarOptions={{
-                labelStyle: { display: "none" }, // Oculta o texto da aba
+                tabBarStyle: { height: 65 },
+                tabBarLabelStyle: { display: "none" },
             }}
         >
             <Tab.Screen
@@ -20,12 +18,26 @@ export function RoutesFunc() {
                 component={Views.Dashboard}
                 options={{
                     headerShown: false,
-                    tabBarIcon: ({ focused, color, size }) => (
-                        <Image
-                            source={require("../assets/imgs/home.png")}
-                            style={{ width: 30, height: 30 }}
-                        />
-                    ),
+                    // focused = se a tela estiver ativa, color = cor do ícone, size = tamanho do ícone
+                    tabBarIcon: ({ focused, color, size }) => {
+                        if (focused) {
+                            return (
+                                <Ionicons
+                                    size={(size = 30)} // Tamanho do ícone
+                                    color={(color = "#C74634")} // Cor do ícone
+                                    name="home" // Nome do ícone
+                                />
+                            );
+                        }
+
+                        return (
+                            <Ionicons
+                                size={(size = 30)}
+                                color={(color = "#C74634")}
+                                name="home-outline"
+                            />
+                        );
+                    },
                 }}
             />
             <Tab.Screen
@@ -33,12 +45,25 @@ export function RoutesFunc() {
                 component={Views.Acompanhamento}
                 options={{
                     headerShown: false,
-                    tabBarIcon: ({ focused, color, size }) => (
-                        <Image
-                            source={require("../assets/imgs/bar-chart.png")}
-                            style={{ width: 30, height: 30 }}
-                        />
-                    ),
+                    tabBarIcon: ({ focused, color, size }) => {
+                        if (focused) {
+                            return (
+                                <Ionicons
+                                    size={(size = 30)}
+                                    color={(color = "#C74634")}
+                                    name="stats-chart"
+                                />
+                            );
+                        }
+
+                        return (
+                            <Ionicons
+                                size={(size = 30)}
+                                color={(color = "#C74634")}
+                                name="stats-chart-outline"
+                            />
+                        );
+                    },
                 }}
             />
             <Tab.Screen
@@ -46,12 +71,25 @@ export function RoutesFunc() {
                 component={Views.CadastroParc}
                 options={{
                     headerShown: false,
-                    tabBarIcon: ({ focused, color, size }) => (
-                        <Image
-                            source={require("../assets/imgs/cadastro.png")}
-                            style={{ width: 30, height: 30 }}
-                        />
-                    ),
+                    tabBarIcon: ({ focused, color, size }) => {
+                        if (focused) {
+                            return (
+                                <Ionicons
+                                    size={(size = 30)}
+                                    color={(color = "#C74634")}
+                                    name="person-add"
+                                />
+                            );
+                        }
+
+                        return (
+                            <Ionicons
+                                size={(size = 30)}
+                                color={(color = "#C74634")}
+                                name="person-add-outline"
+                            />
+                        );
+                    },
                 }}
             />
         </Tab.Navigator>
