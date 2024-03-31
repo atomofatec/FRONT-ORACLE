@@ -1,13 +1,11 @@
-import * as Styles from "../../styles/index";
+import * as Styles from "../../../styles/index";
 import { StyleSheet, StatusBar, Dimensions } from "react-native";
 
 const windowHeight = Dimensions.get("window").height;
+const windowWidth = Dimensions.get("window").width;
+const margin = 20;
 
-const stylesListagem = StyleSheet.create({
-    background: {
-        flex: 1,
-        backgroundColor: Styles.colors.vermelho,
-    },
+const stylesList = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: "column",
@@ -18,12 +16,21 @@ const stylesListagem = StyleSheet.create({
         marginTop: 20,
         minHeight: windowHeight - StatusBar.currentHeight,
         padding: 20,
+        width: windowWidth - margin * 2,
+        elevation: 5,
     },
-    containerFiltros: {
+    containerTitle: {
         flexDirection: "row",
         justifyContent: "space-between",
-        margin: 10,
+        alignItems: "center",
+        marginTop: 10,
+    },
+    texto: {
+        color: Styles.colors.vermelho,
+        fontFamily: Styles.fonts.regular,
+        fontWeight: "bold",
+        fontSize: Styles.sizes.large
     },
 });
 
-export default stylesListagem;
+export default stylesList;

@@ -38,6 +38,10 @@ export function ListagemUsers() {
                             onClick={() => handleFiltroClick("Administradores")}
                         />
                     </View>
+                    <View>
+
+                    <Components.ListaUsers />
+                    </View>
                 </View>
             </ScrollView>
         </SafeAreaView>

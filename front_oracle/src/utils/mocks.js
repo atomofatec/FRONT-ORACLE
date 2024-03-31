@@ -18,6 +18,13 @@ const mockedUsers = [
         name: "Diane",
         email: "diane@email.com",
         password: "senha789",
+        type: "administrador",
+    },
+    {
+        id: 4,
+        name: "Víctor",
+        email: "victor@email.com",
+        password: "senha123",
         type: "parceiro",
     },
 ];
