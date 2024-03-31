@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import * as Components from "../../components/index";
-import stylesListagem from "./stylesListagemUsers";
+import stylesListagem from "./listagemUsers.styles";
 
 export function ListagemUsers() {
-    const [filtroSelecionado, setFiltroSelecionado] = useState(null);
+    const [filtroSelecionado, setFiltroSelecionado] = useState('Todos');
 
     const handleFiltroClick = (filtro) => {
         setFiltroSelecionado(filtro);

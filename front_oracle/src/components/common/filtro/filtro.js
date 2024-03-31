@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Text } from "react-native";
-import * as Styles from "../../styles/index";
-import stylesFiltro from "./stylesFiltro";
+import * as Styles from "../../../styles/index";
+import stylesFiltro from "./filtro.styles";
 
 export function Filtro({ texto, selecionado, onClick }) {
     const handlePress = () => {

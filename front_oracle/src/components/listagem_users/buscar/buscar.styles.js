@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import * as Styles from "../../styles/index";
+import * as Styles from "../../../styles/index";
 
 const stylesBuscar = StyleSheet.create({
     buscaContainer: {

@@ -7,8 +7,8 @@ import {
     TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import * as Styles from "../../styles/index";
-import stylesBuscar from "./stylesBuscar";
+import * as Styles from "../../../styles/index";
+import stylesBuscar from "./buscar.styles";
 
 export function Buscar({ onSearch }) {
     const [searchTerm, setSearchTerm] = useState(""); // Estado do termo de busca
