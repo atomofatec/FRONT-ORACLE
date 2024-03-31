@@ -1,21 +1,13 @@
 import React, { useState } from "react";
-import {
-    View,
-    TextInput,
-    Button,
-    StyleSheet,
-    TouchableOpacity,
-} from "react-native";
+import { View, TextInput, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import * as Styles from "../../../styles/index";
 import stylesBuscar from "./buscar.styles";
 
 export function Buscar({ onSearch }) {
-    const [searchTerm, setSearchTerm] = useState(""); // Estado do termo de busca
+    const [searchTerm, setSearchTerm] = useState("");
 
-    // Função que chama a busca
     const handleSearch = () => {
-        // Chama a função de busca passada como prop
         onSearch(searchTerm);
     };
 
@@ -29,11 +21,14 @@ export function Buscar({ onSearch }) {
                     value={searchTerm}
                 />
             </View>
-            <TouchableOpacity style={stylesBuscar.buscaBotao}>
+            <TouchableOpacity
+                style={stylesBuscar.buscaBotao}
+                onPress={handleSearch}
+            >
                 <Ionicons
-                    size={(size = 30)} // Tamanho do ícone
-                    color={(color = Styles.colors.vermelho)} // Cor do ícone
-                    name="search" // Nome do ícone
+                    size={(size = 30)}
+                    color={(color = Styles.colors.vermelho)}
+                    name="search"
                 />
             </TouchableOpacity>
         </View>

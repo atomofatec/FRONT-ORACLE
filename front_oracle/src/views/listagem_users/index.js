@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { View, Text, SafeAreaView, ScrollView } from "react-native";
+import { View, SafeAreaView, ScrollView } from "react-native";
 import * as Components from "../../components/index";
 import stylesListagem from "./listagemUsers.styles";
 
 export function ListagemUsers() {
-    const [filtroSelecionado, setFiltroSelecionado] = useState('Todos');
+    const [filtroSelecionado, setFiltroSelecionado] = useState("Todos");
+    const [searchTerm, setSearchTerm] = useState("");
 
     const handleFiltroClick = (filtro) => {
         setFiltroSelecionado(filtro);
     };
 
     const handleSearch = (term) => {
-        // Lógica para buscar usando o termo
-        console.log("Buscando por:", term);
+        setSearchTerm(term);
     };
 
     return (
@@ -34,13 +34,14 @@ export function ListagemUsers() {
                         />
                         <Components.Filtro
                             texto="Administradores"
-                            selecionado={filtroSelecionado === "Administradores"}
+                            selecionado={
+                                filtroSelecionado === "Administradores"
+                            }
                             onClick={() => handleFiltroClick("Administradores")}
                         />
                     </View>
                     <View>
-
-                    <Components.ListaUsers />
+                        <Components.ListaUsers searchTerm={searchTerm} />
                     </View>
                 </View>
             </ScrollView>
