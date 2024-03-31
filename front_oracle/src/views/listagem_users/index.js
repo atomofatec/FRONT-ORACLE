@@ -4,13 +4,15 @@ import * as Components from "../../components/index";
 import stylesListagem from "./listagemUsers.styles";
 
 export function ListagemUsers() {
-    const [filtroSelecionado, setFiltroSelecionado] = useState("Todos");
-    const [searchTerm, setSearchTerm] = useState("");
+    const [filtroSelecionado, setFiltroSelecionado] = useState("Todos"); // Estado que armazena o filtro selecionado
+    const [searchTerm, setSearchTerm] = useState(""); // Estado que armazena o termo de busca
 
+    // Função que é chamada quando um filtro é pressionado
     const handleFiltroClick = (filtro) => {
         setFiltroSelecionado(filtro);
     };
 
+    // Função que é chamada quando um termo de busca é inserido
     const handleSearch = (term) => {
         setSearchTerm(term);
     };

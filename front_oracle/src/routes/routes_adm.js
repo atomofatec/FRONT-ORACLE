@@ -69,6 +69,11 @@ export function RoutesAdm() {
                     },
                 }}
             />
+            <Tab.Screen
+                name="Editar Usuário"
+                component={Views.EditarUser}
+                options={{ tabBarButton: () => null, headerShown: false }}
+            />
             {/* Fim dos ícones da barra de navegação */}
         </Tab.Navigator>
     );

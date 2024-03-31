@@ -29,7 +29,7 @@ const stylesList = StyleSheet.create({
         color: Styles.colors.vermelho,
         fontFamily: Styles.fonts.regular,
         fontWeight: "bold",
-        fontSize: Styles.sizes.large
+        fontSize: Styles.sizes.large,
     },
 });
 

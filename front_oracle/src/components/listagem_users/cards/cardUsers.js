@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import stylesCard from "./cardUsers.styles";
 
 export function CardUsers({ user, handleNavigate }) {
-    const { name, email } = user;
+    const { name, email } = user; // Dados do usuário
 
     return (
         <TouchableOpacity style={stylesCard.container} onPress={handleNavigate}>
@@ -18,7 +18,9 @@ export function CardUsers({ user, handleNavigate }) {
                 </TouchableOpacity>
 
                 <View style={stylesCard.textContainer}>
-                    <Text style={stylesCard.name} numberOfLines={1}>{name}</Text>
+                    <Text style={stylesCard.name} numberOfLines={1}>
+                        {name}
+                    </Text>
                     <Text style={stylesCard.email}>{email}</Text>
                 </View>
                 <Ionicons

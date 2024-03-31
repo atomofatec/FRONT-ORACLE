@@ -10,7 +10,7 @@ const stylesCard = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: Styles.colors.cinzaClaro,
         marginBottom: 10,
-        width: 349
+        width: 349,
     },
     containerUser: {
         flexDirection: "row",
