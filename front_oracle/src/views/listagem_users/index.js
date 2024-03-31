@@ -29,19 +29,20 @@ export function ListagemUsers() {
                         />
                         <Components.Filtro
                             texto="Funcionários"
-                            selecionado={filtroSelecionado === "Funcionários"}
-                            onClick={() => handleFiltroClick("Funcionários")}
+                            selecionado={filtroSelecionado === "funcionário"}
+                            onClick={() => handleFiltroClick("funcionário")}
                         />
                         <Components.Filtro
                             texto="Administradores"
-                            selecionado={
-                                filtroSelecionado === "Administradores"
-                            }
-                            onClick={() => handleFiltroClick("Administradores")}
+                            selecionado={filtroSelecionado === "administrador"}
+                            onClick={() => handleFiltroClick("administrador")}
                         />
                     </View>
                     <View>
-                        <Components.ListaUsers searchTerm={searchTerm} />
+                        <Components.ListaUsers
+                            searchTerm={searchTerm}
+                            filtroSelecionado={filtroSelecionado}
+                        />
                     </View>
                 </View>
             </ScrollView>
