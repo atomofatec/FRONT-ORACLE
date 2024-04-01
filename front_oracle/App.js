@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import * as Rotas from "./src/routes/index";
 import { useFonts } from "expo-font";
+import * as Views from './src/views/index'
 
 export default function App() {
     const [userType, setUserType] = useState(null);
@@ -32,8 +33,8 @@ export default function App() {
             ) : userType === "funcionario" ? (
                 <Rotas.RoutesFunc />
             ) : (
-                <Rotas.RoutesAdm />
-                // <Login onLogin={handleLogin} />
+                
+                <Views.Login onLogin={handleLogin} />
             )}
         </NavigationContainer>
     );
