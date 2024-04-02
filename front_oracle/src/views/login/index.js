@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, TextInput, TouchableOpacity, Text, StyleSheet, Dimensions, Image } from "react-native";
+import * as Components from "../../components/index";
 import { FontAwesome } from '@expo/vector-icons';
 
 export function Login({ onLogin }) {
@@ -17,11 +18,7 @@ export function Login({ onLogin }) {
     return (
         <View style={styles.container}>
             {/* Logo */}
-            <Image
-                source={require('../../../assets/imgs/logo.png')}
-                style={styles.logo}
-                resizeMode="contain"
-            />
+            <Components.CabecalhoLogin />
             {/* Container Formulário */}
             <View style={[styles.formContainer, { width: windowWidth }]}>
                 <Text style={styles.title}>LOGIN</Text>
