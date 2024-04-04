@@ -6,13 +6,16 @@ import stylesCadastroParc from './cadastro_parc.styles';
 export function CadastroParc() {
   return (
     <SafeAreaView style={stylesCadastroParc.background}>
-            <ScrollView>
-                <Components.Cabecalho />
-                <Components.Titulo />
-                <View style={stylesCadastroParc.container}>
-              
-                </View>
-            </ScrollView>
+      <ScrollView>
+        <Components.Cabecalho titulo="Funcionário" />
+
+        
+      <View style={stylesCadastroParc.container}>
+        <Components.SubTitulo titulo="Cadastro de Parceiros" />
+        <Components.Formulario />
+      </View>
+
+      </ScrollView>
     </SafeAreaView>
   );
 }

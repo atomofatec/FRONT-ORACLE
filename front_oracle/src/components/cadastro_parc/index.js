@@ -1,3 +1,3 @@
-import { Titulo } from "./titulo_cad";
+import { Formulario } from "./form_cad";
 
-export { Titulo };
+export { Formulario };
