@@ -4,7 +4,7 @@ import stylesForm from "./form_cad.styles";
 
 export function Formulario() {
 
-    const [nome, setNome] = useState ("");
+    const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
@@ -15,10 +15,11 @@ export function Formulario() {
         <View style={stylesForm.container}>
             {/* Container Formulário */}
             <View style={[stylesForm.formContainer, { width: windowWidth }]}>
-            <View style={stylesForm.inputContainer}>
+                <View style={stylesForm.inputContainer}>
                     <TextInput
                         style={stylesForm.input}
                         placeholder="Nome"
+                        placeholderTextColor="#C74634" // Definindo a cor do placeholder
                         onChangeText={(text) => setNome(text)}
                         value={nome}
                     />
@@ -27,6 +28,7 @@ export function Formulario() {
                     <TextInput
                         style={stylesForm.input}
                         placeholder="Email"
+                        placeholderTextColor="#C74634" // Definindo a cor do placeholder
                         onChangeText={(text) => setEmail(text)}
                         value={email}
                         keyboardType="email-address"
@@ -36,6 +38,7 @@ export function Formulario() {
                     <TextInput
                         style={stylesForm.input}
                         placeholder="Senha"
+                        placeholderTextColor="#C74634" // Definindo a cor do placeholder
                         onChangeText={(text) => setPassword(text)}
                         value={password}
                         secureTextEntry={!showPassword}
@@ -46,3 +49,5 @@ export function Formulario() {
         </View>
     );
 }
+
+export default Formulario;

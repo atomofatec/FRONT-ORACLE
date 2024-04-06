@@ -13,13 +13,15 @@ const stylesForm = StyleSheet.create({
         alignItems: "center",
         backgroundColor: Styles.colors.brancoFundo,
         borderTopRightRadius: 40,
-        borderTopLeftRadius: 40,
+        borderTopLeftRadius: 40
     },
     formContainer: {
         backgroundColor: '#F8F8F8',
         borderTopLeftRadius: 50,
         borderTopRightRadius: 50,
         paddingHorizontal: 30,
+        paddingVertical: 30,
+        marginTop: 30,
         flex: 1,
     },
     inputContainer: {
@@ -36,7 +38,7 @@ const stylesForm = StyleSheet.create({
     },
     forgotPassword: {
         color: "#B1B1B1",
-        marginBottom: 20,
+        marginBottom: 10,
         alignSelf: "flex-end",
     },
    
