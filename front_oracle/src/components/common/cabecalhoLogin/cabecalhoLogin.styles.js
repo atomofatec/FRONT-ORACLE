@@ -1,4 +1,4 @@
-import { StyleSheet, Platform, StatusBar } from "react-native";
+import { StyleSheet } from "react-native";
 import * as Styles from "../../../styles/index";
 
 const stylesCabecalhoLogin = StyleSheet.create({

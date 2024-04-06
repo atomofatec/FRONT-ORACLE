@@ -1,12 +1,12 @@
-import { View, Text, Image, SafeAreaView } from "react-native";
-import stylesLogo from "./cabecalhoLogin.styles";
+import { Image, SafeAreaView } from "react-native";
+import stylesCabecalhoLogin from "./cabecalhoLogin.styles";
 
 export function CabecalhoLogin() {
     return (
         <SafeAreaView>
             <Image
                 source={require('../../../assets/imgs/logo.png')}
-                style={stylesLogo}
+                style={stylesCabecalhoLogin.logo}
                 resizeMode="contain"
             />
         </SafeAreaView>
