@@ -1,20 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import * as Rotas from "./src/routes/index";
+import { useFonts } from "expo-font";
+import * as Views from './src/views/index'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    const [userType, setUserType] = useState(null);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    const [fontsLoaded] = useFonts({
+        Inter: require("./src/styles/fonts/Inter-VariableFont_slnt,wght.ttf"),
+    });
+
+    if (!fontsLoaded) {
+        return null;
+    }
+
+    const handleLogin = (email) => {
+        // Verifica o tipo de usuário com base no email
+        if (email === "adm@email.com") {
+            setUserType("admin");
+        } else if (email === "func@email.com") {
+            setUserType("funcionario");
+        } else {
+            alert("Usuário não reconhecido.");
+        }
+    };
+
+    return (
+        <NavigationContainer>
+            {userType === "admin" ? (
+                <Rotas.RoutesAdm />
+            ) : userType === "funcionario" ? (
+                <Rotas.RoutesFunc />
+            ) : (
+                
+                <Views.Login onLogin={handleLogin} />
+            )}
+        </NavigationContainer>
+    );
+}
