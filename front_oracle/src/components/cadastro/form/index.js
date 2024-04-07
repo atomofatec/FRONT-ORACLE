@@ -10,7 +10,7 @@ export function FormCad () {
     const [showPassword, setShowPassword] = useState(false);
 
     const windowWidth = Dimensions.get('window').width;
-
+    
     return (
         <View style={stylesFormCad.container}>
             {/* Container Formulário */}

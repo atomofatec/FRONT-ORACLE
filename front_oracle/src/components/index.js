@@ -6,4 +6,6 @@ import { FormCad } from "./cadastro/form/index";
 import { CadastroButton } from "./common/button/index";
 import { SubTitulo } from "./common/subTitulo";
 
-export { Cabecalho, Buscar, Filtro, ListaUsers, FormCad, CadastroButton, SubTitulo };
+
+
+export { Cabecalho, Buscar, Filtro, ListaUsers, FormCad, CadastroButton, SubTitulo, };
