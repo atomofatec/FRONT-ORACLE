@@ -34,7 +34,7 @@ export default function App() {
                 <Rotas.RoutesFunc />
             ) : (
                 
-                <Views.Login onLogin={handleLogin} />
+                <Views.Login />
             )}
         </NavigationContainer>
     );

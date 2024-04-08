@@ -6,5 +6,6 @@ import { Filtro } from "./common/filtro/filtro";
 import { Form } from "./login/form/index";
 import { Buscar } from "./listagem_users/buscar/buscar";
 import { ListaUsers } from "./listagem_users/lista/listaUsers";
+import { CardUsers } from "./listagem_users/cards/cardUsers";
 
-export { Cabecalho, CabecalhoLogin, Title, Button, Filtro, Form, Buscar, ListaUsers };
+export { Cabecalho, CabecalhoLogin, Title, Button, Filtro, Form, Buscar, ListaUsers, CardUsers };
