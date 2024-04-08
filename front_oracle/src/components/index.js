@@ -1,10 +1,10 @@
 import { Cabecalho } from "./common/cabecalho/cabecalho";
-import { Buscar } from "./listagem_users/buscar/buscar";
+import { CabecalhoLogin } from "./common/cabecalhoLogin/index";
+import { Title } from "./common/title/index";
+import { Button } from "./common/button/index";
 import { Filtro } from "./common/filtro/filtro";
+import { Form } from "./login/form/index";
+import { Buscar } from "./listagem_users/buscar/buscar";
 import { ListaUsers } from "./listagem_users/lista/listaUsers";
-import { FormCad } from "./cadastro/form/index";
-import { CadastroButton } from "./common/button/index";
-import { SubTitulo } from "./common/subTitulo";
-import { Formulario } from "./cadastro_parc/form_cad/index";
 
-export { Cabecalho, Buscar, Filtro, ListaUsers, FormCad, Formulario, CadastroButton, SubTitulo };
+export { Cabecalho, CabecalhoLogin, Title, Button, Filtro, Form, Buscar, ListaUsers };
