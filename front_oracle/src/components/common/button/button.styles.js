@@ -15,5 +15,4 @@ const stylesButton = StyleSheet.create({
         fontWeight: "bold",
     },
 });
-
 export default stylesButton;

@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 
-export function Dashboard() {
+export function EditarUser() {
   return (
     <View>
       

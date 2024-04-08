@@ -25,6 +25,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "fonts": [
+        {
+          "name": "Inter",
+          "asset": "./src/styles/fonts/Inter-VariableFont_slnt,wght.ttf"
+        }
+      ]
     }
   }
 }
