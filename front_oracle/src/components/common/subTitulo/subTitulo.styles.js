@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
- 
+
 const stylesSubTitulo = StyleSheet.create({
     title: {
         fontSize: 18,
@@ -34,5 +34,5 @@ const stylesSubTitulo = StyleSheet.create({
         marginLeft: 20,
     },
 });
- 
+
 export default stylesSubTitulo;

@@ -9,4 +9,3 @@ export function CadastroButton({ onPress, titulo }) {
         
         </TouchableOpacity>
     );
-}

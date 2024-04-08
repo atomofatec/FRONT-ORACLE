@@ -1,5 +1,3 @@
-// No componente Cabecalho.js
-
 import React from "react";
 import { View, Text, Image, SafeAreaView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
