@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import * as Rotas from "./src/routes/index";
 import { useFonts } from "expo-font";
-import * as Views from './src/views/index'
+import * as Views from "./src/views/index";
+import mockedUsers from "./src/utils/mocks";
 
 export default function App() {
     const [userType, setUserType] = useState(null);
@@ -15,26 +16,26 @@ export default function App() {
         return null;
     }
 
-    const handleLogin = (email) => {
-        // Verifica o tipo de usuário com base no email
-        if (email === "adm@email.com") {
-            setUserType("admin");
-        } else if (email === "func@email.com") {
-            setUserType("funcionario");
+    const handleLogin = (email, password) => {
+        // Verificando o login com base na lista mockada de usuários
+        const user = mockedUsers.find(
+            (user) => user.email === email && user.password === password
+        );
+        if (user) {
+            setUserType(user.type); // Definindo o tipo de usuário com base no "type" do usuário encontrado
         } else {
-            alert("Usuário não reconhecido.");
+            alert("Credenciais inválidas.");
         }
     };
 
     return (
         <NavigationContainer>
-            {userType === "admin" ? (
+            {userType === "administrador" ? (
                 <Rotas.RoutesAdm />
-            ) : userType === "funcionario" ? (
+            ) : userType === "funcionário" ? (
                 <Rotas.RoutesFunc />
             ) : (
-                
-                <Views.Login />
+                <Views.Login onLogin={handleLogin} />
             )}
         </NavigationContainer>
     );
