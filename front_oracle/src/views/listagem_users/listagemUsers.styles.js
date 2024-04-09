@@ -15,7 +15,7 @@ const stylesListagem = StyleSheet.create({
         backgroundColor: Styles.colors.brancoFundo,
         borderTopRightRadius: 40,
         borderTopLeftRadius: 40,
-        marginTop: 20,
+        marginTop: 10,
         minHeight: windowHeight - StatusBar.currentHeight,
         padding: 20,
     },

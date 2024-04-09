@@ -32,7 +32,7 @@ export function Login({ onLogin }) {
                     onEmailChange={handleEmailChange}
                     onPasswordChange={handlePasswordChange}
                 />
-                <Components.Button button="ENTRAR" handlePress={handleLogin} />
+                <Components.ButtonLarge button="ENTRAR" handlePress={handleLogin} />
             </View>
         </View>
     );

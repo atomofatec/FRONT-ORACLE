@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
-import * as Styles from "../../../styles/index";
 
-const stylesButton = StyleSheet.create({
+const stylesButtonLarge = StyleSheet.create({
     button: {
         marginTop: 50,
         backgroundColor: "#C74634",
@@ -15,4 +14,4 @@ const stylesButton = StyleSheet.create({
         fontWeight: "bold",
     },
 });
-export default stylesButton;
+export default stylesButtonLarge;

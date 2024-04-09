@@ -15,6 +15,8 @@ const stylesCabecalho = StyleSheet.create({
     logoContainer: {
         flexDirection: "row",
         alignItems: "center",
+        marginTop: 10,
+        marginBottom: 10,
     },
     tituloPag: {
         color: Styles.colors.brancoFundo,

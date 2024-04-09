@@ -20,7 +20,7 @@ export function ListagemUsers() {
     return (
         <SafeAreaView style={stylesListagem.background}>
             <ScrollView>
-                <Components.Cabecalho />
+                <Components.Cabecalho titulo="Administrador" />
                 <View style={stylesListagem.container}>
                     <Components.Buscar onSearch={handleSearch} />
                     <View style={stylesListagem.containerFiltros}>

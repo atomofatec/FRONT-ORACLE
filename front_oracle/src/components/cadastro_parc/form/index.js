@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, TextInput, Dimensions, Text } from "react-native";
-import stylesForm from "./form_cad.styles";
+import stylesForm from "./form.styles";
 
-export function Formulario() {
+export function Form() {
 
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
@@ -50,4 +50,4 @@ export function Formulario() {
     );
 }
 
-export default Formulario;
+export default Form;

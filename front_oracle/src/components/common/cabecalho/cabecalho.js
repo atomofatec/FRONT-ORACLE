@@ -1,9 +1,10 @@
+import React from "react";
 import { View, Text, Image, SafeAreaView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import stylesCabecalho from "./cabecalho.styles";
 import * as Styles from "../../../styles/index";
 
-export function Cabecalho() {
+export function Cabecalho({ titulo }) {
     return (
         <SafeAreaView style={stylesCabecalho.container}>
             <View style={stylesCabecalho.logoContainer}>
@@ -11,7 +12,7 @@ export function Cabecalho() {
                     source={require("../../../assets/imgs/logo_Oracle_branco.png")}
                     style={{ width: 82, height: 51 }}
                 />
-                <Text style={stylesCabecalho.tituloPag}>Usuário</Text>
+                <Text style={stylesCabecalho.tituloPag}>{titulo}</Text>
             </View>
             <Ionicons
                 name="person-circle"
