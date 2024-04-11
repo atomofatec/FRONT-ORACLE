@@ -24,21 +24,33 @@ export function ListagemUsers() {
                 <View style={stylesListagem.container}>
                     <Components.Buscar onSearch={handleSearch} />
                     <View style={stylesListagem.containerFiltros}>
-                        <Components.Filtro
-                            texto="Todos"
-                            selecionado={filtroSelecionado === "Todos"}
-                            onClick={() => handleFiltroClick("Todos")}
-                        />
-                        <Components.Filtro
-                            texto="Funcionários"
-                            selecionado={filtroSelecionado === "funcionário"}
-                            onClick={() => handleFiltroClick("funcionário")}
-                        />
-                        <Components.Filtro
-                            texto="Administradores"
-                            selecionado={filtroSelecionado === "administrador"}
-                            onClick={() => handleFiltroClick("administrador")}
-                        />
+                        <ScrollView
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={false}
+                        >
+                            <Components.Filtro
+                                texto="Todos"
+                                selecionado={filtroSelecionado === "Todos"}
+                                onClick={() => handleFiltroClick("Todos")}
+                            />
+                            <Components.Filtro
+                                texto="Funcionários"
+                                selecionado={
+                                    filtroSelecionado === "funcionario"
+                                }
+                                onClick={() => handleFiltroClick("funcionario")}
+                            />
+                            <Components.Filtro
+                                texto="Administradores"
+                                selecionado={filtroSelecionado === "admin"}
+                                onClick={() => handleFiltroClick("admin")}
+                            />
+                            <Components.Filtro
+                                texto="Parceiros"
+                                selecionado={filtroSelecionado === "parceiro"}
+                                onClick={() => handleFiltroClick("parceiro")}
+                            />
+                        </ScrollView>
                     </View>
                     <View>
                         <Components.ListaUsers
