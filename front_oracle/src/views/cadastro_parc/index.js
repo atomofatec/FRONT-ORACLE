@@ -2,11 +2,23 @@ import { View, SafeAreaView, ScrollView } from "react-native";
 import * as Components from "../../components/index";
 import stylesCadastroParc from "./cadastro_parc.styles";
 import mockedUsers from "../../utils/mocks";
+import React, { useEffect } from "react";
+import Connection from "../../connection";
 
 export function CadastroParc() {
-    const onAddUser = (newUser) => {
-        mockedUsers.push(newUser); // Adicione o novo usuário à lista mockada
-        console.log("Novo usuário adicionado:", newUser); // Exiba uma mensagem ou faça qualquer outra ação necessária após adicionar o usuário
+    const conn = Connection();
+
+    const onAddUser = async (newUser, conn) => {
+        try {
+            const response = await conn.post("/register", {
+                name: newUser.name,
+                email: newUser.email,
+                password: newUser.password
+            });
+            console.log(response);
+        } catch (error) {
+            console.error("Error:", error);
+        }
     };
 
     return (
@@ -18,7 +30,7 @@ export function CadastroParc() {
                         titulo="Cadastro de"
                         subTitulo="Parceiros"
                     />
-                    <Components.FormCadParc onAddUser={onAddUser} />
+                    <Components.FormCadParc onAddUser={(newUser) => onAddUser(newUser, conn)} />
                 </View>
             </ScrollView>
         </SafeAreaView>
