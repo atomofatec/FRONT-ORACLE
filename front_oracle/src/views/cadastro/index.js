@@ -10,9 +10,12 @@ export function Cadastro() {
     const onAddUser = async (newUser) => {
         try {
             const response = await conn.post("/cadastro", {
-                name: newUser.name,
+                user_name: newUser.name,
                 email: newUser.email,
-                password: newUser.password
+                password: newUser.password,
+                type: newUser.type,
+                benefits: false,
+                userType: "admin",
             });
             console.log(response);
         } catch (error) {
