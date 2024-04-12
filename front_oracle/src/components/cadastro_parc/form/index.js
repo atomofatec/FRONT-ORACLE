@@ -13,19 +13,16 @@ export function FormCadParc({ onAddUser }) {
     const windowWidth = Dimensions.get("window").width;
 
     const handleAddUser = () => {
-        if (nome && email && password && type) {
+        if (nome && email && password) {
             const newUser = {
-                id: Math.random().toString(),
                 name: nome,
                 email: email,
                 password: password,
-                type: type,
             };
             onAddUser(newUser);
             setNome("");
             setEmail("");
             setPassword("");
-            setType("");
         } else {
             alert("Por favor, preencha todos os campos.");
         }
