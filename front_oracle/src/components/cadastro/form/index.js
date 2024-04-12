@@ -16,15 +16,14 @@ export function FormCad({ onAddUser }) {
 
     const handleToggle = () => {
         setToggleButtonOn(!isToggleButtonOn);
-        setType(isToggleButtonOn ? "funcionario" : "administrador");
-        console.log("Tipo de usuário:", type);
-        console.log("Estado do botão:", isToggleButtonOn);
+        setType(isToggleButtonOn ? "funcionario" : "admin");
     };
+    console.log("Tipo de usuário:", type);
+    console.log("Estado do botão:", isToggleButtonOn);
 
     const handleAddUser = () => {
-        if (nome && email && password && type) {
+        if (nome && email && password) {
             const newUser = {
-                id: Math.random().toString(),
                 name: nome,
                 email: email,
                 password: password,
@@ -34,7 +33,6 @@ export function FormCad({ onAddUser }) {
             setNome("");
             setEmail("");
             setPassword("");
-            setType("");
         } else {
             alert("Por favor, preencha todos os campos.");
         }
