@@ -2,41 +2,40 @@ import React, { useState } from "react";
 import { View, Dimensions } from "react-native";
 import * as Components from "../../components/index";
 import stylesLogin from "./login.styles";
-import mockedUsers from "../../utils/mocks";
+import axios from 'axios';
 import { useNavigation } from "@react-navigation/native";
 
 export function Login() {
     const windowWidth = Dimensions.get("window").width;
-    const [email, setEmail] = useState(""); // Estado para armazenar o email digitado
-    const [password, setPassword] = useState(""); // Estado para armazenar a senha digitada
-    const [userType, setUserType] = useState(null);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const navigation = useNavigation();
 
-    // Função que receberá o email e a senha digitados e chamará a função de login do componente pai
-    const handleLogin = () => {
-        // Verificando o login com base na lista mockada de usuários
-        const user = mockedUsers.find(
-            (user) => user.email === email && user.password === password
-        );
-        if (user) {
-            if (user.type === "administrador") {
-                navigation.navigate("Admin");
-            } else if (user.type === "funcionário") {
-                navigation.navigate("Func");
+    const handleLogin = async () => {
+        try {
+            const response = await axios.post('http://54.145.244.191:3001/api/login', { email, password });
+            // Verifica a resposta do back-end e navega para a página adequada
+            if (response.data.message === "Login bem-sucedido!") {
+                if (response.data.userType === "admin") {
+                    navigation.navigate("Admin"); // Navegar para página de administrador
+                } else if (response.data.userType === "funcionario") {
+                    navigation.navigate("Func"); // Navegar para página de funcionário
+                } else if (response.data.userType === "parceiro") {
+                    navigation.navigate("Parceiro"); // Navegar para página de parceiro
+                }
             } else {
-                alert("Não foi possível logar.");
+                alert("Usuário ou senha inválidos");
             }
-        } else {
-            alert("Credenciais inválidas.");
+        } catch (error) {
+            console.error("Erro ao fazer login:", error);
+            alert("Erro ao fazer login. Por favor, tente novamente.");
         }
     };
 
-    // Função para atualizar o estado do email
     const handleEmailChange = (text) => {
         setEmail(text);
     };
 
-    // Função para atualizar o estado da senha
     const handlePasswordChange = (text) => {
         setPassword(text);
     };
