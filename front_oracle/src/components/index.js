@@ -11,6 +11,7 @@ import { CardUsers } from "./listagem_users/cards/cardUsers";
 import { FormCad } from "./cadastro/form/index";
 import { SubTitulo } from "./common/subTitulo";
 import { SubTitulo2 } from "./cadastro/subTitulo";
+import { FormCadParc } from "./cadastro_parc/form/index";
 
 export { 
   Cabecalho,
@@ -25,5 +26,6 @@ export {
   CardUsers,
   FormCad,
   SubTitulo,
-  SubTitulo2
+  SubTitulo2,
+  FormCadParc
 };
