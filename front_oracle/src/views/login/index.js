@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import { View, Dimensions } from "react-native";
 import * as Components from "../../components/index";
 import stylesLogin from "./login.styles";
-import axios from 'axios';
 import { useNavigation } from "@react-navigation/native";
+import Connection from "../../connection";
 
 export function Login() {
     const windowWidth = Dimensions.get("window").width;
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigation = useNavigation();
+    const conn = Connection();
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://54.145.244.191:3001/api/login', { email, password });
+            const response = await conn.post("/login", { email, password });
             // Verifica a resposta do back-end e navega para a página adequada
             if (response.data.message === "Login bem-sucedido!") {
                 if (response.data.userType === "admin") {
