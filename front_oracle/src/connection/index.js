@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default function Connection() {
-    const url = "http://54.152.25.106:3001/api";
+    const url = "http://18.205.163.14:3001/api";
 
     const conn = axios.create({
         baseURL: url,
