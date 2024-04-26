@@ -12,6 +12,11 @@ import { FormCad } from "./cadastro/form/index";
 import { SubTitulo } from "./common/subTitulo";
 import { SubTitulo2 } from "./cadastro/subTitulo";
 import { FormCadParc } from "./cadastro_parc/form/index";
+import { Buttons } from "./dashboard/buttons/index";
+import { TitleDash } from "./dashboard/title/index";
+import { Statistic } from "./dashboard/statistic/index";
+import { Chart } from "./dashboard/chart/index";
+import { Report } from "./dashboard/report/index";
 
 export { 
   Cabecalho,
@@ -27,5 +32,10 @@ export {
   FormCad,
   SubTitulo,
   SubTitulo2,
-  FormCadParc
+  FormCadParc,
+  Buttons,
+  TitleDash,
+  Statistic,
+  Chart,
+  Report
 };
