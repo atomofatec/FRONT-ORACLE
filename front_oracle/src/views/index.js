@@ -5,6 +5,7 @@ import { CadastroParc } from "./cadastro_parc/index";
 import { Dashboard } from "./dashboard/index";
 import { ListagemUsers } from "./listagem_users/index";
 import { EditarUser } from "./editar_user/index";
+import { Provas } from "./provas";
 
 export {
     Login,
@@ -13,5 +14,6 @@ export {
     CadastroParc,
     Dashboard,
     ListagemUsers,
-    EditarUser
+    EditarUser,
+    Provas
 };
