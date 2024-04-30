@@ -6,6 +6,7 @@ import { Dashboard } from "./dashboard/index";
 import { ListagemUsers } from "./listagem_users/index";
 import { EditarUser } from "./editar_user/index";
 
+
 export {
     Login,
     Acompanhamento,

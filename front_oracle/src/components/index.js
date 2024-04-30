@@ -12,6 +12,7 @@ import { FormCad } from "./cadastro/form/index";
 import { SubTitulo } from "./common/subTitulo";
 import { SubTitulo2 } from "./cadastro/subTitulo";
 import { FormCadParc } from "./cadastro_parc/form/index";
+import { FormEdit } from "./editar_parc/form";
 
 export { 
   Cabecalho,
@@ -27,5 +28,6 @@ export {
   FormCad,
   SubTitulo,
   SubTitulo2,
-  FormCadParc
+  FormCadParc,
+  FormEdit
 };

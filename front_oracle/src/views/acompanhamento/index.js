@@ -7,7 +7,13 @@ export function Acompanhamento() {
         <SafeAreaView style={stylesAcompanhamento.background}>
             <ScrollView>
                 <Components.Cabecalho titulo="Funcionário" />
-                <View style={stylesAcompanhamento.container}></View>
+                <View style={stylesAcompanhamento.container}>
+                <Components.SubTitulo2
+                        titulo="Edição de"
+                        subTitulo="Parceiro"
+                    />
+                    <Components.FormEdit/>
+                </View>
             </ScrollView>
         </SafeAreaView>
     );
