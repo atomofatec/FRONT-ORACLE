@@ -95,6 +95,26 @@ export function RoutesParc() {
                     },
                 }}
             />
+            <Tab.Screen
+                name="Hardware"
+                component={Views.Hardware}
+                options={{ tabBarButton: () => null, headerShown: false }}
+            />
+            <Tab.Screen
+                name="Service"
+                component={Views.EditarUser}
+                options={{ tabBarButton: () => null, headerShown: false }}
+            />
+            <Tab.Screen
+                name="Build"
+                component={Views.EditarUser}
+                options={{ tabBarButton: () => null, headerShown: false }}
+            />
+            <Tab.Screen
+                name="Sell"
+                component={Views.EditarUser}
+                options={{ tabBarButton: () => null, headerShown: false }}
+            />
             {/* Fim dos ícones da barra de navegação */}
         </Tab.Navigator>
     );
