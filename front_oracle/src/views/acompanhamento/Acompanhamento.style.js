@@ -19,6 +19,11 @@ const stylesAcompanhamento = StyleSheet.create({
         minHeight: windowHeight - StatusBar.currentHeight,
         padding: 20,
     },
+    containerFiltros: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        margin: 10,
+    },
 });
 
 export default stylesAcompanhamento;

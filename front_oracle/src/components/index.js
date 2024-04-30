@@ -17,6 +17,7 @@ import { TitleDash } from "./dashboard/title/index";
 import { Statistic } from "./dashboard/statistic/index";
 import { Chart } from "./dashboard/chart/index";
 import { Report } from "./dashboard/report/index";
+import { ListaParc } from "./listagem_parc/lista/index";
 
 export { 
   Cabecalho,
@@ -37,5 +38,6 @@ export {
   TitleDash,
   Statistic,
   Chart,
-  Report
+  Report,
+  ListaParc
 };
