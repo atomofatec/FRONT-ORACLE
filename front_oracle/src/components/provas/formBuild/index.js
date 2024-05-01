@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { RadioButton } from 'react-native-paper';
-import stylesFormHardware from './formHardware.styles';
+import stylesFormBuil from './formBuild.styles';
 
-export function FormHardware() {
+export function FormBuild() {
     const [selectedOptions, setSelectedOptions] = useState({
         question1: '',
         question2: '',
@@ -18,15 +18,15 @@ export function FormHardware() {
     };
 
     return (
-      <View style={stylesFormHardware.container}>
-            <Text style={stylesFormHardware.titleUser}>1.Qual dos seguintes componentes é responsável pelo processamento de dados em um computador?</Text>
+      <View style={stylesFormBuil.container}>
+            <Text style={stylesFormBuil.titleUser}>1.O que é Oracle Build?</Text>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <RadioButton
                     value="opcao1"
                     status={selectedOptions.question1 === 'opcao1' ? 'checked' : 'unchecked'}
                     onPress={() => handleOptionChange('question1', 'opcao1')}
                 />
-                <Text>Placa de vídeo</Text>
+                <Text>Uma plataforma de construção de aplicativos</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <RadioButton
@@ -34,7 +34,7 @@ export function FormHardware() {
                     status={selectedOptions.question1 === 'opcao2' ? 'checked' : 'unchecked'}
                     onPress={() => handleOptionChange('question1', 'opcao2')}
                 />
-                <Text>CPU (Unidade de Processamento Central)</Text>
+                <Text>Um serviço de consultoria em nuvem</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <RadioButton
@@ -42,17 +42,17 @@ export function FormHardware() {
                     status={selectedOptions.question1 === 'opcao3' ? 'checked' : 'unchecked'}
                     onPress={() => handleOptionChange('question1', 'opcao3')}
                 />
-                <Text>Disco rígido</Text>
+                <Text>Uma ferramenta de gestão de projetos</Text>
             </View>
 
-            <Text style={stylesFormHardware.titleUser}>2.Qual é a função principal da memória RAM em um computador?</Text>
+            <Text style={stylesFormBuil.titleUser}>2.Qual é a principal função do Oracle Build?</Text>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <RadioButton
                     value="opcao1"
                     status={selectedOptions.question2 === 'opcao1' ? 'checked' : 'unchecked'}
                     onPress={() => handleOptionChange('question2', 'opcao1')}
                 />
-                <Text>Armazenar permanentemente dados e programas.</Text>
+                <Text>Desenvolver aplicativos móveis</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <RadioButton
@@ -60,7 +60,7 @@ export function FormHardware() {
                     status={selectedOptions.question2 === 'opcao2' ? 'checked' : 'unchecked'}
                     onPress={() => handleOptionChange('question2', 'opcao2')}
                 />
-                <Text>Processar gráficos e imagens.</Text>
+                <Text>Automatizar processos de construção de software</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <RadioButton
@@ -68,17 +68,17 @@ export function FormHardware() {
                     status={selectedOptions.question2 === 'opcao3' ? 'checked' : 'unchecked'}
                     onPress={() => handleOptionChange('question2', 'opcao3')}
                 />
-                <Text>Armazenar temporariamente dados e instruções para o processador.</Text>
+                <Text>Fornecer hospedagem de sites</Text>
             </View>
 
-            <Text style={stylesFormHardware.titleUser}>3.Qual dos seguintes dispositivos é usado principalmente para armazenar dados permanentemente em um computador?</Text>
+            <Text style={stylesFormBuil.titleUser}>3.Qual dos seguintes não é um recurso comum do Oracle Build?</Text>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <RadioButton
                     value="opcao1"
                     status={selectedOptions.question3 === 'opcao1' ? 'checked' : 'unchecked'}
                     onPress={() => handleOptionChange('question3', 'opcao1')}
                 />
-                <Text>Disco rígido</Text>
+                <Text>Análise de mercado de ações</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <RadioButton
@@ -86,7 +86,7 @@ export function FormHardware() {
                     status={selectedOptions.question3 === 'opcao2' ? 'checked' : 'unchecked'}
                     onPress={() => handleOptionChange('question3', 'opcao2')}
                 />
-                <Text>Memória RAM</Text>
+                <Text>Gerenciamento de requisitos</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <RadioButton
@@ -94,7 +94,7 @@ export function FormHardware() {
                     status={selectedOptions.question3 === 'opcao3' ? 'checked' : 'unchecked'}
                     onPress={() => handleOptionChange('question3', 'opcao3')}
                 />
-                <Text>CPU (Unidade de Processamento Central)</Text>
+                <Text>Controle de versão de código-fonte</Text>
             </View>
         </View>
     );

@@ -3,8 +3,11 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import * as Styles from "../../../styles/index";
 import stylesListaProvas from "./listaProvas.styles";
+import { useNavigation } from "@react-navigation/native";
 
-export function ListaProvas({ navigation }) {
+export function ListaProvas() {
+
+    const navigation = useNavigation();
 
     return (
         <View style={stylesListaProvas.container}>
@@ -21,7 +24,7 @@ export function ListaProvas({ navigation }) {
                     />
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity style={stylesListaProvas.itemContainer}>
+            <TouchableOpacity style={stylesListaProvas.itemContainer} onPress={() => {navigation.navigate('Service')}}>
                 <View style={stylesListaProvas.containerUser}>
                     <View style={stylesListaProvas.textContainer}>
                         <Text style={stylesListaProvas.name} numberOfLines={1}>Service</Text>
@@ -34,7 +37,7 @@ export function ListaProvas({ navigation }) {
                     />
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity style={stylesListaProvas.itemContainer}>
+            <TouchableOpacity style={stylesListaProvas.itemContainer} onPress={() => {navigation.navigate('Build')}}>
                 <View style={stylesListaProvas.containerUser}>
                     <View style={stylesListaProvas.textContainer}>
                         <Text style={stylesListaProvas.name} numberOfLines={1}>Build</Text>
@@ -47,7 +50,7 @@ export function ListaProvas({ navigation }) {
                     />
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity style={stylesListaProvas.itemContainer}>
+            <TouchableOpacity style={stylesListaProvas.itemContainer} onPress={() => {navigation.navigate('Sell')}}>
                 <View style={stylesListaProvas.containerUser}>
                     <View style={stylesListaProvas.textContainer}>
                         <Text style={stylesListaProvas.name} numberOfLines={1}>Sell</Text>

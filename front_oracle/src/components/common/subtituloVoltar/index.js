@@ -1,40 +1,25 @@
 import React from "react";
 import { Text, Dimensions, View, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native"; // Importe a função useNavigation
+import stylesSubTituloVoltar from "./subtituloVoltar.styles";
 
 const windowWidth = Dimensions.get("window").width;
 
-export function SubTituloVoltar({ subTitulo, isToggleButtonOn, onToggle, onBackPress }) {
+export function SubTituloVoltar( { titulo }) {
+    const navigation = useNavigation(); // Obtenha o objeto de navegação
+
+    const handleBackPress = () => {
+        navigation.goBack(); // Função para voltar para a página anterior
+    };
+
     return (
-        <View style={[stylesSubTitulo.formContainer, { width: windowWidth }]}>
-            <TouchableOpacity onPress={onBackPress} style={stylesSubTitulo.backButton}>
-                <Ionicons name="arrow-back" size={24} color="black" />
+        <View style={[stylesSubTituloVoltar.formContainer, { width: windowWidth }]}>
+            <Text style={stylesSubTituloVoltar.titleText}>{titulo}</Text>
+            <TouchableOpacity onPress={handleBackPress} style={stylesSubTituloVoltar.backButton}>
+                <Ionicons name="arrow-back" size={24} color="#C74634" />
             </TouchableOpacity>
-            <View>
-                <Text style={stylesSubTitulo.title}>
-                    {isToggleButtonOn ? "Administradores" : subTitulo}
-                </Text>
-            </View>
-            <View>
-                <TouchableOpacity
-                    style={[
-                        stylesSubTitulo.toggleButton,
-                        isToggleButtonOn && stylesSubTitulo.toggleButtonActive,
-                    ]}
-                    onPress={onToggle} // Use a função de retorno de chamada do pai para alterar o estado do botão
-                >
-                    <View
-                        style={[
-                            stylesSubTitulo.toggleInner,
-                            isToggleButtonOn &&
-                                stylesSubTitulo.toggleInnerActive,
-                        ]}
-                    />
-                </TouchableOpacity>
-                <Text style={stylesSubTitulo.titleUser}>
-                    {isToggleButtonOn ? "Administrador" : "Funcionário"}
-                </Text>
-            </View>
+            
         </View>
     );
 }

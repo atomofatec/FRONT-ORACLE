@@ -102,17 +102,17 @@ export function RoutesParc() {
             />
             <Tab.Screen
                 name="Service"
-                component={Views.EditarUser}
+                component={Views.Service}
                 options={{ tabBarButton: () => null, headerShown: false }}
             />
             <Tab.Screen
                 name="Build"
-                component={Views.EditarUser}
+                component={Views.Build}
                 options={{ tabBarButton: () => null, headerShown: false }}
             />
             <Tab.Screen
                 name="Sell"
-                component={Views.EditarUser}
+                component={Views.Sell}
                 options={{ tabBarButton: () => null, headerShown: false }}
             />
             {/* Fim dos ícones da barra de navegação */}

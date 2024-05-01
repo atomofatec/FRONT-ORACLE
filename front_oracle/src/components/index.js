@@ -12,8 +12,13 @@ import { FormCad } from "./cadastro/form/index";
 import { SubTitulo } from "./common/subTitulo";
 import { SubTitulo2 } from "./cadastro/subTitulo";
 import { FormCadParc } from "./cadastro_parc/form/index";
-import { ListaProvas } from "./provas";
-import { FormHardware } from "./provas";
+import { ListaProvas } from "./provas/listaProvas/index";
+import { FormHardware } from "./provas/formHardware/index";
+import { SubTituloVoltar } from "./common/subtituloVoltar/index";
+import { Botao } from "./provas/botao";
+import { FormService } from "./provas/formService/index";
+import { FormBuild } from "./provas/formBuild/index";
+import { FormSell } from "./provas/formSell/index"
 
 export { 
   Cabecalho,
@@ -31,5 +36,10 @@ export {
   SubTitulo2,
   FormCadParc,
   ListaProvas,
-  FormHardware
+  FormHardware,
+  SubTituloVoltar,
+  Botao,
+  FormService,
+  FormBuild,
+  FormSell
 };

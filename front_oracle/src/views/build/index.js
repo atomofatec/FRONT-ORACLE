@@ -1,15 +1,15 @@
 import { SafeAreaView, ScrollView, View } from "react-native";
 import * as Components from "../../components/index";
-import stylesHardware from "./hardware.styles";
+import stylesBuild from "./build.styles";
 
-export function Hardware() {
+export function Build() {
     return (
-        <SafeAreaView style={stylesHardware.background}>
+        <SafeAreaView style={stylesBuild.background}>
             <ScrollView>
                 <Components.Cabecalho titulo="Parceiros" />
-                <View style={stylesHardware.container}>
-                    <Components.SubTituloVoltar titulo="Hardware" />
-                    <Components.FormHardware />
+                <View style={stylesBuild.container}>
+                    <Components.SubTituloVoltar titulo="Build" />
+                    <Components.FormBuild />
                     <Components.Botao button="Enviar" />
                 </View>
             </ScrollView>
