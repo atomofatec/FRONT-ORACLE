@@ -18,6 +18,9 @@ import { Statistic } from "./dashboard/statistic/index";
 import { Chart } from "./dashboard/chart/index";
 import { Report } from "./dashboard/report/index";
 import { ListaParc } from "./listagem_parc/lista/index";
+import { CardParc } from "./listagem_parc/cards/index";
+import { FormEditParc } from "./editar_parc/form/index";
+import { SubTituloVoltar } from "./common/subtituloVoltar/index";
 
 export { 
   Cabecalho,
@@ -39,5 +42,8 @@ export {
   Statistic,
   Chart,
   Report,
-  ListaParc
+  ListaParc,
+  CardParc,
+  FormEditParc,
+  SubTituloVoltar
 };

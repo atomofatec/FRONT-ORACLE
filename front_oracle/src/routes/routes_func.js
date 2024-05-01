@@ -95,6 +95,11 @@ export function RoutesFunc() {
                     },
                 }}
             />
+            <Tab.Screen
+                name="EditarParc"
+                component={Views.EditarParc}
+                options={{ tabBarButton: () => null, headerShown: false }}
+            />
             {/* Fim dos ícones da barra de navegação */}
         </Tab.Navigator>
     );

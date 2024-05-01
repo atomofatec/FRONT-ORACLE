@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
-import { CardUsers } from "../cards/cardUsers";
+import { CardParc } from "../cards";
 import stylesList from "./listaParc.styles";
 import { useNavigation } from "@react-navigation/native";
 import Connection from "../../../connection";
@@ -53,7 +53,7 @@ export function ListaParc({ searchTerm, filtroSelecionado }) {
             <View style={stylesList.container}>
                 {/* Mapeia os usuários filtrados e exibe um card para cada um */}
                 {filteredUsers.map((user) => (
-                    <CardUsers
+                    <CardParc
                         key={user.user_id}
                         user={user}
                         handleNavigate={() =>
