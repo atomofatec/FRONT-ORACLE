@@ -35,6 +35,11 @@ export default function App() {
                     component={Rotas.RoutesFunc}
                     options={{ headerShown: false }}
                 />
+                <Stack.Screen
+                    name="Parc"
+                    component={Rotas.RoutesParc}
+                    options={{ headerShown: false }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );

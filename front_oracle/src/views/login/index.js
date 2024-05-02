@@ -22,7 +22,7 @@ export function Login() {
                 } else if (response.data.userType === "funcionario") {
                     navigation.navigate("Func"); // Navegar para página de funcionário
                 } else if (response.data.userType === "parceiro") {
-                    navigation.navigate("Parceiro"); // Navegar para página de parceiro
+                    navigation.navigate("Parc"); // Navegar para página de parceiro
                 }
             } else {
                 alert("Usuário ou senha inválidos");

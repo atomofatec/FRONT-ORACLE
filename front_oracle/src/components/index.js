@@ -12,6 +12,13 @@ import { FormCad } from "./cadastro/form/index";
 import { SubTitulo } from "./common/subTitulo";
 import { SubTitulo2 } from "./cadastro/subTitulo";
 import { FormCadParc } from "./cadastro_parc/form/index";
+import { ListaProvas } from "./provas/listaProvas/index";
+import { FormHardware } from "./provas/formHardware/index";
+import { SubTituloVoltar } from "./common/subtituloVoltar/index";
+import { Botao } from "./provas/botao";
+import { FormService } from "./provas/formService/index";
+import { FormBuild } from "./provas/formBuild/index";
+import { FormSell } from "./provas/formSell/index"
 import { Buttons } from "./dashboard/buttons/index";
 import { TitleDash } from "./dashboard/title/index";
 import { Statistic } from "./dashboard/statistic/index";
@@ -37,6 +44,13 @@ export {
   SubTitulo,
   SubTitulo2,
   FormCadParc,
+  ListaProvas,
+  FormHardware,
+  SubTituloVoltar,
+  Botao,
+  FormService,
+  FormBuild,
+  FormSell
   Buttons,
   TitleDash,
   Statistic,
