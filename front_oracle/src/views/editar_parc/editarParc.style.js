@@ -3,7 +3,7 @@ import { StyleSheet, StatusBar, Dimensions } from "react-native";
 
 const windowHeight = Dimensions.get("window").height;
 
-const stylesAcompanhamento = StyleSheet.create({
+const stylesEditarParc = StyleSheet.create({
     background: {
         flex: 1,
         backgroundColor: Styles.colors.vermelho,
@@ -19,11 +19,6 @@ const stylesAcompanhamento = StyleSheet.create({
         minHeight: windowHeight - StatusBar.currentHeight,
         padding: 20,
     },
-    containerFiltros: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        margin: 10,
-    },
 });
 
-export default stylesAcompanhamento;
+export default stylesEditarParc;
