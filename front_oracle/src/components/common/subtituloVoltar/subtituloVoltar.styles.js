@@ -13,6 +13,7 @@ const stylesSubTituloVoltar = StyleSheet.create({
     titleText: {
         fontSize: 30,
         color: "#C74634",
+        fontWeight: "bold",
         marginRight: "auto"
     }
 });

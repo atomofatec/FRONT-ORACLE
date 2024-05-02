@@ -10,6 +10,7 @@ import { Hardware } from "./hardware/index";
 import { Service } from "./service/index";
 import { Build } from "./build/index";
 import { Sell } from "./sell/index";
+import { EditarParc } from "./editar_parc/index";
 
 export {
     Login,
@@ -24,4 +25,5 @@ export {
     Service,
     Build,
     Sell
+    EditarParc
 };
