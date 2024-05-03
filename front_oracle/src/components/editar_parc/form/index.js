@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-import { View, TextInput, Dimensions, Text, TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, TextInput, Dimensions, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import stylesFormEditParc from "./formEditParc.styles";
 import { Ionicons } from "@expo/vector-icons";
 import { ButtonSmall } from "../../common/buttonSmall";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Styles from "../../../styles"
+import Connection from "../../../connection";
 
 export function FormEditParc() {
     const [type, setType] = useState("parceiro");
@@ -11,6 +14,12 @@ export function FormEditParc() {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [isToggleButtonOn, setToggleButtonOn] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState([]);
+    const conn = Connection();
+
+    const user_id = AsyncStorage.getItem("user_id");
+    console.log(user_id);
 
     const windowWidth = Dimensions.get("window").width;
 
@@ -25,6 +34,27 @@ export function FormEditParc() {
     const toggleButtonPress = () => {
         setToggleButtonOn(!isToggleButtonOn);
     };
+
+    useEffect(() => {
+        async function fetchUsers() {
+            try {
+                const response = await conn.get(`/${user_id}`);
+                setUser(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error("Error fetching user:", error);
+            }
+        }
+        fetchUsers();
+    }, []);
+
+    if (loading) {
+        return (
+            <View style={stylesFormEditParc.loadingContainer}>
+                <ActivityIndicator size="large" color={Styles.colors.vermelho} />
+            </View>
+        );
+    }
 
 
     return (

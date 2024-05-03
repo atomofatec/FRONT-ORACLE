@@ -5,12 +5,12 @@ import * as Styles from "../../../styles/index";
 import { useNavigation } from "@react-navigation/native";
 import stylesCard from "./cardParc.styles";
 
-export function CardParc({ user }) {
+export function CardParc({ user, handleNavigate }) {
     const navigation = useNavigation();
     const { user_name, email } = user; // Dados do usuário
 
     return (
-        <TouchableOpacity style={stylesCard.container} onPress={() => {navigation.navigate('EditarParc')}} >
+        <TouchableOpacity style={stylesCard.container} onPress={handleNavigate} >
             <View style={stylesCard.containerUser}>
                 <TouchableOpacity>
                     <Ionicons

@@ -10,7 +10,7 @@ export function CadastroParc() {
 
     const onAddUser = async (newUser, conn) => {
         try {
-            const response = await conn.post("/register", {
+            const response = await conn.post("/registerPartner", {
                 name: newUser.name,
                 email: newUser.email,
                 password: newUser.password

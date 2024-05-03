@@ -36,9 +36,9 @@ export function ListagemUsers() {
                             <Components.Filtro
                                 texto="Funcionários"
                                 selecionado={
-                                    filtroSelecionado === "funcionario"
+                                    filtroSelecionado === "funcionário"
                                 }
-                                onClick={() => handleFiltroClick("funcionario")}
+                                onClick={() => handleFiltroClick("funcionário")}
                             />
                             <Components.Filtro
                                 texto="Administradores"

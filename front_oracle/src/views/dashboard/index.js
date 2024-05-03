@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, SafeAreaView, ScrollView } from "react-native";
 import * as Components from "../../components/index";
-import stylesDashboard from "./dashboard.style";
+import stylesDashboard from "./Dashboard.style";
 
 export function Dashboard() {
     const [filtroSelecionado, setFiltroSelecionado] = useState("Conhecimento"); // Estado que armazena o filtro selecionado

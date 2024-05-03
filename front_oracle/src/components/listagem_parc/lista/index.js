@@ -5,6 +5,7 @@ import stylesList from "./listaParc.styles";
 import { useNavigation } from "@react-navigation/native";
 import Connection from "../../../connection";
 import { colors } from "../../../styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function ListaParc({ searchTerm, filtroSelecionado }) {
     const [users, setUsers] = useState([]);
@@ -54,14 +55,13 @@ export function ListaParc({ searchTerm, filtroSelecionado }) {
                 {/* Mapeia os usuários filtrados e exibe um card para cada um */}
                 {filteredUsers.map((user) => (
                     <CardParc
-                        key={user.user_id}
-                        user={user}
-                        handleNavigate={() =>
-                            navigation.navigate("Editar Usuário", {
-                                userId: user.user_id,
-                            })
-                        }
-                    />
+                    key={user.user_id}
+                    user={user}
+                    handleNavigate={() => {
+                        AsyncStorage.setItem("user_id", user.user_id);
+                        navigation.navigate("EditarParc");
+                    }}
+                />
                 ))}
             </View>
         </View>

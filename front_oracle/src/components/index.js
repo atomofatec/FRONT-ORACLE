@@ -27,7 +27,6 @@ import { Report } from "./dashboard/report/index";
 import { ListaParc } from "./listagem_parc/lista/index";
 import { CardParc } from "./listagem_parc/cards/index";
 import { FormEditParc } from "./editar_parc/form/index";
-import { SubTituloVoltar } from "./common/subtituloVoltar/index";
 
 export { 
   Cabecalho,
@@ -50,7 +49,7 @@ export {
   Botao,
   FormService,
   FormBuild,
-  FormSell
+  FormSell,
   Buttons,
   TitleDash,
   Statistic,
@@ -59,5 +58,4 @@ export {
   ListaParc,
   CardParc,
   FormEditParc,
-  SubTituloVoltar
 };

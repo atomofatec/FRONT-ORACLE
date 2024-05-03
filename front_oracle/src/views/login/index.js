@@ -19,7 +19,7 @@ export function Login() {
             if (response.data.message === "Login bem-sucedido!") {
                 if (response.data.userType === "admin") {
                     navigation.navigate("Admin"); // Navegar para página de administrador
-                } else if (response.data.userType === "funcionario") {
+                } else if (response.data.userType === "funcionário") {
                     navigation.navigate("Func"); // Navegar para página de funcionário
                 } else if (response.data.userType === "parceiro") {
                     navigation.navigate("Parc"); // Navegar para página de parceiro
