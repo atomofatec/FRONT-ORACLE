@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, TextInput, Dimensions, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import stylesFormEditParc from "./formEditParc.styles";
 import { Ionicons } from "@expo/vector-icons";
 import { ButtonSmall } from "../../common/buttonSmall";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as Styles from "../../../styles"
+import * as Styles from "../../../styles";
 import Connection from "../../../connection";
+import { useFocusEffect } from "@react-navigation/native"; // Importe o useFocusEffect
 
 export function FormEditParc() {
     const [type, setType] = useState("parceiro");
@@ -15,11 +16,18 @@ export function FormEditParc() {
     const [showPassword, setShowPassword] = useState(false);
     const [isToggleButtonOn, setToggleButtonOn] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState(null);
     const conn = Connection();
 
-    const user_id = AsyncStorage.getItem("user_id");
-    console.log(user_id);
+    const fetchUserId = async () => {
+        try {
+            const userId = await AsyncStorage.getItem("user_id");
+            return userId;
+        } catch (error) {
+            console.error("Error retrieving user_id:", error);
+            return null;
+        }
+    };
 
     const windowWidth = Dimensions.get("window").width;
 
@@ -35,18 +43,40 @@ export function FormEditParc() {
         setToggleButtonOn(!isToggleButtonOn);
     };
 
-    useEffect(() => {
-        async function fetchUsers() {
-            try {
-                const response = await conn.get(`/${user_id}`);
-                setUser(response.data);
-                setLoading(false);
-            } catch (error) {
-                console.error("Error fetching user:", error);
-            }
-        }
-        fetchUsers();
-    }, []);
+    // Define um listener para o evento de foco da tela
+    useFocusEffect(
+        React.useCallback(() => {
+            // Função de limpeza ao entrar na tela
+            const fetchData = async () => {
+                const userId = await fetchUserId();
+                if (userId) { 
+                    try {
+                        const response = await conn.get(`/partner/${userId}`);
+                        setUser(response.data);
+                        setLoading(false);
+                        setNome(response.data.user_name);
+                        setEmail(response.data.email);
+                    } catch (error) {
+                        console.error("Error fetching user:", error);
+                    }
+                } else {
+                    setLoading(false);
+                }
+            };
+            fetchData();
+
+            // Função de limpeza ao sair da tela
+            return () => {
+                setNome(""); // Limpa o estado do nome
+                setEmail(""); // Limpa o estado do email
+                setPassword(""); // Limpa o estado da senha
+                setShowPassword(false); // Reseta o estado para esconder a senha
+                setToggleButtonOn(false); // Reseta o estado do botão de alternância
+                setLoading(true); // Reseta o estado de carregamento
+                setUser(null); // Reseta o estado do usuário
+            };
+        }, [])
+    );
 
     if (loading) {
         return (
@@ -55,7 +85,6 @@ export function FormEditParc() {
             </View>
         );
     }
-
 
     return (
         <View style={stylesFormEditParc.container}>
@@ -66,7 +95,7 @@ export function FormEditParc() {
                         style={stylesFormEditParc.input}
                         placeholder="Nome"
                         onChangeText={(text) => setNome(text)}
-                        value={nome}
+                        value={nome} 
                     />
                     {renderPencilButton()}
                 </View>
@@ -75,18 +104,8 @@ export function FormEditParc() {
                         style={stylesFormEditParc.input}
                         placeholder="Email"
                         onChangeText={(text) => setEmail(text)}
-                        value={email}
+                        value={email} 
                         keyboardType="email-address"
-                    />
-                    {renderPencilButton()}
-                </View>
-                <View style={stylesFormEditParc.inputContainer}>
-                    <TextInput
-                        style={stylesFormEditParc.input}
-                        placeholder="Senha"
-                        onChangeText={(text) => setPassword(text)}
-                        value={password}
-                        secureTextEntry={!showPassword}
                     />
                     {renderPencilButton()}
                 </View>

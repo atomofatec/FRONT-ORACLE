@@ -58,7 +58,7 @@ export function ListaParc({ searchTerm, filtroSelecionado }) {
                     key={user.user_id}
                     user={user}
                     handleNavigate={() => {
-                        AsyncStorage.setItem("user_id", user.user_id);
+                        AsyncStorage.setItem("user_id", user.user_id.toString());
                         navigation.navigate("EditarParc");
                     }}
                 />
