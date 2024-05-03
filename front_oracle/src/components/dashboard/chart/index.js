@@ -1,24 +1,47 @@
-import React from "react";
-import { View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, ActivityIndicator } from "react-native";
 import { BarChart } from "react-native-chart-kit";
+import Connection from "../../../connection";
+import { colors } from "../../../styles";
 import stylesChart from "./chart.styles";
 
 export function Chart() {
-    const data = {
-        labels: ["Build", "Service", "Hardware", "Sell"],
-        datasets: [
-            {
-                data: [3, 4, 8, 5],
-            },
-        ],
-    };
+    const [expertiseData, setExpertiseData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const conn = Connection();
 
-    const barColors = ['#C74634', '#C74634', '#C74634', '#C74634'];
+    useEffect(() => {
+        async function fetchExpertiseData() {
+            try {
+                const response = await conn.get("/listUserExpertises");
+                setExpertiseData(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error("Erro ao obter dados:", error);
+                setLoading(false);
+            }
+        }
+    
+        fetchExpertiseData();
+    }, []);    
 
-    return (
-        <View style={stylesChart.container}>
+    const renderChart = () => {
+        if (loading) {
+            return (
+                <View>
+                    <ActivityIndicator size="large" color={colors.vermelho} />
+                </View>
+            );
+        }
+
+        const labels = expertiseData.map(item => item.user_name);
+        const datasets = [{
+            data: expertiseData.map(item => item.expertise),
+        }];
+
+        return (
             <BarChart
-                data={data}
+                data={{ labels, datasets }}
                 width={300}
                 height={200}
                 chartConfig={{
@@ -50,11 +73,17 @@ export function Chart() {
                             width: 16,
                             height: 16,
                             borderRadius: 8,
-                            backgroundColor: barColors[index],
+                            backgroundColor: "#C74634",
                         }}
                     />
                 )}
             />
+        );
+    };
+
+    return (
+        <View style={stylesChart.container}>
+            {renderChart()}
         </View>
     );
 }

@@ -1,13 +1,36 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ActivityIndicator, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Connection from "../../../connection";
+import { colors } from "../../../styles";
 import stylesStatistic from "./statistic.styles";
 
 export function Statistic() {
-    const build = 3;
-    const parceiros = 20;
-    const sell = 5;
-    const service = 4;
-    const hardware = 8;
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const navigation = useNavigation();
+    const conn = Connection();
+  
+    useEffect(() => {
+      async function fetchUsers() {
+        try {
+          const response = await conn.get("/listUserExpertises");
+          setUsers(response.data);
+          setLoading(false);
+        } catch (error) {
+          console.error("Error fetching users:", error);
+        }
+      }
+      fetchUsers();
+    }, []);
+  
+    if (loading) {
+      return (
+        <View style={stylesReport.loadingContainer}>
+          <ActivityIndicator size="large" color={colors.vermelho} />
+        </View>
+      );
+    }
 
     return (
         <View style={stylesStatistic.container}>

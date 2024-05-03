@@ -1,57 +1,66 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, ScrollView, ActivityIndicator, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Connection from "../../../connection";
+import { colors } from "../../../styles";
 import stylesReport from "./report.styles";
 
-export class Report extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tableData: [
-        { user: 'Usuário 1', email: 'usuario1@email.com', product: 'Hardware' },
-        { user: 'Usuário 2', email: 'usuario2@email.com', product: 'Service' },
-        { user: 'Usuário 3', email: 'usuario3@email.com', product: 'Build' },
-        { user: 'Usuário 4', email: 'usuario4@email.com', product: 'Sell' }
-      ]
+export function Report() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigation = useNavigation();
+  const conn = Connection();
+
+  useEffect(() => {
+    async function fetchUsers() {
+      try {
+        const response = await conn.get("/listUserExpertises");
+        setUsers(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
     }
+    fetchUsers();
+  }, []);
+
+  if (loading) {
+    return (
+      <View style={stylesReport.loadingContainer}>
+        <ActivityIndicator size="large" color={colors.vermelho} />
+      </View>
+    );
   }
 
-  render() {
-    const { tableData } = this.state;
-    return (
-      <View>
+  return (
+    <View>
         <View style={stylesReport.container}>
-            <ScrollView>
+        <ScrollView>
             <View style={stylesReport.row}>
-                <View style={[stylesReport.column, { flex: 2 }]}>
+            <View style={[stylesReport.column, { flex: 2 }]}>
                 <Text style={stylesReport.title}>Parceiro</Text>
-                {tableData.map((rowData, index) => (
-                    <View key={index} style={stylesReport.row}>
+                {users.map((user) => ( 
+                <View key={user.user_id} style={stylesReport.row}>
                     <View style={stylesReport.cell}>
-                        <Text style={stylesReport.text}>{rowData.user}</Text>
+                    <Text style={stylesReport.text}>{user.user_name}</Text>
                     </View>
-                    <View style={stylesReport.cell}>
-                        <Text style={stylesReport.text}>{rowData.email}</Text>
-                    </View>
-                    </View>
+                </View>
                 ))}
-                </View>
-                <View style={[stylesReport.column, stylesReport.alignRight]}>
-                    <Text style={stylesReport.title}>Produto</Text>
-                    {tableData.map((rowData, index) => (
-                        <View key={index} style={stylesReport.row}>
-                            <View style={stylesReport.cell}>
-                                <Text style={stylesReport.textProduct}>{rowData.product}</Text>
-                            </View>
-                        </View>
-                    ))}
-                </View>
             </View>
-            </ScrollView>
+            <View style={[stylesReport.column, stylesReport.alignRight]}>
+                <Text style={stylesReport.title}>Produto</Text>
+                {users.map((user) => ( 
+                <View key={user.user_id} style={stylesReport.row}>
+                    <View style={stylesReport.cell}>
+                    <Text style={stylesReport.textProduct}>{user.expertise}</Text>
+                    </View>
+                </View>
+                ))}
+            </View>
+            </View>
+        </ScrollView>
         </View>
         <Text style={stylesReport.exportar}>Exportar</Text>
-      </View>
-    )
-  }
+    </View>
+  );
 }
-
-export default Report;

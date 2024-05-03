@@ -13,7 +13,6 @@ const stylesReport = StyleSheet.create({
         marginTop: 15,
         marginBottom: 15,
         width: windowWidth - margin * 2,
-        height: 180,
         elevation: 5,
     },
     row: {
