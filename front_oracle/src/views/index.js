@@ -5,6 +5,12 @@ import { CadastroParc } from "./cadastro_parc/index";
 import { Dashboard } from "./dashboard/index";
 import { ListagemUsers } from "./listagem_users/index";
 import { EditarUser } from "./editar_user/index";
+import { Provas } from "./provas/index";
+import { Hardware } from "./hardware/index";
+import { Service } from "./service/index";
+import { Build } from "./build/index";
+import { Sell } from "./sell/index";
+import { EditarParc } from "./editar_parc/index";
 
 
 export {
@@ -14,5 +20,11 @@ export {
     CadastroParc,
     Dashboard,
     ListagemUsers,
-    EditarUser
+    EditarUser,
+    Provas,
+    Hardware,
+    Service,
+    Build,
+    Sell
+    EditarParc
 };

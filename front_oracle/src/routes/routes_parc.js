@@ -6,7 +6,7 @@ import * as Styles from "../styles/index";
 
 const Tab = createBottomTabNavigator();
 
-export function RoutesFunc() {
+export function RoutesParc() {
     return (
         // Barra de navegação
         <Tab.Navigator
@@ -17,8 +17,8 @@ export function RoutesFunc() {
         >
             {/* Início dos ícones da barra de navegação */}
             <Tab.Screen
-                name="Painel Inicial"
-                component={Views.Dashboard}
+                name="Provas"
+                component={Views.Provas}
                 options={{
                     headerShown: false,
                     // focused = se a tela estiver ativa, color = cor do ícone, size = tamanho do ícone
@@ -96,8 +96,23 @@ export function RoutesFunc() {
                 }}
             />
             <Tab.Screen
-                name="EditarParc"
-                component={Views.EditarParc}
+                name="Hardware"
+                component={Views.Hardware}
+                options={{ tabBarButton: () => null, headerShown: false }}
+            />
+            <Tab.Screen
+                name="Service"
+                component={Views.Service}
+                options={{ tabBarButton: () => null, headerShown: false }}
+            />
+            <Tab.Screen
+                name="Build"
+                component={Views.Build}
+                options={{ tabBarButton: () => null, headerShown: false }}
+            />
+            <Tab.Screen
+                name="Sell"
+                component={Views.Sell}
                 options={{ tabBarButton: () => null, headerShown: false }}
             />
             {/* Fim dos ícones da barra de navegação */}
