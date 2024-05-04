@@ -7,7 +7,7 @@ const stylesbotao = StyleSheet.create({
         paddingHorizontal: 20,
         borderRadius: 10,
         marginBottom: 30,
-        marginTop: 15
+        marginTop: 15,
     },
     buttonText: {
         color: "#fff",
@@ -16,5 +16,5 @@ const stylesbotao = StyleSheet.create({
         fontWeight: "bold",
     },
 });
- 
+
 export default stylesbotao;

@@ -4,7 +4,6 @@ import stylesForm from "./form.styles";
 import { ButtonSmall } from "../../common/buttonSmall";
 
 export function FormCadParc({ onAddUser }) {
-    const [type, setType] = useState("parceiro");
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

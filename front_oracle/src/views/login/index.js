@@ -4,6 +4,7 @@ import * as Components from "../../components/index";
 import stylesLogin from "./login.styles";
 import { useNavigation } from "@react-navigation/native";
 import Connection from "../../connection";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function Login() {
     const windowWidth = Dimensions.get("window").width;
@@ -16,10 +17,17 @@ export function Login() {
         try {
             const response = await conn.post("/login", { email, password });
             // Verifica a resposta do back-end e navega para a página adequada
+            // Após o login bem-sucedido
             if (response.data.message === "Login bem-sucedido!") {
+                // Salva o ID do usuário na AsyncStorage
+                await AsyncStorage.setItem(
+                    "userID",
+                    String(response.data.userID)
+                );
+
                 if (response.data.userType === "admin") {
                     navigation.navigate("Admin"); // Navegar para página de administrador
-                } else if (response.data.userType === "funcionario") {
+                } else if (response.data.userType === "funcionário") {
                     navigation.navigate("Func"); // Navegar para página de funcionário
                 } else if (response.data.userType === "parceiro") {
                     navigation.navigate("Parc"); // Navegar para página de parceiro

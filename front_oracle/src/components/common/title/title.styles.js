@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import * as Styles from "../../../styles/index";
 
 const stylesTitle = StyleSheet.create({
     title: {

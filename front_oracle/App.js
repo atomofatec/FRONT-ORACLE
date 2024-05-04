@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import * as Rotas from "./src/routes/index";
 import { useFonts } from "expo-font";
 import * as Views from "./src/views/index";
-import mockedUsers from "./src/utils/mocks";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();

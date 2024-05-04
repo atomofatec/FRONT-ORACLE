@@ -31,7 +31,11 @@ export function Buttons({ texto, selecionado, onClick, icone }) {
                         name={icone}
                         size={20} // Tamanho do ícone
                         style={{ marginRight: 5 }} // espaçamento
-                        color={selecionado ? Styles.colors.brancoFundo : Styles.colors.vermelho} // Cor do ícone
+                        color={
+                            selecionado
+                                ? Styles.colors.brancoFundo
+                                : Styles.colors.vermelho
+                        } // Cor do ícone
                     />
                 )}
                 <Text

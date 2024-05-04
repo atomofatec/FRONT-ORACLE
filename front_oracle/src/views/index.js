@@ -25,6 +25,6 @@ export {
     Hardware,
     Service,
     Build,
-    Sell
-    EditarParc
+    Sell,
+    EditarParc,
 };

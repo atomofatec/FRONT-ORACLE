@@ -1,5 +1,5 @@
 import * as Styles from "../../../styles/index";
-import { StyleSheet, StatusBar, Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 const windowWidth = Dimensions.get("window").width;
 const margin = 20;
@@ -13,7 +13,6 @@ const stylesReport = StyleSheet.create({
         marginTop: 15,
         marginBottom: 15,
         width: windowWidth - margin * 2,
-        height: 180,
         elevation: 5,
     },
     row: {
@@ -32,14 +31,14 @@ const stylesReport = StyleSheet.create({
         margin: 6,
         fontWeight: "bold",
         textAlign: "center",
-        color: Styles.colors.vermelho
+        color: Styles.colors.vermelho,
     },
     textProduct: {
         textAlign: "right",
-        color: Styles.colors.cinzaEscuro
+        color: Styles.colors.cinzaEscuro,
     },
     text: {
-        color: Styles.colors.cinzaEscuro
+        color: Styles.colors.cinzaEscuro,
     },
     alignRight: {
         alignItems: "flex-end",
@@ -49,7 +48,7 @@ const stylesReport = StyleSheet.create({
         marginBottom: 20,
         marginRight: 10,
         alignSelf: "flex-end",
-    }
+    },
 });
 
 export default stylesReport;

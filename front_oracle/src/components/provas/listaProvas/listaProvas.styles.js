@@ -1,12 +1,23 @@
-import { StyleSheet } from "react-native";
 import * as Styles from "../../../styles/index";
+import { StyleSheet, StatusBar, Dimensions } from "react-native";
+
+const windowHeight = Dimensions.get("window").height;
+const windowWidth = Dimensions.get("window").width;
+const margin = 20;
 
 const stylesListaProvas = StyleSheet.create({
     container: {
-        flexDirection: "column", // Alterado para coluna para acomodar os novos botões
-        padding: 10,
-        width: 349,
-        marginTop: 10
+        flex: 1,
+        flexDirection: "column",
+        alignItems: "center",
+        backgroundColor: Styles.colors.brancoFundo,
+        borderTopRightRadius: 40,
+        borderTopLeftRadius: 40,
+        marginTop: 20,
+        minHeight: windowHeight - StatusBar.currentHeight,
+        padding: 20,
+        width: windowWidth - margin * 2,
+        elevation: 5,
     },
     itemContainer: {
         flexDirection: "row",
@@ -14,7 +25,7 @@ const stylesListaProvas = StyleSheet.create({
         alignItems: "center",
         paddingVertical: 10, // Espaçamento vertical entre os itens
         borderBottomWidth: 1,
-        borderColor: Styles.colors.cinzaClaro
+        borderColor: Styles.colors.cinzaClaro,
     },
     containerUser: {
         flexDirection: "row",

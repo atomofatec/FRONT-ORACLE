@@ -1,8 +1,7 @@
 import { View, SafeAreaView, ScrollView } from "react-native";
 import * as Components from "../../components/index";
 import stylesCadastroParc from "./cadastro_parc.styles";
-import mockedUsers from "../../utils/mocks";
-import React, { useEffect } from "react";
+import React from "react";
 import Connection from "../../connection";
 
 export function CadastroParc() {
@@ -10,10 +9,10 @@ export function CadastroParc() {
 
     const onAddUser = async (newUser, conn) => {
         try {
-            const response = await conn.post("/register", {
+            const response = await conn.post("/registerPartner", {
                 name: newUser.name,
                 email: newUser.email,
-                password: newUser.password
+                password: newUser.password,
             });
             console.log(response);
         } catch (error) {
@@ -30,7 +29,9 @@ export function CadastroParc() {
                         titulo="Cadastro de"
                         subTitulo="Parceiros"
                     />
-                    <Components.FormCadParc onAddUser={(newUser) => onAddUser(newUser, conn)} />
+                    <Components.FormCadParc
+                        onAddUser={(newUser) => onAddUser(newUser, conn)}
+                    />
                 </View>
             </ScrollView>
         </SafeAreaView>

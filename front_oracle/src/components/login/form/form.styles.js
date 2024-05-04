@@ -1,9 +1,8 @@
 import { StyleSheet } from "react-native";
-import * as Styles from "../../../styles/index";
 
 const stylesForm = StyleSheet.create({
     formContainer: {
-        backgroundColor: '#fff',
+        backgroundColor: "#fff",
         borderTopLeftRadius: 50,
         borderTopRightRadius: 50,
         paddingHorizontal: 30,
@@ -13,8 +12,8 @@ const stylesForm = StyleSheet.create({
         marginBottom: 20,
         borderBottomWidth: 1,
         borderBottomColor: "#BDBDBD",
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
     },
     input: {
         flex: 1,

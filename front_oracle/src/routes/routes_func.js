@@ -14,6 +14,7 @@ export function RoutesFunc() {
                 tabBarStyle: { height: 65 },
                 tabBarLabelStyle: { display: "none" },
             }}
+            unmountOnBlur={true}
         >
             {/* Início dos ícones da barra de navegação */}
             <Tab.Screen

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
 import { CardUsers } from "../cards/cardUsers";
 import stylesList from "./listaUsers.styles";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import Connection from "../../../connection";
 import { colors } from "../../../styles";
 
@@ -12,18 +12,21 @@ export function ListaUsers({ searchTerm, filtroSelecionado }) {
     const navigation = useNavigation();
     const conn = Connection();
 
-    useEffect(() => {
-        async function fetchUsers() {
-            try {
-                const response = await conn.get("/listUsers");
-                setUsers(response.data);
-                setLoading(false);
-            } catch (error) {
-                console.error("Error fetching users:", error);
-            }
+    const fetchUsers = async () => {
+        try {
+            const response = await conn.get("/listUsers");
+            setUsers(response.data);
+            setLoading(false);
+        } catch (error) {
+            console.error("Error fetching users:", error);
         }
-        fetchUsers();
-    }, []);
+    };
+
+    useFocusEffect(
+        React.useCallback(() => {
+            fetchUsers();
+        }, [])
+    );
 
     if (loading) {
         return (

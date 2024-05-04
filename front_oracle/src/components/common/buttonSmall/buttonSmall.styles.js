@@ -6,7 +6,7 @@ const stylesButtonSmall = StyleSheet.create({
         paddingVertical: 8,
         paddingHorizontal: 20,
         borderRadius: 10,
-        marginBottom: 30
+        marginBottom: 30,
     },
     buttonText: {
         color: "#fff",
@@ -15,5 +15,5 @@ const stylesButtonSmall = StyleSheet.create({
         fontWeight: "bold",
     },
 });
- 
+
 export default stylesButtonSmall;

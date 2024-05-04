@@ -4,7 +4,7 @@ const stylesSubTitulo = StyleSheet.create({
     title: {
         fontSize: 21,
         color: "#C74634",
-        fontWeight: "bold"
+        fontWeight: "bold",
     },
     titleUser: {
         color: "#C74634",
@@ -12,8 +12,8 @@ const stylesSubTitulo = StyleSheet.create({
     formContainer: {
         paddingVertical: 8,
         paddingHorizontal: 26,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
+        flexDirection: "row",
+        justifyContent: "space-between",
     },
     toggleButton: {
         backgroundColor: "#ccc",
