@@ -29,7 +29,7 @@ export function RoutesParc() {
                                 <Ionicons
                                     size={(size = 30)} // Tamanho do ícone
                                     color={(color = Styles.colors.vermelho)} // Cor do ícone
-                                    name="home" // Nome do ícone
+                                    name="document-text" // Nome do ícone
                                 />
                             );
                         }
@@ -38,7 +38,7 @@ export function RoutesParc() {
                             <Ionicons
                                 size={(size = 30)}
                                 color={(color = Styles.colors.vermelho)}
-                                name="home-outline"
+                                name="document-text-outline"
                             />
                         );
                     },
@@ -65,32 +65,6 @@ export function RoutesParc() {
                                 size={(size = 30)}
                                 color={(color = Styles.colors.vermelho)}
                                 name="stats-chart-outline"
-                            />
-                        );
-                    },
-                }}
-            />
-            <Tab.Screen
-                name="Cadastro de Parceiros"
-                component={Views.CadastroParc}
-                options={{
-                    headerShown: false,
-                    tabBarIcon: ({ focused, color, size }) => {
-                        if (focused) {
-                            return (
-                                <Ionicons
-                                    size={(size = 30)}
-                                    color={(color = Styles.colors.vermelho)}
-                                    name="person-add"
-                                />
-                            );
-                        }
-
-                        return (
-                            <Ionicons
-                                size={(size = 30)}
-                                color={(color = Styles.colors.vermelho)}
-                                name="person-add-outline"
                             />
                         );
                     },

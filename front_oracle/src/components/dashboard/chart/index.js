@@ -17,18 +17,23 @@ export function Chart({ filtroTrackSelecionado }) {
                     trackId: filtroTrackSelecionado,
                 };
 
-                // Faça uma solicitação HTTP para o endpoint para obter os dados
-                const response = await conn.post("/selectExpertise", requestBody);
-                // Extraia os dados da resposta
+                // Faz uma solicitação HTTP para o endpoint para obter os dados
+                const response = await conn.post(
+                    "/selectExpertise",
+                    requestBody
+                );
+                // Extrai os dados da resposta
                 const responseData = response.data;
 
                 console.log("Dados obtidos:", responseData);
 
-                // Mapeie os dados para formatá-los corretamente para o gráfico
-                const labels = responseData.map(item => item.user_name);
-                const dataValues = responseData.map(item => item.total_test_grade);
+                // Mapeia os dados para formatá-los corretamente para o gráfico
+                const labels = responseData.map((item) => item.user_name);
+                const dataValues = responseData.map(
+                    (item) => item.total_test_grade
+                );
 
-                // Defina os dados do gráfico
+                // Define os dados do gráfico
                 const data = {
                     labels: labels,
                     datasets: [
@@ -38,18 +43,18 @@ export function Chart({ filtroTrackSelecionado }) {
                     ],
                 };
 
-                // Defina os dados do gráfico com os dados obtidos
+                // Define os dados do gráfico com os dados obtidos
                 setChartData(data);
             } catch (error) {
                 console.error("Erro ao buscar os dados:", error);
             }
         };
 
-        // Chame a função para buscar os dados sempre que filtroTrackSelecionado mudar
+        // Chama a função para buscar os dados sempre que filtroTrackSelecionado mudar
         fetchData();
     }, [filtroTrackSelecionado]); // Dependência: filtroTrackSelecionado
 
-    const barColors = ['#C74634', '#C74634', '#C74634', '#C74634'];
+    const barColors = ["#C74634", "#C74634", "#C74634", "#C74634"];
 
     return (
         <View style={stylesChart.container}>

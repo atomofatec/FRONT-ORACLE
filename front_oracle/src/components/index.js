@@ -18,7 +18,7 @@ import { SubTituloVoltar } from "./common/subtituloVoltar/index";
 import { Botao } from "./provas/botao";
 import { FormService } from "./provas/formService/index";
 import { FormBuild } from "./provas/formBuild/index";
-import { FormSell } from "./provas/formSell/index"
+import { FormSell } from "./provas/formSell/index";
 import { Buttons } from "./dashboard/buttons/index";
 import { TitleDash } from "./dashboard/title/index";
 import { Statistic } from "./dashboard/statistic/index";
@@ -28,34 +28,34 @@ import { ListaParc } from "./listagem_parc/lista/index";
 import { CardParc } from "./listagem_parc/cards/index";
 import { FormEditParc } from "./editar_parc/form/index";
 
-export { 
-  Cabecalho,
-  CabecalhoLogin,
-  Title,
-  ButtonLarge,
-  ButtonSmall,
-  Filtro,
-  Form,
-  Buscar,
-  ListaUsers,
-  CardUsers,
-  FormCad,
-  SubTitulo,
-  SubTitulo2,
-  FormCadParc,
-  ListaProvas,
-  FormHardware,
-  SubTituloVoltar,
-  Botao,
-  FormService,
-  FormBuild,
-  FormSell,
-  Buttons,
-  TitleDash,
-  Statistic,
-  Chart,
-  Report,
-  ListaParc,
-  CardParc,
-  FormEditParc,
+export {
+    Cabecalho,
+    CabecalhoLogin,
+    Title,
+    ButtonLarge,
+    ButtonSmall,
+    Filtro,
+    Form,
+    Buscar,
+    ListaUsers,
+    CardUsers,
+    FormCad,
+    SubTitulo,
+    SubTitulo2,
+    FormCadParc,
+    ListaProvas,
+    FormHardware,
+    SubTituloVoltar,
+    Botao,
+    FormService,
+    FormBuild,
+    FormSell,
+    Buttons,
+    TitleDash,
+    Statistic,
+    Chart,
+    Report,
+    ListaParc,
+    CardParc,
+    FormEditParc,
 };

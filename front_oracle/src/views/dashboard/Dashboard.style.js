@@ -2,10 +2,10 @@ import * as Styles from "../../styles/index";
 import { StyleSheet, StatusBar, Dimensions } from "react-native";
 
 const windowHeight = Dimensions.get("window").height;
-const statusBarHeight = StatusBar.currentHeight || 0; // Certifique-se de considerar que o StatusBar.currentHeight pode ser undefined
+const statusBarHeight = StatusBar.currentHeight || 0;
 
-// Defina um valor fixo para subtrair da altura total da janela
-const reducedHeight = 100; // Altere esse valor conforme necessário
+// Define um valor fixo para subtrair da altura total da janela
+const reducedHeight = 100;
 
 const stylesDashboard = StyleSheet.create({
     background: {

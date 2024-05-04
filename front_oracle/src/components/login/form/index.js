@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, TextInput, TouchableOpacity, Text } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import stylesForm from "./form.styles";
-import { useFocusEffect } from "@react-navigation/native"; // Importe o useFocusEffect
+import { useFocusEffect } from "@react-navigation/native";
 
 export function Form({ onEmailChange, onPasswordChange }) {
     const [email, setEmail] = useState(""); // Estado para armazenar o email digitado

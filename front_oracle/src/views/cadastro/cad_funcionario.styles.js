@@ -19,7 +19,6 @@ const stylesCadFunc = StyleSheet.create({
         minHeight: windowHeight - StatusBar.currentHeight,
         padding: 20,
     },
-
 });
 
 export default stylesCadFunc;

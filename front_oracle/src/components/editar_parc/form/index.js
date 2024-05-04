@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { View, TextInput, Dimensions, Text, TouchableOpacity, ActivityIndicator } from "react-native";
+import {
+    View,
+    TextInput,
+    Dimensions,
+    Text,
+    TouchableOpacity,
+    ActivityIndicator,
+} from "react-native";
 import stylesFormEditParc from "./formEditParc.styles";
 import { Ionicons } from "@expo/vector-icons";
 import { ButtonSmall } from "../../common/buttonSmall";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Styles from "../../../styles";
 import Connection from "../../../connection";
-import { useFocusEffect } from "@react-navigation/native"; // Importe o useFocusEffect
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
 export function FormEditParc() {
-    const [type, setType] = useState("parceiro");
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -17,9 +23,10 @@ export function FormEditParc() {
     const [isToggleButtonOn, setToggleButtonOn] = useState(false);
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
+    const navigation = useNavigation();
     const conn = Connection();
-    console.log(nome)
-    console.log(email)
+    console.log(nome);
+    console.log(email);
 
     const fetchUserId = async () => {
         try {
@@ -35,7 +42,9 @@ export function FormEditParc() {
 
     const renderPencilButton = () => {
         return (
-            <TouchableOpacity onPress={() => console.log("Pressed pencil button")}>
+            <TouchableOpacity
+                onPress={() => console.log("Pressed pencil button")}
+            >
                 <Ionicons name="pencil" size={18} color="#C74634" />
             </TouchableOpacity>
         );
@@ -52,7 +61,7 @@ export function FormEditParc() {
             const fetchData = async () => {
                 const userId = await fetchUserId();
                 console.log(userId);
-                if (userId) { 
+                if (userId) {
                     try {
                         const response = await conn.get(`/partner/${userId}`);
                         setUser(response.data);
@@ -88,18 +97,34 @@ export function FormEditParc() {
                 name: nome,
                 email: email,
             });
-            console.log("User updated:", response.data);
-            // Talvez você queira adicionar alguma lógica aqui para indicar ao usuário que a atualização foi bem-sucedida
+            console.log("User atualizado:", response.data);
+            alert("Parceiro atualizado com sucesso!");
         } catch (error) {
-            console.error("Error updating user:", error);
-            // Adicione aqui a lógica para lidar com o erro, como exibir uma mensagem de erro para o usuário
+            console.error("Erro ao atualizar user:", error);
+        }
+    };
+
+    const handleDelete = async () => {
+        try {
+            const userId = await fetchUserId();
+            const response = await conn.delete(`/partners/${userId}`, {
+                data: { userType: "funcionário" }, // Incluindo o corpo da solicitação com o tipo de usuário
+            });
+            navigation.goBack();
+            alert("Parceiro excluído com sucesso!");
+            console.log("User deletado:", response.data);
+        } catch (error) {
+            console.error("Erro ao deletar user:", error);
         }
     };
 
     if (loading) {
         return (
             <View style={stylesFormEditParc.loadingContainer}>
-                <ActivityIndicator size="large" color={Styles.colors.vermelho} />
+                <ActivityIndicator
+                    size="large"
+                    color={Styles.colors.vermelho}
+                />
             </View>
         );
     }
@@ -107,13 +132,18 @@ export function FormEditParc() {
     return (
         <View style={stylesFormEditParc.container}>
             {/* Container Formulário */}
-            <View style={[stylesFormEditParc.formContainer, { width: windowWidth }]}>
+            <View
+                style={[
+                    stylesFormEditParc.formContainer,
+                    { width: windowWidth },
+                ]}
+            >
                 <View style={stylesFormEditParc.inputContainer}>
                     <TextInput
                         style={stylesFormEditParc.input}
                         placeholder="Nome"
                         onChangeText={(text) => setNome(text)}
-                        value={nome} 
+                        value={nome}
                     />
                     {renderPencilButton()}
                 </View>
@@ -122,33 +152,41 @@ export function FormEditParc() {
                         style={stylesFormEditParc.input}
                         placeholder="Email"
                         onChangeText={(text) => setEmail(text)}
-                        value={email} 
+                        value={email}
                         keyboardType="email-address"
                     />
                     {renderPencilButton()}
                 </View>
                 <View style={stylesFormEditParc.rowContainer}>
-                    <Text style={stylesFormEditParc.delete}>Excluir</Text>
+                    <TouchableOpacity onPress={handleDelete}>
+                        <Text style={stylesFormEditParc.delete}>Excluir</Text>
+                    </TouchableOpacity>
                     <Text style={stylesFormEditParc.password}>Gerar senha</Text>
                 </View>
                 {/* Toggle Button */}
                 <View style={stylesFormEditParc.toggleButtonContainer}>
-                    <Text style={stylesFormEditParc.beneficios}>Benefícios</Text>
+                    <Text style={stylesFormEditParc.beneficios}>
+                        Benefícios
+                    </Text>
                     <TouchableOpacity
                         style={[
                             stylesFormEditParc.toggleButton,
-                            isToggleButtonOn && stylesFormEditParc.toggleButtonActive,
+                            isToggleButtonOn &&
+                                stylesFormEditParc.toggleButtonActive,
                         ]}
                         onPress={toggleButtonPress}
                     >
                         <View
                             style={[
                                 stylesFormEditParc.toggleInner,
-                                isToggleButtonOn && stylesFormEditParc.toggleInnerActive,
+                                isToggleButtonOn &&
+                                    stylesFormEditParc.toggleInnerActive,
                             ]}
                         />
                     </TouchableOpacity>
-                    <Text style={stylesFormEditParc.apto}>O parceiro estará apto {'\n'} a receber benefícios!</Text>
+                    <Text style={stylesFormEditParc.apto}>
+                        O parceiro estará apto {"\n"} a receber benefícios!
+                    </Text>
                 </View>
                 <ButtonSmall button="Salvar" onPress={handlePress} />
             </View>

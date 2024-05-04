@@ -20,7 +20,7 @@ export function SubTitulo({ titulo, subTitulo, isToggleButtonOn, onToggle }) {
                         stylesSubTitulo.toggleButton,
                         isToggleButtonOn && stylesSubTitulo.toggleButtonActive,
                     ]}
-                    onPress={onToggle} // Use a função de retorno de chamada do pai para alterar o estado do botão
+                    onPress={onToggle} // Usa a função de retorno de chamada do pai para alterar o estado do botão
                 >
                     <View
                         style={[

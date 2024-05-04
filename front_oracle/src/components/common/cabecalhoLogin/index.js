@@ -5,7 +5,7 @@ export function CabecalhoLogin() {
     return (
         <SafeAreaView>
             <Image
-                source={require('../../../assets/imgs/logo.png')}
+                source={require("../../../assets/imgs/logo.png")}
                 style={stylesCabecalhoLogin.logo}
                 resizeMode="contain"
             />

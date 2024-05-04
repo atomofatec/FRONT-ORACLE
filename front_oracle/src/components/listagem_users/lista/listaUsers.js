@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
 import { CardUsers } from "../cards/cardUsers";
 import stylesList from "./listaUsers.styles";
-import { useNavigation, useFocusEffect } from "@react-navigation/native"; // Importe o useFocusEffect
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import Connection from "../../../connection";
 import { colors } from "../../../styles";
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, ScrollView, Text } from "react-native";
 import stylesReport from "./report.styles";
-import Connection from "../../../connection"; // Importe sua conexão
+import Connection from "../../../connection";
 
 export function Report({ filtroTrackSelecionado }) {
     const conn = Connection();
@@ -27,7 +27,9 @@ export function Report({ filtroTrackSelecionado }) {
 
     const fetchData = async () => {
         try {
-            const response = await conn.post("/selectExpertise", { trackId: filtroTrackSelecionado });
+            const response = await conn.post("/selectExpertise", {
+                trackId: filtroTrackSelecionado,
+            });
             const responseData = response.data;
             setTableData(responseData);
         } catch (error) {
@@ -57,7 +59,8 @@ export function Report({ filtroTrackSelecionado }) {
                                     <View style={stylesReport.cell}>
                                         <Text
                                             style={[
-                                                stylesReport.text, {marginRight: 20}
+                                                stylesReport.text,
+                                                { marginRight: 20 },
                                             ]}
                                         >
                                             {rowData.email}
@@ -88,10 +91,10 @@ export function Report({ filtroTrackSelecionado }) {
                                             { marginRight: 10 },
                                         ]}
                                     >
-                                        <Text
-                                            style={stylesReport.textProduct}
-                                        >
-                                            {getProductName(filtroTrackSelecionado)}
+                                        <Text style={stylesReport.textProduct}>
+                                            {getProductName(
+                                                filtroTrackSelecionado
+                                            )}
                                         </Text>
                                     </View>
                                 </View>
@@ -112,9 +115,7 @@ export function Report({ filtroTrackSelecionado }) {
                                             { marginRight: 10 },
                                         ]}
                                     >
-                                        <Text
-                                            style={stylesReport.textProduct}
-                                        >
+                                        <Text style={stylesReport.textProduct}>
                                             {rowData.total_test_grade}
                                         </Text>
                                     </View>

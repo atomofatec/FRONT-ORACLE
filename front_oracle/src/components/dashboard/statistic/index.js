@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
 import stylesStatistic from "./statistic.styles";
 import Connection from "../../../connection";
-import { useFocusEffect } from "@react-navigation/native"; // Importe o useFocusEffect
+import { useFocusEffect } from "@react-navigation/native";
 import stylesList from "../../listagem_users/lista/listaUsers.styles";
 import { colors } from "../../../styles";
 
 export function Statistic() {
-    const build = 3;
+    // const build = 3;
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const conn = Connection();

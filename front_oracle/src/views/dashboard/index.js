@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, SafeAreaView, ScrollView } from "react-native";
 import * as Components from "../../components/index";
 import stylesDashboard from "./Dashboard.style";
+import { useFocusEffect } from "@react-navigation/native";
 
 export function Dashboard() {
     const [filtroSelecionado, setFiltroSelecionado] = useState("Conhecimento"); // Estado que armazena o filtro selecionado
@@ -15,6 +16,17 @@ export function Dashboard() {
     const handleFiltroTrackClick = (filtroTrack) => {
         setFiltroTrackSelecionado(filtroTrack);
     };
+
+    // Use o useFocusEffect para limpar os filtros ao sair da tela
+    useFocusEffect(
+        React.useCallback(() => {
+            // Limpar os filtros ao sair da tela
+            return () => {
+                setFiltroSelecionado("Conhecimento");
+                setFiltroTrackSelecionado(1);
+            };
+        }, [])
+    );
 
     return (
         <SafeAreaView style={stylesDashboard.background}>
@@ -67,10 +79,14 @@ export function Dashboard() {
                     </View>
                     <View style={stylesDashboard.containerStatistic}>
                         {filtroSelecionado === "relatorio" ? (
-                            <Components.Report filtroTrackSelecionado={filtroTrackSelecionado} />
+                            <Components.Report
+                                filtroTrackSelecionado={filtroTrackSelecionado}
+                            />
                         ) : null}
                         {filtroSelecionado === "Conhecimento" ? (
-                            <Components.Chart filtroTrackSelecionado={filtroTrackSelecionado}/>
+                            <Components.Chart
+                                filtroTrackSelecionado={filtroTrackSelecionado}
+                            />
                         ) : null}
                     </View>
                 </View>

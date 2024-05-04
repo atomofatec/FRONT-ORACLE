@@ -1,7 +1,6 @@
 import * as Styles from "../../../styles/index";
-import { StyleSheet, StatusBar, Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
-const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 const margin = 20;
 

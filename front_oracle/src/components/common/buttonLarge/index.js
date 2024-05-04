@@ -4,7 +4,10 @@ import stylesButtonLarge from "./buttonLarge.styles";
 
 export function ButtonLarge({ button, handlePress }) {
     return (
-        <TouchableOpacity style={stylesButtonLarge.button} onPress={handlePress}>
+        <TouchableOpacity
+            style={stylesButtonLarge.button}
+            onPress={handlePress}
+        >
             <Text style={stylesButtonLarge.buttonText}>{button}</Text>
         </TouchableOpacity>
     );

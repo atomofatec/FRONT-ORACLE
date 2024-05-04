@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, Dimensions, View, TouchableOpacity } from "react-native";
+import { Text, Dimensions, View } from "react-native";
 import stylesSubTitulo from "./subTitulo2.styles";
 
 const windowWidth = Dimensions.get("window").width;

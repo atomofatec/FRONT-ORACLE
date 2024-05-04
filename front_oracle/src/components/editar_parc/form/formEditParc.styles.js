@@ -1,22 +1,18 @@
 import * as Styles from "../../../styles/index";
-import { StyleSheet, Dimensions } from "react-native";
-
-const windowHeight = Dimensions.get("window").height;
-const windowWidth = Dimensions.get("window").width;
-const margin = 20;
+import { StyleSheet } from "react-native";
 
 const stylesForm = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
-        backgroundColor: '#C74634',
+        backgroundColor: "#C74634",
         alignItems: "center",
         backgroundColor: Styles.colors.brancoFundo,
         borderTopRightRadius: 40,
-        borderTopLeftRadius: 40
+        borderTopLeftRadius: 40,
     },
     formContainer: {
-        backgroundColor: '#F8F8F8',
+        backgroundColor: "#F8F8F8",
         borderTopLeftRadius: 50,
         borderTopRightRadius: 50,
         paddingHorizontal: 30,
@@ -28,8 +24,8 @@ const stylesForm = StyleSheet.create({
         marginBottom: 20,
         borderBottomWidth: 1,
         borderBottomColor: "#BDBDBD",
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
     },
     input: {
         flex: 1,
@@ -37,25 +33,25 @@ const stylesForm = StyleSheet.create({
         fontSize: 16,
     },
     rowContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
     },
     toggleButtonContainer: {
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        alignItems: 'flex-end',
+        flexDirection: "column",
+        justifyContent: "flex-end",
+        alignItems: "flex-end",
         marginBottom: 20,
     },
     beneficios: {
         color: "#C74634",
         marginBottom: 10,
-    },  
+    },
     apto: {
         color: "#B1B1B1",
         fontSize: 8,
         marginBottom: 10,
-    },    
+    },
     delete: {
         color: "#B1B1B1",
         marginBottom: 10,

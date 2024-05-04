@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, View, Text} from "react-native";
+import { SafeAreaView, ScrollView, View, Text } from "react-native";
 import * as Components from "../../components/index";
 import stylesBuild from "./build.styles";
 import Connection from "../../connection";

@@ -48,7 +48,7 @@ export function Sell() {
             for (const number of testNumbers) {
                 const response = await conn.post("/updateTest", {
                     userId: userID,
-                    trackId: 2,
+                    trackId: 3,
                     testNumber: number,
                     testGrade: 25,
                 });
@@ -88,7 +88,7 @@ export function Sell() {
             <ScrollView>
                 <Components.Cabecalho titulo="Parceiro" />
                 <View style={stylesSell.container}>
-                    <Components.SubTituloVoltar titulo="Service" />
+                    <Components.SubTituloVoltar titulo="Sell" />
                     <Components.FormSell onOptionChange={handleOptionChange} />
                     {expertiseUpdated && (
                         <Text style={{ color: Styles.colors.red }}>

@@ -25,7 +25,7 @@ const stylesListaProvas = StyleSheet.create({
         alignItems: "center",
         paddingVertical: 10, // Espaçamento vertical entre os itens
         borderBottomWidth: 1,
-        borderColor: Styles.colors.cinzaClaro
+        borderColor: Styles.colors.cinzaClaro,
     },
     containerUser: {
         flexDirection: "row",

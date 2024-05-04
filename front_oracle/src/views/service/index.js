@@ -48,7 +48,7 @@ export function Service() {
             for (const number of testNumbers) {
                 const response = await conn.post("/updateTest", {
                     userId: userID,
-                    trackId: 3,
+                    trackId: 2,
                     testNumber: number,
                     testGrade: 25,
                 });

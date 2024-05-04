@@ -25,5 +25,5 @@ export {
     Service,
     Build,
     Sell,
-    EditarParc
+    EditarParc,
 };

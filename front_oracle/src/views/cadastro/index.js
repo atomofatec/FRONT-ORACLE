@@ -1,11 +1,11 @@
-import { View, SafeAreaView, ScrollView, Text } from "react-native";
+import { View, SafeAreaView, ScrollView } from "react-native";
 import * as Components from "../../components/index";
 import stylesCadFunc from "./cad_funcionario.styles";
 import React from "react";
 import Connection from "../../connection";
 
 export function Cadastro() {
-    const conn = Connection(); // Inicialize a conexão
+    const conn = Connection();
 
     const onAddUser = async (newUser) => {
         try {
