@@ -6,7 +6,7 @@ import stylesSubTituloVoltar from "./subtituloVoltar.styles";
 
 const windowWidth = Dimensions.get("window").width;
 
-export function SubTituloVoltar( { titulo }) {
+export function SubTituloVoltar({ titulo }) {
     const navigation = useNavigation(); // Obtenha o objeto de navegação
 
     const handleBackPress = () => {
@@ -14,12 +14,19 @@ export function SubTituloVoltar( { titulo }) {
     };
 
     return (
-        <View style={[stylesSubTituloVoltar.formContainer, { width: windowWidth }]}>
+        <View
+            style={[
+                stylesSubTituloVoltar.formContainer,
+                { width: windowWidth },
+            ]}
+        >
             <Text style={stylesSubTituloVoltar.titleText}>{titulo}</Text>
-            <TouchableOpacity onPress={handleBackPress} style={stylesSubTituloVoltar.backButton}>
+            <TouchableOpacity
+                onPress={handleBackPress}
+                style={stylesSubTituloVoltar.backButton}
+            >
                 <Ionicons name="arrow-back" size={24} color="#C74634" />
             </TouchableOpacity>
-            
         </View>
     );
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, TextInput, TouchableOpacity, Text } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import stylesForm from "./form.styles";
+import { useFocusEffect } from "@react-navigation/native"; // Importe o useFocusEffect
 
 export function Form({ onEmailChange, onPasswordChange }) {
     const [email, setEmail] = useState(""); // Estado para armazenar o email digitado
@@ -19,6 +20,17 @@ export function Form({ onEmailChange, onPasswordChange }) {
         setPassword(text);
         onPasswordChange(text); // Notifica o componente pai sobre a mudança de senha
     };
+
+    // Define um listener para o evento de foco da tela
+    useFocusEffect(
+        React.useCallback(() => {
+            // Função de limpeza ao sair da tela
+            return () => {
+                setEmail(""); // Limpa o estado do email
+                setPassword(""); // Limpa o estado da senha
+            };
+        }, [])
+    );
 
     return (
         <View style={stylesForm.formcontainer}>
