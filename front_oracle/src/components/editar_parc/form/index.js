@@ -18,6 +18,8 @@ export function FormEditParc() {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
     const conn = Connection();
+    console.log(nome)
+    console.log(email)
 
     const fetchUserId = async () => {
         try {
@@ -49,6 +51,7 @@ export function FormEditParc() {
             // Função de limpeza ao entrar na tela
             const fetchData = async () => {
                 const userId = await fetchUserId();
+                console.log(userId);
                 if (userId) { 
                     try {
                         const response = await conn.get(`/partner/${userId}`);
@@ -77,6 +80,21 @@ export function FormEditParc() {
             };
         }, [])
     );
+
+    const handlePress = async () => {
+        try {
+            const userId = await fetchUserId();
+            const response = await conn.put(`/partners/${userId}`, {
+                name: nome,
+                email: email,
+            });
+            console.log("User updated:", response.data);
+            // Talvez você queira adicionar alguma lógica aqui para indicar ao usuário que a atualização foi bem-sucedida
+        } catch (error) {
+            console.error("Error updating user:", error);
+            // Adicione aqui a lógica para lidar com o erro, como exibir uma mensagem de erro para o usuário
+        }
+    };
 
     if (loading) {
         return (
@@ -132,7 +150,7 @@ export function FormEditParc() {
                     </TouchableOpacity>
                     <Text style={stylesFormEditParc.apto}>O parceiro estará apto {'\n'} a receber benefícios!</Text>
                 </View>
-                <ButtonSmall button="Salvar" />
+                <ButtonSmall button="Salvar" onPress={handlePress} />
             </View>
         </View>
     );
