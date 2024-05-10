@@ -42,7 +42,7 @@ export function FormCad({ onAddUser }) {
         <View style={stylesFormCad.container}>
             <SubTitulo
                 titulo="Cadastro de"
-                subTitulo="Funcionários"
+                subTitulo="Consultores"
                 isToggleButtonOn={isToggleButtonOn}
                 onToggle={handleToggle}
             />

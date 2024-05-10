@@ -8,7 +8,7 @@ const stylesSubTituloVoltar = StyleSheet.create({
         justifyContent: "flex-end",
     },
     titleText: {
-        fontSize: 30,
+        fontSize: 21,
         color: "#C74634",
         fontWeight: "bold",
         marginRight: "auto",

@@ -31,7 +31,7 @@ export function Dashboard() {
     return (
         <SafeAreaView style={stylesDashboard.background}>
             <ScrollView>
-                <Components.Cabecalho titulo="Funcionário" />
+                <Components.Cabecalho titulo="Consultor" />
                 <View style={stylesDashboard.container}>
                     <View style={stylesDashboard.containerStatistic}>
                         <Components.Statistic />
@@ -75,6 +75,11 @@ export function Dashboard() {
                             texto="Sell"
                             selecionado={filtroTrackSelecionado === 3}
                             onClick={() => handleFiltroTrackClick(3)}
+                        />
+                        <Components.Filtro
+                            texto="Build"
+                            selecionado={filtroTrackSelecionado === 4}
+                            onClick={() => handleFiltroTrackClick(4)}
                         />
                     </View>
                     <View style={stylesDashboard.containerStatistic}>

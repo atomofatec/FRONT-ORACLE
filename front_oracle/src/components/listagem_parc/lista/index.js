@@ -65,7 +65,7 @@ export function ListaParc({ searchTerm, filtroSelecionado }) {
                                 "user_id",
                                 user.user_id.toString()
                             );
-                            navigation.navigate("EditarParc");
+                            navigation.navigate("Tracks");
                         }}
                     />
                 ))}

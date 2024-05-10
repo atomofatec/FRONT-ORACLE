@@ -25,7 +25,7 @@ export function SubTituloVoltar({ titulo }) {
                 onPress={handleBackPress}
                 style={stylesSubTituloVoltar.backButton}
             >
-                <Ionicons name="arrow-back" size={24} color="#C74634" />
+                <Ionicons name="return-up-back-outline" size={24} color="#C74634" />
             </TouchableOpacity>
         </View>
     );
