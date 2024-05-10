@@ -3,7 +3,7 @@ import { StyleSheet, StatusBar, Dimensions } from "react-native";
 
 const windowHeight = Dimensions.get("window").height;
 
-const stylesProvas = StyleSheet.create({
+const stylesQualificacoes = StyleSheet.create({
     background: {
         flex: 1,
         backgroundColor: Styles.colors.vermelho,
@@ -20,5 +20,3 @@ const stylesProvas = StyleSheet.create({
         padding: 20,
     },
 });
-
-export default stylesProvas;

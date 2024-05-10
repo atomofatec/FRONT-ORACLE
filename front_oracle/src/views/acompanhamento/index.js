@@ -14,7 +14,7 @@ export function Acompanhamento() {
     return (
         <SafeAreaView style={stylesAcompanhamento.background}>
             <ScrollView>
-                <Components.Cabecalho titulo="Funcionário" />
+                <Components.Cabecalho titulo="Consultor" />
                 <View style={stylesAcompanhamento.container}>
                     <Components.SubTitulo2
                         titulo="Acompanhamento"

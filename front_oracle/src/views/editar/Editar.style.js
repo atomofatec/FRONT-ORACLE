@@ -3,7 +3,7 @@ import { StyleSheet, StatusBar, Dimensions } from "react-native";
 
 const windowHeight = Dimensions.get("window").height;
 
-const stylesService = StyleSheet.create({
+const stylesEditar = StyleSheet.create({
     background: {
         flex: 1,
         backgroundColor: Styles.colors.vermelho,
@@ -21,4 +21,4 @@ const stylesService = StyleSheet.create({
     },
 });
 
-export default stylesService;
+export default stylesEditar;

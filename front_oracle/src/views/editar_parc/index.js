@@ -6,7 +6,7 @@ export function EditarParc() {
     return (
         <SafeAreaView style={stylesEditarParc.background}>
             <ScrollView>
-                <Components.Cabecalho titulo="Funcionário" />
+                <Components.Cabecalho titulo="Consultor" />
                 <View style={stylesEditarParc.container}>
                     <Components.SubTituloVoltar titulo="Edição de Parceiro" />
                     <Components.FormEditParc />

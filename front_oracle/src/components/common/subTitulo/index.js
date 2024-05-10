@@ -31,7 +31,7 @@ export function SubTitulo({ titulo, subTitulo, isToggleButtonOn, onToggle }) {
                     />
                 </TouchableOpacity>
                 <Text style={stylesSubTitulo.titleUser}>
-                    {isToggleButtonOn ? "Administrador" : "Funcionário"}
+                    {isToggleButtonOn ? "Administrador" : "Consultor"}
                 </Text>
             </View>
         </View>

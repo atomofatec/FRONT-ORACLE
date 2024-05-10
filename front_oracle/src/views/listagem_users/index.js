@@ -34,7 +34,7 @@ export function ListagemUsers() {
                                 onClick={() => handleFiltroClick("Todos")}
                             />
                             <Components.Filtro
-                                texto="Funcionários"
+                                texto="Consultores"
                                 selecionado={
                                     filtroSelecionado === "funcionário"
                                 }

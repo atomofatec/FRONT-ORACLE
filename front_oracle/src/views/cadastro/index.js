@@ -1,6 +1,6 @@
 import { View, SafeAreaView, ScrollView } from "react-native";
 import * as Components from "../../components/index";
-import stylesCadFunc from "./cad_funcionario.styles";
+import stylesCadastro from "./Cadastro.styles";
 import React from "react";
 import Connection from "../../connection";
 
@@ -28,10 +28,10 @@ export function Cadastro() {
     };
 
     return (
-        <SafeAreaView style={stylesCadFunc.background}>
+        <SafeAreaView style={stylesCadastro.background}>
             <ScrollView>
                 <Components.Cabecalho titulo="Administrador" />
-                <View style={stylesCadFunc.container}>
+                <View style={stylesCadastro.container}>
                     <Components.FormCad onAddUser={onAddUser} />
                 </View>
             </ScrollView>

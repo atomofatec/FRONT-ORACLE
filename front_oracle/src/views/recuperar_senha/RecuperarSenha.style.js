@@ -3,7 +3,7 @@ import { StyleSheet, StatusBar, Dimensions } from "react-native";
 
 const windowHeight = Dimensions.get("window").height;
 
-const stylesCadFunc = StyleSheet.create({
+const stylesRecuperarSenha = StyleSheet.create({
     background: {
         flex: 1,
         backgroundColor: Styles.colors.vermelho,
@@ -21,4 +21,4 @@ const stylesCadFunc = StyleSheet.create({
     },
 });
 
-export default stylesCadFunc;
+export default stylesRecuperarSenha;

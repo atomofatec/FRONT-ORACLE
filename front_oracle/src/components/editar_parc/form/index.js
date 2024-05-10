@@ -157,36 +157,18 @@ export function FormEditParc() {
                     />
                     {renderPencilButton()}
                 </View>
+                <View style={stylesFormEditParc.inputContainer}>
+                    <TextInput
+                        style={stylesFormEditParc.input}
+                        placeholder="********"
+                        editable={false}
+                    />
+                </View>
                 <View style={stylesFormEditParc.rowContainer}>
                     <TouchableOpacity onPress={handleDelete}>
-                        <Text style={stylesFormEditParc.delete}>Excluir</Text>
+                        <Text style={stylesFormEditParc.delete}></Text>
                     </TouchableOpacity>
-                    <Text style={stylesFormEditParc.password}>Gerar senha</Text>
-                </View>
-                {/* Toggle Button */}
-                <View style={stylesFormEditParc.toggleButtonContainer}>
-                    <Text style={stylesFormEditParc.beneficios}>
-                        Benefícios
-                    </Text>
-                    <TouchableOpacity
-                        style={[
-                            stylesFormEditParc.toggleButton,
-                            isToggleButtonOn &&
-                                stylesFormEditParc.toggleButtonActive,
-                        ]}
-                        onPress={toggleButtonPress}
-                    >
-                        <View
-                            style={[
-                                stylesFormEditParc.toggleInner,
-                                isToggleButtonOn &&
-                                    stylesFormEditParc.toggleInnerActive,
-                            ]}
-                        />
-                    </TouchableOpacity>
-                    <Text style={stylesFormEditParc.apto}>
-                        O parceiro estará apto {"\n"} a receber benefícios!
-                    </Text>
+                    <Text style={stylesFormEditParc.password}>Excluir</Text>
                 </View>
                 <ButtonSmall button="Salvar" onPress={handlePress} />
             </View>

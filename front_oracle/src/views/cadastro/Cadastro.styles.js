@@ -3,7 +3,7 @@ import { StyleSheet, StatusBar, Dimensions } from "react-native";
 
 const windowHeight = Dimensions.get("window").height;
 
-const stylesSell = StyleSheet.create({
+const stylesCadastro = StyleSheet.create({
     background: {
         flex: 1,
         backgroundColor: Styles.colors.vermelho,
@@ -21,4 +21,4 @@ const stylesSell = StyleSheet.create({
     },
 });
 
-export default stylesSell;
+export default stylesCadastro;

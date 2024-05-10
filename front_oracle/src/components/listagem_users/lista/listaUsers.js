@@ -66,7 +66,7 @@ export function ListaUsers({ searchTerm, filtroSelecionado }) {
                         key={user.user_id}
                         user={user}
                         handleNavigate={() =>
-                            navigation.navigate("Editar Usuário", {
+                            navigation.navigate("Editar", {
                                 userId: user.user_id,
                             })
                         }
