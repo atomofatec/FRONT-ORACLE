@@ -6,9 +6,11 @@ export function Qualificacoes() {
     return (
         <SafeAreaView style={stylesQualificacoes.background}>
             <ScrollView>
-                <Components.Cabecalho titulo="Administrador" />
+                <Components.Cabecalho titulo="Consultor" />
                 <View style={stylesQualificacoes.container}>
-                    
+                   <Components.SubTituloVoltar titulo="Qualificadores de Especialização" />
+                   <Components.Qualificadores />
+                   <Components.BotaoQlf button= "Salvar" />
                 </View>
             </ScrollView>
         </SafeAreaView>
