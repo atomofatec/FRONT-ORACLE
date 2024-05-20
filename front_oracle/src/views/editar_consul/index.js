@@ -1,6 +1,6 @@
 import { SafeAreaView, ScrollView, View } from "react-native";
 import * as Components from "../../components/index";
-import stylesConsultor from "../../views/editarConsultor/consultor.style";
+import stylesConsultor from "./consultor.style";
 
 export function EditarConsultor() {
     return (
@@ -8,7 +8,8 @@ export function EditarConsultor() {
             <ScrollView>
                 <Components.Cabecalho titulo="Administrador" />
                 <View style={stylesConsultor.container}>
-                    <Components.SubTituloVoltar titulo="Edição" />
+                    <Components.SubTituloVoltar titulo="Edição de Consultor" />
+                    <Components.FormEditConsultor />
                 </View>
             </ScrollView>
         </SafeAreaView>

@@ -24,6 +24,7 @@ import { ListaParc } from "./listagem_parc/lista/index";
 import { CardParc } from "./listagem_parc/cards/index";
 import { FormEditParc } from "./editar_parc/form/index";
 import { FormEditarAdm } from "./editarAdm/formularioAdm/index";
+import { FormEditConsultor } from "./editarConsul/formConsultor/index";
 
 
 export {
@@ -53,4 +54,5 @@ export {
     CardParc,
     FormEditParc,
     FormEditarAdm,
+    FormEditConsultor,
 };
