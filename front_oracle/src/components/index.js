@@ -24,6 +24,7 @@ import { CardParc } from "./listagem_parc/cards/index";
 import { FormEditParc } from "./editar_parc/form/index";
 import { Qualificadores } from "./qualificacoes/qualificadores";
 import { BotaoQlf } from "./qualificacoes/botao";
+import { CardQlt } from "./qualificacoes/cardQlt";
 
 export {
     Cabecalho,
@@ -52,4 +53,5 @@ export {
     FormEditParc,
     Qualificadores,
     BotaoQlf,
+    CardQlt,
 };
