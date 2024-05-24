@@ -10,7 +10,6 @@ export function Qualificacoes() {
                 <View style={stylesQualificacoes.container}>
                    <Components.SubTituloVoltar titulo="Qualificadores de Especialização" />
                    <Components.Qualificadores />
-                   <Components.BotaoQlf button= "Salvar" />
                 </View>
             </ScrollView>
         </SafeAreaView>
