@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, View } from "react-native";
+import { SafeAreaView, ScrollView, View, Text } from "react-native";
 import * as Components from "../../components/index";
 import stylesTracks from "./Tracks.styles";
 
@@ -8,10 +8,11 @@ export function Tracks() {
             <ScrollView>
                 <Components.Cabecalho titulo="Consultor" />
                 <View style={stylesTracks.container}>
-                    <Components.SubTitulo2
-                        titulo="Program"
-                        subTitulo="Tracks"
+                    <Components.SubTituloVoltar
+                        titulo="Program Tracks"
                     />
+                    <Components.Tracks />
+                    <Text style={stylesTracks.editar}>Editar Parceiro</Text>
                 </View>
             </ScrollView>
         </SafeAreaView>

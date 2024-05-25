@@ -1,11 +1,10 @@
 import * as Styles from "../../../styles/index";
 import { StyleSheet, StatusBar, Dimensions } from "react-native";
 
-const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 const margin = 20;
 
-const stylesListaProvas = StyleSheet.create({
+const stylesTracks = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: "column",
@@ -13,9 +12,11 @@ const stylesListaProvas = StyleSheet.create({
         backgroundColor: Styles.colors.brancoFundo,
         borderTopRightRadius: 40,
         borderTopLeftRadius: 40,
+        borderBottomRightRadius: 40,
+        borderBottomLeftRadius: 40,
         marginTop: 20,
-        minHeight: windowHeight - StatusBar.currentHeight,
         padding: 20,
+        maxHeight: 280,
         width: windowWidth - margin * 2,
         elevation: 5,
     },
@@ -23,7 +24,7 @@ const stylesListaProvas = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        paddingVertical: 10, // Espaçamento vertical entre os itens
+        paddingVertical: 10,
         borderBottomWidth: 1,
         borderColor: Styles.colors.cinzaClaro,
     },
@@ -39,21 +40,11 @@ const stylesListaProvas = StyleSheet.create({
         fontWeight: "bold",
         color: Styles.colors.cinzaEscuro,
     },
-    email: {
+    number: {
         fontSize: Styles.sizes.small,
         fontWeight: "bold",
-        color: Styles.colors.cinzaClaro,
-    },
-    button: {
-        backgroundColor: Styles.colors.verde, // Cor de fundo do botão
-        paddingHorizontal: 15, // Espaçamento horizontal dentro do botão
-        paddingVertical: 10, // Espaçamento vertical dentro do botão
-        borderRadius: 5, // Borda arredondada
-    },
-    buttonText: {
-        color: Styles.colors.branco, // Cor do texto do botão
-        fontWeight: "bold",
-    },
+        color: Styles.colors.vermelho,
+    }
 });
 
-export default stylesListaProvas;
+export default stylesTracks;
