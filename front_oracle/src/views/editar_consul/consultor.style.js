@@ -3,7 +3,7 @@ import { StyleSheet, StatusBar, Dimensions } from "react-native";
 
 const windowHeight = Dimensions.get("window").height;
 
-const stylesQualificacoes = StyleSheet.create({
+const stylesConsultor = StyleSheet.create({
     background: {
         flex: 1,
         backgroundColor: Styles.colors.vermelho,
@@ -21,4 +21,4 @@ const stylesQualificacoes = StyleSheet.create({
     },
 });
 
-export default stylesQualificacoes;
+export default stylesConsultor;

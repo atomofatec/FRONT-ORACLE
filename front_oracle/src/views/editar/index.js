@@ -8,7 +8,8 @@ export function Editar() {
             <ScrollView>
                 <Components.Cabecalho titulo="Administrador" />
                 <View style={stylesEditar.container}>
-                    <Components.SubTituloVoltar titulo="Edição" />
+                    <Components.SubTituloVoltar titulo="Edição de Administrador" />
+                    <Components.FormEditarAdm />
                 </View>
             </ScrollView>
         </SafeAreaView>

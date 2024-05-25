@@ -22,6 +22,11 @@ import { Report } from "./dashboard/report/index";
 import { ListaParc } from "./listagem_parc/lista/index";
 import { CardParc } from "./listagem_parc/cards/index";
 import { FormEditParc } from "./editar_parc/form/index";
+import { Qualificadores } from "./qualificacoes/qualificadores";
+import { BotaoQlf } from "./qualificacoes/botao";
+import { CardQlt } from "./qualificacoes/cardQlt";
+import { FormEditarAdm } from "./editarAdm/formularioAdm/index";
+import { FormEditConsultor } from "./editarConsul/formConsultor/index";
 
 export {
     Cabecalho,
@@ -48,4 +53,9 @@ export {
     ListaParc,
     CardParc,
     FormEditParc,
+    Qualificadores,
+    BotaoQlf,
+    CardQlt,
+    FormEditarAdm,
+    FormEditConsultor,
 };

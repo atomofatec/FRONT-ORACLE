@@ -107,6 +107,11 @@ export function RoutesFunc() {
                 options={{ tabBarButton: () => null, headerShown: false }}
             />
             <Tab.Screen
+                name="Qualificacoes"
+                component={Views.Qualificacoes}
+                options={{ tabBarButton: () => null, headerShown: false }}
+            />
+            <Tab.Screen
                 name="EditarParc"
                 component={Views.EditarParc}
                 options={{ tabBarButton: () => null, headerShown: false }}
