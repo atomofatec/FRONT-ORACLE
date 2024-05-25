@@ -20,6 +20,8 @@ export function FormEditConsultor() {
 
     const windowWidth = Dimensions.get("window").width;
 
+    
+
     const renderPencilButton = () => {
         return (
             <TouchableOpacity onPress={() => console.log("Pressed pencil button")}>
