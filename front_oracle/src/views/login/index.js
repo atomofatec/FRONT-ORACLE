@@ -27,7 +27,7 @@ export function Login() {
 
                 if (response.data.userType === "admin") {
                     navigation.navigate("Admin"); // Navegar para página de administrador
-                } else if (response.data.userType === "funcionário") {
+                } else if (response.data.userType === "consultor") {
                     navigation.navigate("Func"); // Navegar para página de funcionário
                 } else if (response.data.userType === "parceiro") {
                     navigation.navigate("Parc"); // Navegar para página de parceiro
