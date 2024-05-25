@@ -25,6 +25,8 @@ import { FormEditParc } from "./editar_parc/form/index";
 import { Qualificadores } from "./qualificacoes/qualificadores";
 import { BotaoQlf } from "./qualificacoes/botao";
 import { CardQlt } from "./qualificacoes/cardQlt";
+import { FormEditarAdm } from "./editarAdm/formularioAdm/index";
+import { FormEditConsultor } from "./editarConsul/formConsultor/index";
 
 export {
     Cabecalho,
@@ -54,4 +56,6 @@ export {
     Qualificadores,
     BotaoQlf,
     CardQlt,
+    FormEditarAdm,
+    FormEditConsultor,
 };
