@@ -6,8 +6,13 @@ export function Expertises() {
     return (
         <SafeAreaView style={stylesExpertises.background}>
             <ScrollView>
-                <Components.Cabecalho titulo="Administrador" />
-                <View style={stylesExpertises.container}></View>
+                <Components.Cabecalho titulo="Consultor" />
+                <View style={stylesExpertises.container}>
+                    <Components.SubTituloVoltar titulo="Expertises" />
+                    <View>
+                        <Components.ListaExpertises />
+                    </View>
+                </View>
             </ScrollView>
         </SafeAreaView>
     );

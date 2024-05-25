@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
 import stylesStatistic from "./statistic.styles";
 import Connection from "../../../connection";

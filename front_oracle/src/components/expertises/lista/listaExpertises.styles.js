@@ -1,15 +1,14 @@
-import { StyleSheet, Dimensions } from "react-native";
 import * as Styles from "../../../styles/index";
+import { StyleSheet, Dimensions } from "react-native";
 
 // const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 const margin = 20;
 
-const stylesQualificadores = StyleSheet.create({
+const stylesList = StyleSheet.create({
     container: {
         flexDirection: "column",
         alignItems: "center",
-
         backgroundColor: Styles.colors.brancoFundo,
         borderTopRightRadius: 40,
         borderTopLeftRadius: 40,
@@ -37,8 +36,7 @@ const stylesQualificadores = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-
     },
 });
 
-export default stylesQualificadores;
+export default stylesList;

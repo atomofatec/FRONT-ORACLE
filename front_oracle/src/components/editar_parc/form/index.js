@@ -108,7 +108,7 @@ export function FormEditParc() {
         try {
             const userId = await fetchUserId();
             const response = await conn.delete(`/partners/${userId}`, {
-                data: { userType: "funcionário" }, // Incluindo o corpo da solicitação com o tipo de usuário
+                data: { userType: "consultor" }, // Incluí o corpo da solicitação com o tipo de usuário
             });
             navigation.goBack();
             alert("Parceiro excluído com sucesso!");
@@ -166,9 +166,8 @@ export function FormEditParc() {
                 </View>
                 <View style={stylesFormEditParc.rowContainer}>
                     <TouchableOpacity onPress={handleDelete}>
-                        <Text style={stylesFormEditParc.delete}></Text>
+                        <Text style={stylesFormEditParc.delete}>Excluir</Text>
                     </TouchableOpacity>
-                    <Text style={stylesFormEditParc.password}>Excluir</Text>
                 </View>
                 <ButtonSmall button="Salvar" onPress={handlePress} />
             </View>

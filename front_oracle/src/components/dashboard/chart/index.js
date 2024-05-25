@@ -12,26 +12,38 @@ export function Chart({ filtroTrackSelecionado }) {
         // Função para buscar os dados do endpoint
         const fetchData = async () => {
             try {
-                // Corpo da requisição
-                const requestBody = {
-                    trackId: filtroTrackSelecionado,
-                };
-
-                // Faz uma solicitação HTTP para o endpoint para obter os dados
-                const response = await conn.post(
-                    "/selectExpertise",
-                    requestBody
-                );
+                // Faz uma solicitação para o endpoint para obter os dados
+                const response = await conn.get("/completionsCount");
                 // Extrai os dados da resposta
                 const responseData = response.data;
 
                 console.log("Dados obtidos:", responseData);
 
+                // Função para mapear os nomes das tracks como abreviações
+                const getShortLabel = (label) => {
+                    switch (label) {
+                        case "Cloud Sell Track":
+                            return "Sell";
+                        case "Cloud Service Track":
+                            return "Service";
+                        case "License & Hardware Track":
+                            return "L&H";
+                        case "Cloud Build Track":
+                            return "Build";
+                        default:
+                            return label;
+                    }
+                };
+
                 // Mapeia os dados para formatá-los corretamente para o gráfico
-                const labels = responseData.map((item) => item.user_name);
-                const dataValues = responseData.map(
-                    (item) => item.total_test_grade
+                const labels = responseData.map((item) =>
+                    getShortLabel(item["Track Name"])
                 );
+                console.log("Labels:", labels);
+                const dataValues = responseData.map(
+                    (item) => item["Completions Count"]
+                );
+                console.log("Data values:", dataValues);
 
                 // Define os dados do gráfico
                 const data = {
