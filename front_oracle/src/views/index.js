@@ -12,6 +12,8 @@ import { Expertises } from "./expertises/index";
 import { Qualificacoes } from "./qualificacoes/index";
 import { RecuperarSenha } from "./recuperar_senha/index";
 import { DesenvolvimentoParc } from "./desenvolvimento_parc/index";
+import { EditarConsultor } from "./editar_consul";
+
 
 export {
     Login,
@@ -27,5 +29,6 @@ export {
     Expertises,
     Qualificacoes,
     RecuperarSenha,
-    DesenvolvimentoParc
+    DesenvolvimentoParc,
+    EditarConsultor,
 };
