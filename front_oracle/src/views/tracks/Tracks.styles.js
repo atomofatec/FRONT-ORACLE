@@ -20,11 +20,13 @@ const stylesTracks = StyleSheet.create({
         padding: 20,
     },
     editar: {
-        color: "#B1B1B1",
         marginBottom: 10,
         alignSelf: "flex-end",
         marginTop: 10,
     },
+    texto: {
+        color: "#B1B1B1",
+    }
 });
 
 export default stylesTracks;

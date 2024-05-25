@@ -15,6 +15,11 @@ const stylesFormEditarAdm = StyleSheet.create({
         borderTopRightRadius: 40,
         borderTopLeftRadius: 40
     },
+    rowContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
     formContainer: {
         backgroundColor: '#F8F8F8',
         borderTopLeftRadius: 50,
@@ -41,7 +46,13 @@ const stylesFormEditarAdm = StyleSheet.create({
         marginBottom: 10,
         alignSelf: "flex-end",
     },
-   
+    delete: {
+        color: "#B1B1B1",
+        marginBottom: 10,
+    },
+    texto: {
+        color: "#B1B1B1",
+    }
 });
 
 export default stylesFormEditarAdm;

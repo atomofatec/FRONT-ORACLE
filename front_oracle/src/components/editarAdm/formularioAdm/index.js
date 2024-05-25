@@ -109,15 +109,23 @@ export function FormEditarAdm() {
                 email: email,
             });
             console.log("User atualizado:", response.data);
-            alert("Parceiro atualizado com sucesso!");
+            alert("Usuário atualizado com sucesso!");
         } catch (error) {
             console.error("Erro ao atualizar user:", error);
         }
     };
 
-    const handleDelete = () => {
-        console.log("Usuário excluído");
-        alert("Usuário excluído com sucesso!");
+    const handleDelete = async () => {
+        try {
+            const response = await conn.delete(`/partners/${admID}`, {
+                data: { userType: "consultor" }, // Incluí o corpo da solicitação com o tipo de usuário
+            });
+            navigation.goBack();
+            alert("Usuário excluído com sucesso!");
+            console.log("User deletado:", response.data);
+        } catch (error) {
+            console.error("Erro ao deletar user:", error);
+        }
     };
 
     if (loading) {
@@ -158,8 +166,8 @@ export function FormEditarAdm() {
                     />
                 </View>
                 <View style={stylesFormEditarAdm.rowContainer}>
-                    <TouchableOpacity onPress={handleDelete}>
-                        <Text style={stylesFormEditarAdm.delete}>Excluir</Text>
+                    <TouchableOpacity onPress={handleDelete} style={stylesFormEditarAdm.delete}>
+                        <Text style={stylesFormEditarAdm.texto}>Excluir</Text>
                     </TouchableOpacity>
                 </View>
                 <ButtonSmall button="Salvar" onPress={handlePress} />

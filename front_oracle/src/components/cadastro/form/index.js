@@ -5,7 +5,7 @@ import { ButtonSmall } from "../../common/buttonSmall";
 import { SubTitulo } from "../../common/subTitulo";
 
 export function FormCad({ onAddUser }) {
-    const [type, setType] = useState("funcionário");
+    const [type, setType] = useState("consultor");
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,7 +16,7 @@ export function FormCad({ onAddUser }) {
 
     const handleToggle = () => {
         setToggleButtonOn(!isToggleButtonOn);
-        setType(isToggleButtonOn ? "funcionário" : "admin");
+        setType(isToggleButtonOn ? "consultor" : "admin");
     };
     console.log("Tipo de usuário:", type);
     console.log("Estado do botão:", isToggleButtonOn);

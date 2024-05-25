@@ -11,25 +11,23 @@ export function Report({ filtroTrackSelecionado }) {
         fetchData();
     }, [filtroTrackSelecionado]);
 
-    // Função para mapear os valores de track_id para os textos correspondentes
-    const getProductName = (trackId) => {
-        switch (trackId) {
-            case 1:
-                return "Hardware";
-            case 2:
-                return "Service";
-            case 3:
-                return "Sell";
-            default:
-                return "";
-        }
-    };
+    // // Função para mapear os valores de track_id para os textos correspondentes
+    // const getProductName = (trackId) => {
+    //     switch (trackId) {
+    //         case 1:
+    //             return "Hardware";
+    //         case 2:
+    //             return "Service";
+    //         case 3:
+    //             return "Sell";
+    //         default:
+    //             return "";
+    //     }
+    // };
 
     const fetchData = async () => {
         try {
-            const response = await conn.post("/selectExpertise", {
-                trackId: filtroTrackSelecionado,
-            });
+            const response = await conn.get("/completionsCount");
             const responseData = response.data;
             setTableData(responseData);
         } catch (error) {
@@ -42,33 +40,6 @@ export function Report({ filtroTrackSelecionado }) {
             <View style={stylesReport.container}>
                 <ScrollView horizontal={true}>
                     <View style={stylesReport.row}>
-                        <View style={[stylesReport.column, { flex: 2 }]}>
-                            <Text style={stylesReport.title}>Parceiro</Text>
-                            {tableData.map((rowData, index) => (
-                                <View key={index} style={stylesReport.row}>
-                                    <View
-                                        style={[
-                                            stylesReport.cell,
-                                            { marginRight: 20 },
-                                        ]}
-                                    >
-                                        <Text style={stylesReport.text}>
-                                            {rowData.user_name}
-                                        </Text>
-                                    </View>
-                                    <View style={stylesReport.cell}>
-                                        <Text
-                                            style={[
-                                                stylesReport.text,
-                                                { marginRight: 20 },
-                                            ]}
-                                        >
-                                            {rowData.email}
-                                        </Text>
-                                    </View>
-                                </View>
-                            ))}
-                        </View>
                         <View
                             style={[
                                 stylesReport.column,
@@ -81,7 +52,7 @@ export function Report({ filtroTrackSelecionado }) {
                                     { marginRight: 10 },
                                 ]}
                             >
-                                Produto
+                                Track
                             </Text>
                             {tableData.map((rowData, index) => (
                                 <View key={index} style={stylesReport.row}>
@@ -92,9 +63,7 @@ export function Report({ filtroTrackSelecionado }) {
                                         ]}
                                     >
                                         <Text style={stylesReport.textProduct}>
-                                            {getProductName(
-                                                filtroTrackSelecionado
-                                            )}
+                                            {rowData["Track Name"]}
                                         </Text>
                                     </View>
                                 </View>
@@ -106,17 +75,17 @@ export function Report({ filtroTrackSelecionado }) {
                                 stylesReport.alignRight,
                             ]}
                         >
-                            <Text style={stylesReport.title}>Expertise</Text>
+                            <Text style={stylesReport.title}>Conclusões</Text>
                             {tableData.map((rowData, index) => (
                                 <View key={index} style={stylesReport.row}>
                                     <View
                                         style={[
                                             stylesReport.cell,
-                                            { marginRight: 10 },
+                                            { marginRight: 30 },
                                         ]}
                                     >
                                         <Text style={stylesReport.textProduct}>
-                                            {rowData.total_test_grade}
+                                            {rowData["Completions Count"]}
                                         </Text>
                                     </View>
                                 </View>

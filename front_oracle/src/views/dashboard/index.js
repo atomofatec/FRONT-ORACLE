@@ -6,27 +6,27 @@ import { useFocusEffect } from "@react-navigation/native";
 
 export function Dashboard() {
     const [filtroSelecionado, setFiltroSelecionado] = useState("Conhecimento"); // Estado que armazena o filtro selecionado
-    const [filtroTrackSelecionado, setFiltroTrackSelecionado] = useState(1); // Estado que armazena o filtro selecionado
+    // const [filtroTrackSelecionado, setFiltroTrackSelecionado] = useState(1); // Estado que armazena o filtro selecionado
 
     // Função que é chamada quando um filtro é pressionado
     const handleFiltroClick = (filtro) => {
         setFiltroSelecionado(filtro);
     };
 
-    const handleFiltroTrackClick = (filtroTrack) => {
-        setFiltroTrackSelecionado(filtroTrack);
-    };
+    // const handleFiltroTrackClick = (filtroTrack) => {
+    //     setFiltroTrackSelecionado(filtroTrack);
+    // };
 
-    // Use o useFocusEffect para limpar os filtros ao sair da tela
-    useFocusEffect(
-        React.useCallback(() => {
-            // Limpar os filtros ao sair da tela
-            return () => {
-                setFiltroSelecionado("Conhecimento");
-                setFiltroTrackSelecionado(1);
-            };
-        }, [])
-    );
+    // // Use o useFocusEffect para limpar os filtros ao sair da tela
+    // useFocusEffect(
+    //     React.useCallback(() => {
+    //         // Limpar os filtros ao sair da tela
+    //         return () => {
+    //             setFiltroSelecionado("Conhecimento");
+    //             setFiltroTrackSelecionado(1);
+    //         };
+    //     }, [])
+    // );
 
     return (
         <SafeAreaView style={stylesDashboard.background}>
@@ -60,7 +60,7 @@ export function Dashboard() {
                             />
                         </ScrollView>
                     </View>
-                    <View style={stylesDashboard.containerFiltros}>
+                    {/* <View style={stylesDashboard.containerFiltros}>
                         <Components.Filtro
                             texto="Hardware"
                             selecionado={filtroTrackSelecionado === 1}
@@ -81,16 +81,16 @@ export function Dashboard() {
                             selecionado={filtroTrackSelecionado === 4}
                             onClick={() => handleFiltroTrackClick(4)}
                         />
-                    </View>
+                    </View> */}
                     <View style={stylesDashboard.containerStatistic}>
                         {filtroSelecionado === "relatorio" ? (
                             <Components.Report
-                                filtroTrackSelecionado={filtroTrackSelecionado}
+                                // filtroTrackSelecionado={filtroTrackSelecionado}
                             />
                         ) : null}
                         {filtroSelecionado === "Conhecimento" ? (
                             <Components.Chart
-                                filtroTrackSelecionado={filtroTrackSelecionado}
+                                // filtroTrackSelecionado={filtroTrackSelecionado}
                             />
                         ) : null}
                     </View>

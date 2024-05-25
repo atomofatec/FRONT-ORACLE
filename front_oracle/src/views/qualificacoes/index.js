@@ -8,7 +8,7 @@ export function Qualificacoes() {
             <ScrollView>
                 <Components.Cabecalho titulo="Consultor" />
                 <View style={stylesQualificacoes.container}>
-                   <Components.SubTituloVoltar titulo="Qualificadores de Especialização" />
+                   <Components.SubTituloVoltar titulo="Qualificadores de" subTitulo={"Especialização"}/>
                    <Components.Qualificadores />
                 </View>
             </ScrollView>
