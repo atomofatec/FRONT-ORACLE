@@ -120,6 +120,7 @@ export function Qualificadores() {
                 ))}
             </View>
             <BotaoQlf button="Salvar" onPress={updateExpertise} />
+
         </View>
     );
 }

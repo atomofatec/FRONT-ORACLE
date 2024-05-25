@@ -9,6 +9,7 @@ const stylesQualificadores = StyleSheet.create({
     container: {
         flexDirection: "column",
         alignItems: "center",
+
         backgroundColor: Styles.colors.brancoFundo,
         borderTopRightRadius: 40,
         borderTopLeftRadius: 40,
@@ -36,6 +37,7 @@ const stylesQualificadores = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+
     },
 });
 
