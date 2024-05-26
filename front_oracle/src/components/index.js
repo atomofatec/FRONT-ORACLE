@@ -28,6 +28,7 @@ import { CardQlt } from "./qualificacoes/cardQlt";
 import { FormEditarAdm } from "./editarAdm/formularioAdm/index";
 import { ListaExpertises } from "./expertises/lista/listaExpertises";
 import { CardExpertises } from "./expertises/cards/cardExpertises";
+import { BotaoTrack } from "./expertises/botao";
 
 export {
     Cabecalho,
@@ -60,4 +61,5 @@ export {
     FormEditarAdm,
     ListaExpertises,
     CardExpertises,
+    BotaoTrack
 };

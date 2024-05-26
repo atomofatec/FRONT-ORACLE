@@ -6,7 +6,7 @@ import Connection from "../../../connection";
 import { colors } from "../../../styles";
 import { CardExpertises } from "../cards/cardExpertises";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { BotaoQlf } from "../../qualificacoes/botao";
+import { BotaoTrack } from "../botao";
 
 export function ListaExpertises() {
     const [track_id, setTrackID] = useState(null);
@@ -17,6 +17,7 @@ export function ListaExpertises() {
     const conn = Connection();
 
     console.log(track_id)
+    console.log(userID)
 
     const fetchUserID = async () => {
         try {
@@ -59,6 +60,23 @@ export function ListaExpertises() {
         }
     };
 
+    const updateTrack = async () => {
+        if (!userID || !track_id) {
+            console.error("User ID or Track ID is null");
+            return;
+        }
+
+        try {
+            const response = await conn.post("/userTracks", {
+                user_id: userID,
+                track_id: track_id,
+            });
+            console.log('Update Track Response:', response.data);
+        } catch (error) {
+            console.error("Error updating track:", error);
+        }
+    };
+
     useEffect(() => {
         const interval = setInterval(fetchUserID, 1000); // Verifica a cada segundo
         return () => clearInterval(interval); // Limpa o intervalo ao desmontar o componente
@@ -86,18 +104,6 @@ export function ListaExpertises() {
             fetchExpertises(); // Atualiza as expertises ao focar na tela
         }, [userID, track_id]) // Reexecuta sempre que o userID mudar
     );
-
-    const updateTrack = async () => {
-        try {
-            const response = await conn.post("/userTracks", {
-                user_id: userID,
-                expertise_id: track_id,
-            });
-            console.log(response.data);
-        } catch (error) {
-            console.error("Error updating qualification:", error);
-        }
-    };
 
     if (loading) {
         return (
@@ -127,7 +133,7 @@ export function ListaExpertises() {
                     />
                 ))}
             </View>
-            <BotaoQlf button="Salvar" onPress={updateTrack} />
+            <BotaoTrack button="Salvar" onPress={updateTrack} />
         </View>
     );
 }
