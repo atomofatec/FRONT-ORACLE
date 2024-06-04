@@ -27,6 +27,8 @@ import { BotaoQlf } from "./qualificacoes/botao";
 import { CardQlt } from "./qualificacoes/cardQlt";
 import { FormEditarAdm } from "./editarAdm/formularioAdm/index";
 import { FormEditConsultor } from "./editarConsul/formConsultor/index";
+import { FormRecuperar } from "./recuperarSenha/form/index";
+import { TituloVoltar } from "./login/tituloVoltar/index";
 
 export {
     Cabecalho,
@@ -58,4 +60,6 @@ export {
     CardQlt,
     FormEditarAdm,
     FormEditConsultor,
+    FormRecuperar,
+    TituloVoltar,
 };

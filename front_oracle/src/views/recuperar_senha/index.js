@@ -1,14 +1,20 @@
-import { SafeAreaView, ScrollView, View } from "react-native";
+import { View, Dimensions } from "react-native";
 import * as Components from "../../components/index";
 import stylesRecuperarSenha from "./RecuperarSenha.style";
 
 export function RecuperarSenha() {
+    const windowWidth = Dimensions.get("window").width;
+
     return (
-        <SafeAreaView style={stylesRecuperarSenha.background}>
-            <ScrollView>
-                <Components.Cabecalho titulo="Administrador" />
-                <View style={stylesRecuperarSenha.container}></View>
-            </ScrollView>
-        </SafeAreaView>
+        <View style={stylesRecuperarSenha.container}>
+            <Components.CabecalhoLogin />
+            <View style={[stylesRecuperarSenha.formContainer, { width: windowWidth }]}>
+                <Components.TituloVoltar title="RECUPERE SUA SENHA" />
+                <Components.FormRecuperar />
+                <Components.ButtonLarge
+                    button="ENVIAR"
+                />
+            </View>
+        </View>
     );
 }
