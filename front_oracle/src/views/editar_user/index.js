@@ -7,7 +7,10 @@ export function EditarUser() {
         <SafeAreaView style={stylesEditarUser.background}>
             <ScrollView>
                 <Components.Cabecalho titulo="Administrador" />
-                <View style={stylesEditarUser.container}></View>
+                <View style={stylesEditarUser.container}>
+                <Components.SubTituloVoltar titulo="Edição de Perfil" />
+                    <Components.FormEditPerfil/>
+                </View>
             </ScrollView>
         </SafeAreaView>
     );
