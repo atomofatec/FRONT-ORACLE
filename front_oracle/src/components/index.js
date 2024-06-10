@@ -29,6 +29,9 @@ import { FormEditarAdm } from "./editarAdm/formularioAdm/index";
 import { ListaExpertises } from "./expertises/lista/listaExpertises";
 import { CardExpertises } from "./expertises/cards/cardExpertises";
 import { BotaoTrack } from "./expertises/botao";
+import { Grafico } from "./desenvolvimento_parc/grafico";
+import { Relatorio } from "./desenvolvimento_parc/relatorio/index"
+
 
 export {
     Cabecalho,
@@ -61,5 +64,7 @@ export {
     FormEditarAdm,
     ListaExpertises,
     CardExpertises,
-    BotaoTrack
+    BotaoTrack, 
+    Grafico,
+    Relatorio,
 };
