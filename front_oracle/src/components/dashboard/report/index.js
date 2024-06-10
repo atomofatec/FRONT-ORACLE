@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { View, ScrollView, Text } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity, Alert } from "react-native";
 import stylesReport from "./report.styles";
 import Connection from "../../../connection";
+import XLSX from 'xlsx';
+import * as FileSystem from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
 
 export function Report({ filtroTrackSelecionado }) {
     const conn = Connection();
@@ -10,20 +13,6 @@ export function Report({ filtroTrackSelecionado }) {
     useEffect(() => {
         fetchData();
     }, [filtroTrackSelecionado]);
-
-    // // Função para mapear os valores de track_id para os textos correspondentes
-    // const getProductName = (trackId) => {
-    //     switch (trackId) {
-    //         case 1:
-    //             return "Hardware";
-    //         case 2:
-    //             return "Service";
-    //         case 3:
-    //             return "Sell";
-    //         default:
-    //             return "";
-    //     }
-    // };
 
     const fetchData = async () => {
         try {
@@ -35,66 +24,80 @@ export function Report({ filtroTrackSelecionado }) {
         }
     };
 
+    const exportToExcel = async () => {
+        if (tableData.length === 0) {
+            Alert.alert("Nenhum dado para exportar.");
+            return;
+        }
+
+        const wsData = [
+            ["Track", "Conclusões"],
+            ...tableData.map(row => [
+                row["Track Name"],
+                row["Completions Count"]
+            ])
+        ];
+        const ws = XLSX.utils.aoa_to_sheet(wsData);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Relatório");
+
+        const wbout = XLSX.write(wb, { type: 'base64', bookType: "xlsx" });
+
+        // Diretório para salvar o arquivo temporariamente
+        const directory = `${FileSystem.documentDirectory}excel_files/`;
+
+        try {
+            // Criar o diretório se ele não existir
+            await FileSystem.makeDirectoryAsync(directory, { intermediates: true });
+            
+            // Caminho do arquivo
+            const filePath = `${directory}relatorio.xlsx`;
+            
+            // Escrever o arquivo no sistema de arquivos
+            await FileSystem.writeAsStringAsync(filePath, wbout, {
+                encoding: FileSystem.EncodingType.Base64,
+            });
+
+            // Abrir o compartilhamento para compartilhar e baixar o arquivo
+            await Sharing.shareAsync(filePath, { mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            
+        } catch (error) {
+            console.error("Erro ao exportar para Excel:", error);
+            Alert.alert("Erro ao exportar para Excel.");
+        }
+    };
+
     return (
         <View>
             <View style={stylesReport.container}>
                 <ScrollView horizontal={true}>
                     <View style={stylesReport.row}>
-                        <View
-                            style={[
-                                stylesReport.column,
-                                stylesReport.alignRight,
-                            ]}
-                        >
-                            <Text
-                                style={[
-                                    stylesReport.title,
-                                    { marginRight: 10 },
-                                ]}
-                            >
-                                Track
-                            </Text>
+                        <View style={stylesReport.column}>
+                            <Text style={stylesReport.title}>Track</Text>
                             {tableData.map((rowData, index) => (
                                 <View key={index} style={stylesReport.row}>
-                                    <View
-                                        style={[
-                                            stylesReport.cell,
-                                            { marginRight: 10 },
-                                        ]}
-                                    >
-                                        <Text style={stylesReport.textProduct}>
-                                            {rowData["Track Name"]}
-                                        </Text>
-                                    </View>
+                                    <Text style={stylesReport.text}>
+                                        {rowData["Track Name"]}
+                                    </Text>
                                 </View>
                             ))}
                         </View>
-                        <View
-                            style={[
-                                stylesReport.column,
-                                stylesReport.alignRight,
-                            ]}
-                        >
+                        <View style={stylesReport.column}>
                             <Text style={stylesReport.title}>Conclusões</Text>
                             {tableData.map((rowData, index) => (
-                                <View key={index} style={stylesReport.row}>
-                                    <View
-                                        style={[
-                                            stylesReport.cell,
-                                            { marginRight: 30 },
-                                        ]}
-                                    >
-                                        <Text style={stylesReport.textProduct}>
-                                            {rowData["Completions Count"]}
-                                        </Text>
-                                    </View>
-                                </View>
+                                <View key={index} style={[stylesReport.row, { paddingLeft: 50 }]}>
+                                    <Text style={stylesReport.text}>
+                                        {rowData["Completions Count"]}
+                                    </Text>
+                                </View>                            
                             ))}
                         </View>
                     </View>
                 </ScrollView>
             </View>
-            <Text style={stylesReport.exportar}>Exportar</Text>
+            <TouchableOpacity onPress={exportToExcel}>
+                <Text style={stylesReport.exportar}>Exportar</Text>
+            </TouchableOpacity>
         </View>
     );
 }
