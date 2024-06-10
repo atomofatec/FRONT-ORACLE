@@ -1,13 +1,13 @@
 import { StyleSheet } from "react-native";
 
-const stylesbotao = StyleSheet.create({
+const stylesbotaoQlf = StyleSheet.create({
     button: {
         backgroundColor: "#C74634",
         paddingVertical: 8,
-        paddingHorizontal: 20,
+        paddingHorizontal: 125,
         borderRadius: 10,
         marginBottom: 30,
-        marginTop: 15,
+        marginTop: 80,
     },
     buttonText: {
         color: "#fff",
@@ -17,4 +17,4 @@ const stylesbotao = StyleSheet.create({
     },
 });
 
-export default stylesbotao;
+export default stylesbotaoQlf;

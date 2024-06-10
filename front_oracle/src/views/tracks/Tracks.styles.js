@@ -19,6 +19,14 @@ const stylesTracks = StyleSheet.create({
         minHeight: windowHeight - StatusBar.currentHeight,
         padding: 20,
     },
+    editar: {
+        marginBottom: 10,
+        alignSelf: "flex-end",
+        marginTop: 10,
+    },
+    texto: {
+        color: "#B1B1B1",
+    }
 });
 
 export default stylesTracks;

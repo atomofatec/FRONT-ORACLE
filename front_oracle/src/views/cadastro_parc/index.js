@@ -23,7 +23,7 @@ export function CadastroParc() {
     return (
         <SafeAreaView style={stylesCadastroParc.background}>
             <ScrollView>
-                <Components.Cabecalho titulo="Funcionário" />
+                <Components.Cabecalho titulo="Consultor" />
                 <View style={stylesCadastroParc.container}>
                     <Components.SubTitulo2
                         titulo="Cadastro de"

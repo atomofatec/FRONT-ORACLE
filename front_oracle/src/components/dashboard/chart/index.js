@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { BarChart } from "react-native-chart-kit";
+import { useFocusEffect } from "@react-navigation/native";
 import stylesChart from "./chart.styles";
 import Connection from "../../../connection";
 
@@ -8,51 +9,64 @@ export function Chart({ filtroTrackSelecionado }) {
     const conn = Connection();
     const [chartData, setChartData] = useState(null);
 
-    useEffect(() => {
-        // Função para buscar os dados do endpoint
-        const fetchData = async () => {
-            try {
-                // Corpo da requisição
-                const requestBody = {
-                    trackId: filtroTrackSelecionado,
-                };
+    // Função para buscar os dados do endpoint
+    const fetchData = async () => {
+        try {
+            // Faz uma solicitação para o endpoint para obter os dados
+            const response = await conn.get("/completionsCount");
+            // Extrai os dados da resposta
+            const responseData = response.data;
 
-                // Faz uma solicitação HTTP para o endpoint para obter os dados
-                const response = await conn.post(
-                    "/selectExpertise",
-                    requestBody
-                );
-                // Extrai os dados da resposta
-                const responseData = response.data;
+            console.log("Dados obtidos:", responseData);
 
-                console.log("Dados obtidos:", responseData);
+            // Função para mapear os nomes das tracks como abreviações
+            const getShortLabel = (label) => {
+                switch (label) {
+                    case "Cloud Sell Track":
+                        return "Sell";
+                    case "Cloud Service Track":
+                        return "Service";
+                    case "License & Hardware Track":
+                        return "L&H";
+                    case "Cloud Build Track":
+                        return "Build";
+                    default:
+                        return label;
+                }
+            };
 
-                // Mapeia os dados para formatá-los corretamente para o gráfico
-                const labels = responseData.map((item) => item.user_name);
-                const dataValues = responseData.map(
-                    (item) => item.total_test_grade
-                );
+            // Mapeia os dados para formatá-los corretamente para o gráfico
+            const labels = responseData.map((item) =>
+                getShortLabel(item["Track Name"])
+            );
+            console.log("Labels:", labels);
+            const dataValues = responseData.map(
+                (item) => item["Completions Count"]
+            );
+            console.log("Data values:", dataValues);
 
-                // Define os dados do gráfico
-                const data = {
-                    labels: labels,
-                    datasets: [
-                        {
-                            data: dataValues,
-                        },
-                    ],
-                };
+            // Define os dados do gráfico
+            const data = {
+                labels: labels,
+                datasets: [
+                    {
+                        data: dataValues,
+                    },
+                ],
+            };
 
-                // Define os dados do gráfico com os dados obtidos
-                setChartData(data);
-            } catch (error) {
-                console.error("Erro ao buscar os dados:", error);
-            }
-        };
+            // Define os dados do gráfico com os dados obtidos
+            setChartData(data);
+        } catch (error) {
+            console.error("Erro ao buscar os dados:", error);
+        }
+    };
 
-        // Chama a função para buscar os dados sempre que filtroTrackSelecionado mudar
-        fetchData();
-    }, [filtroTrackSelecionado]); // Dependência: filtroTrackSelecionado
+    useFocusEffect(
+        React.useCallback(() => {
+            fetchData();
+        }, [])
+    );
 
     const barColors = ["#C74634", "#C74634", "#C74634", "#C74634"];
 

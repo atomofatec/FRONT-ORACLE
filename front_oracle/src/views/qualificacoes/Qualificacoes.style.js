@@ -20,3 +20,5 @@ const stylesQualificacoes = StyleSheet.create({
         padding: 20,
     },
 });
+
+export default stylesQualificacoes;
