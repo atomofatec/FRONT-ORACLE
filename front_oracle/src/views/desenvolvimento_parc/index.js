@@ -12,6 +12,8 @@ export function DesenvolvimentoParc() {
                         titulo="Meu"
                         subTitulo="Desenvolvimento"
                     />
+                    <Components.Grafico />
+                    <Components.Relatorio />
                 </View>
             </ScrollView>
         </SafeAreaView>
