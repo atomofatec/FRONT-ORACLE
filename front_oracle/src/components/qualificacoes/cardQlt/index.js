@@ -19,6 +19,8 @@ export function CardQlt({ qualification }) {
     }, [completed]);
 
     const handleOptionChange = async (questionNumber, option) => {
+        if (completed) return; // Evita alterações se completed for true
+
         setSelectedOptions((prevState) => {
             const currentOptions = prevState[questionNumber];
             const isOptionSelected = currentOptions.includes(option);
@@ -56,6 +58,7 @@ export function CardQlt({ qualification }) {
                         : "unchecked"
                 }
                 onPress={() => handleOptionChange("question1", "opcao1")}
+                disabled={completed} // Desabilita o checkbox se completed for true
             />
         </TouchableOpacity>
     );
