@@ -1,8 +1,20 @@
 import React, { useState } from "react";
-import { View, TextInput, Dimensions, Text } from "react-native";
+import { View, TextInput, Dimensions, Text, TouchableOpacity } from "react-native";
 import stylesFormCad from "./form.styles";
 import { ButtonSmall } from "../../common/buttonSmall";
 import { SubTitulo } from "../../common/subTitulo";
+
+// Função para gerar senha aleatória
+const generateRandomPassword = (length) => {
+    const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters.charAt(randomIndex);
+    }
+    return result;
+};
 
 export function FormCad({ onAddUser }) {
     const [type, setType] = useState("consultor");
@@ -20,6 +32,11 @@ export function FormCad({ onAddUser }) {
     };
     console.log("Tipo de usuário:", type);
     console.log("Estado do botão:", isToggleButtonOn);
+
+    const handleGeneratePassword = () => {
+        const newPassword = generateRandomPassword(11);
+        setPassword(newPassword);
+    };
 
     const handleAddUser = () => {
         if (nome && email && password) {
@@ -69,12 +86,24 @@ export function FormCad({ onAddUser }) {
                     <TextInput
                         style={stylesFormCad.input}
                         placeholder="Senha"
-                        onChangeText={(text) => setPassword(text)}
+                        onChangeText={setPassword}
                         value={password}
                         secureTextEntry={!showPassword}
                     />
                 </View>
-                <Text style={stylesFormCad.forgotPassword}>Gerar senha</Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
+                    <TouchableOpacity onPress={handleGeneratePassword}>
+                        <Text style={stylesFormCad.forgotPassword}>
+                            Gerar senha
+                        </Text>
+                    </TouchableOpacity>
+                    <Text
+                        style={stylesFormCad.forgotPassword}
+                        onPress={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? "Ocultar senha" : "Mostrar senha"}
+                    </Text>
+                </View>
                 <ButtonSmall button="Cadastrar" onPress={handleAddUser} />
             </View>
         </View>
