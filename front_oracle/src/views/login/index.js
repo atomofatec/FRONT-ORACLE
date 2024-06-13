@@ -22,7 +22,7 @@ export function Login() {
                 // Salva o ID do usuário na AsyncStorage
                 await AsyncStorage.setItem(
                     "userID",
-                    String(response.data.userID)
+                    response.data.userID.toString()
                 );
 
                 if (response.data.userType === "admin") {

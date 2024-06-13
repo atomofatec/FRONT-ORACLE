@@ -1,7 +1,16 @@
 import React, { useState } from "react";
-import { View, TextInput, Dimensions, Text, TouchableOpacity } from "react-native";
+import {
+    View,
+    TextInput,
+    Dimensions,
+    Text,
+    TouchableOpacity,
+    Modal,
+} from "react-native";
 import stylesForm from "./form.styles";
 import { ButtonSmall } from "../../common/buttonSmall";
+import { FontAwesome } from "@expo/vector-icons";
+import * as Styles from "../../../styles/index";
 
 // Função para gerar senha aleatória
 const generateRandomPassword = (length) => {
@@ -20,6 +29,8 @@ export function FormCadParc({ onAddUser }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
 
     const windowWidth = Dimensions.get("window").width;
 
@@ -35,7 +46,8 @@ export function FormCadParc({ onAddUser }) {
             setEmail("");
             setPassword("");
         } else {
-            alert("Por favor, preencha todos os campos.");
+            setModalMessage("Por favor, preencha todos os campos.");
+            setModalVisible(true);
         }
     };
 
@@ -76,22 +88,48 @@ export function FormCadParc({ onAddUser }) {
                         value={password}
                         secureTextEntry={!showPassword}
                     />
-                </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
-                    <TouchableOpacity onPress={handleGeneratePassword}>
-                        <Text style={stylesForm.forgotPassword}>
-                            Gerar senha
-                        </Text>
-                    </TouchableOpacity>
-                    <Text
-                        style={stylesForm.forgotPassword}
+                    <TouchableOpacity
+                        style={stylesForm.eyeIcon}
                         onPress={() => setShowPassword(!showPassword)}
                     >
-                        {showPassword ? "Ocultar senha" : "Mostrar senha"}
-                    </Text>
+                        <FontAwesome
+                            name={showPassword ? "eye" : "eye-slash"}
+                            size={20}
+                            color="#C0C0C0"
+                        />
+                    </TouchableOpacity>
                 </View>
+                <TouchableOpacity onPress={handleGeneratePassword}>
+                    <Text style={stylesForm.forgotPassword}>Gerar senha</Text>
+                </TouchableOpacity>
                 <ButtonSmall button="Cadastrar" onPress={handleAddUser} />
             </View>
+            <Modal
+                transparent={true}
+                animationType="slide"
+                visible={modalVisible}
+                onRequestClose={() => {
+                    setModalVisible(!modalVisible);
+                }}
+            >
+                <View style={stylesForm.modalOverlay}>
+                    <View style={stylesForm.modalContainer}>
+                        <FontAwesome
+                            name="exclamation-circle"
+                            size={40}
+                            color={Styles.colors.vermelho}
+                            style={stylesForm.modalIcon}
+                        />
+                        <Text style={stylesForm.modalText}>{modalMessage}</Text>
+                        <TouchableOpacity
+                            style={stylesForm.modalButton}
+                            onPress={() => setModalVisible(false)}
+                        >
+                            <Text style={stylesForm.modalButtonText}>OK</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 }

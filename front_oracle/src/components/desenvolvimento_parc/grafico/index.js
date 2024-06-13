@@ -4,46 +4,56 @@ import { BarChart } from "react-native-chart-kit";
 import { useFocusEffect } from "@react-navigation/native";
 import Connection from "../../../connection";
 import stylesGrafico from "./desenvolvimento_parc.styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function Grafico({ filtroTrackSelecionado }) {
     const conn = Connection();
     const [chartData, setChartData] = useState(null);
 
-    // Função para buscar os dados do endpoint
+    const fetchUserId = async () => {
+        try {
+            const userId = await AsyncStorage.getItem("userID");
+            return userId;
+        } catch (error) {
+            console.error("Error retrieving user_id:", error);
+            return null;
+        }
+    };
+
     const fetchData = async () => {
         try {
-            // Faz uma solicitação para o endpoint para obter os dados
-            const response = await conn.get("/tracksById/:user_id");
-            // Extrai os dados da resposta
+            const userId = await fetchUserId();
+            const response = await conn.post(`/tracksById/${userId}`);
             const responseData = response.data;
 
-            console.log("Dados obtidos:", responseData);
+            //console.log("Dados obtidos:", responseData);
 
-            // Função para mapear os nomes das tracks como abreviações
-            const getShortLabel = (label) => {
-                switch (label) {
-                    case "Cloud Sell Track":
-                        return "Sell";
-                    case "Cloud Service Track":
-                        return "Service";
-                    case "License & Hardware Track":
-                        return "L&H";
-                    case "Cloud Build Track":
-                        return "Build";
+            // Mapeia os dados conforme as regras especificadas
+            const labels = [];
+            const dataValues = [];
+
+            responseData.forEach(item => {
+                switch (item.track_id) {
+                    case 1:
+                        labels.push("Sell");
+                        dataValues.push(item.completed ? 1 : 0);
+                        break;
+                    case 2:
+                        labels.push("Service");
+                        dataValues.push(item.completed ? 1 : 0);
+                        break;
+                    case 3:
+                        labels.push("L&H");
+                        dataValues.push(item.completed ? 1 : 0);
+                        break;
+                    case 4:
+                        labels.push("Build");
+                        dataValues.push(item.completed ? 1 : 0);
+                        break;
                     default:
-                        return label;
+                        break;
                 }
-            };
-
-            // Mapeia os dados para formatá-los corretamente para o gráfico
-            const labels = responseData.map((item) =>
-                getShortLabel(item["Track Name"])
-            );
-            console.log("Labels:", labels);
-            const dataValues = responseData.map(
-                (item) => item["Completions Count"]
-            );
-            console.log("Data values:", dataValues);
+            });
 
             // Define os dados do gráfico
             const data = {
@@ -51,11 +61,11 @@ export function Grafico({ filtroTrackSelecionado }) {
                 datasets: [
                     {
                         data: dataValues,
+                        color: (opacity = 1) => `rgba(199, 70, 52, ${opacity})`,
                     },
                 ],
             };
 
-            // Define os dados do gráfico com os dados obtidos
             setChartData(data);
         } catch (error) {
             console.error("Erro ao buscar os dados:", error);

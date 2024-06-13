@@ -12,9 +12,7 @@ import { FormCad } from "./cadastro/form/index";
 import { SubTitulo } from "./common/subTitulo";
 import { SubTitulo2 } from "./cadastro/subTitulo";
 import { FormCadParc } from "./cadastro_parc/form/index";
-import { ListaProvas } from "./provas/listaProvas/index";
 import { SubTituloVoltar } from "./common/subtituloVoltar/index";
-import { Botao } from "./provas/botao";
 import { Buttons } from "./dashboard/buttons/index";
 import { TitleDash } from "./dashboard/title/index";
 import { Statistic } from "./dashboard/statistic/index";
@@ -24,7 +22,6 @@ import { ListaParc } from "./listagem_parc/lista/index";
 import { CardParc } from "./listagem_parc/cards/index";
 import { FormEditParc } from "./editar_parc/form/index";
 import { FormEditarAdm } from "./editarAdm/formularioAdm/index";
-import { FormEditConsultor } from "./editarConsul/formConsultor/index";
 import { FormEditPerfil} from "./editar_perfil/formPerfil/index"
 import { ListaExpertises } from "./expertises/lista/listaExpertises";
 import { CardExpertises } from "./expertises/cards/cardExpertises";
@@ -49,9 +46,7 @@ export {
     SubTitulo,
     SubTitulo2,
     FormCadParc,
-    ListaProvas,
     SubTituloVoltar,
-    Botao,
     Buttons,
     TitleDash,
     Statistic,
@@ -61,7 +56,6 @@ export {
     CardParc,
     FormEditParc,
     FormEditarAdm,
-    FormEditConsultor,
     FormEditPerfil,
     ListaExpertises,
     CardExpertises,

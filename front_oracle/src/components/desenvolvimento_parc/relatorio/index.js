@@ -5,10 +5,21 @@ import XLSX from 'xlsx';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import stylesRelatorio from "./relatorio.styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function Relatorio({ filtroTrackSelecionado }) {
     const conn = Connection();
     const [tableData, setTableData] = useState([]);
+
+    const fetchUserId = async () => {
+        try {
+            const userId = await AsyncStorage.getItem("userID");
+            return userId;
+        } catch (error) {
+            console.error("Error retrieving user_id:", error);
+            return null;
+        }
+    };
 
     useEffect(() => {
         fetchData();
@@ -16,11 +27,36 @@ export function Relatorio({ filtroTrackSelecionado }) {
 
     const fetchData = async () => {
         try {
-            const response = await conn.get("/tracksById/:user_id");
+            const userId = await fetchUserId();
+            console.log("User ID:", userId);
+            const response = await conn.post(`/tracksById/${userId}`);
             const responseData = response.data;
-            setTableData(responseData);
+
+            // Transformar os dados recebidos para o formato desejado
+            const formattedData = responseData.map(item => ({
+                trackName: getShortLabel(item.track_id),
+                completionsCount: item.completed ? 1 : 0
+            }));
+
+            setTableData(formattedData);
         } catch (error) {
             console.error("Erro ao buscar dados:", error);
+        }
+    };
+
+    // Função para mapear os nomes das tracks como abreviações
+    const getShortLabel = (trackId) => {
+        switch (trackId) {
+            case 1:
+                return "Sell";
+            case 2:
+                return "Service";
+            case 3:
+                return "L&H";
+            case 4:
+                return "Build";
+            default:
+                return "Outro";
         }
     };
 
@@ -33,8 +69,8 @@ export function Relatorio({ filtroTrackSelecionado }) {
         const wsData = [
             ["Track", "Conclusões"],
             ...tableData.map(row => [
-                row["Track Name"],
-                row["Completions Count"]
+                row.trackName,
+                row.completionsCount
             ])
         ];
         const ws = XLSX.utils.aoa_to_sheet(wsData);
@@ -77,7 +113,7 @@ export function Relatorio({ filtroTrackSelecionado }) {
                             {tableData.map((rowData, index) => (
                                 <View key={index} style={stylesRelatorio.row}>
                                     <Text style={stylesRelatorio.text}>
-                                        {rowData["Track Name"]}
+                                        {rowData.trackName}
                                     </Text>
                                 </View>
                             ))}
@@ -87,7 +123,7 @@ export function Relatorio({ filtroTrackSelecionado }) {
                             {tableData.map((rowData, index) => (
                                 <View key={index} style={[stylesRelatorio.row, { paddingLeft: 50 }]}>
                                     <Text style={stylesRelatorio.text}>
-                                        {rowData["Completions Count"]}
+                                        {rowData.completionsCount}
                                     </Text>
                                 </View>                            
                             ))}

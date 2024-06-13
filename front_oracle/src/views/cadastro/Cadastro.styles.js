@@ -19,6 +19,41 @@ const stylesCadastro = StyleSheet.create({
         minHeight: windowHeight - StatusBar.currentHeight,
         padding: 20,
     },
+    modalOverlay: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.2)",
+    },
+    modalContainer: {
+        width: 300,
+        height: 150,
+        padding: 20,
+        backgroundColor: Styles.colors.brancoFundo,
+        borderRadius: 10,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    modalIcon: {
+        marginBottom: 10,
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center",
+        fontSize: 16,
+    },
+    modalButton: {
+        width: 100,
+        backgroundColor: Styles.colors.vermelho,
+        borderRadius: 5,
+        padding: 10,
+        elevation: 2,
+    },
+    modalButtonText: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center",
+    },
 });
 
 export default stylesCadastro;

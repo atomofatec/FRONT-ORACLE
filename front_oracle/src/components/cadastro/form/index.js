@@ -1,8 +1,17 @@
 import React, { useState } from "react";
-import { View, TextInput, Dimensions, Text, TouchableOpacity } from "react-native";
+import {
+    View,
+    TextInput,
+    Dimensions,
+    Text,
+    TouchableOpacity,
+    Modal,
+} from "react-native";
 import stylesFormCad from "./form.styles";
 import { ButtonSmall } from "../../common/buttonSmall";
 import { SubTitulo } from "../../common/subTitulo";
+import { FontAwesome } from "@expo/vector-icons";
+import * as Styles from "../../../styles/index";
 
 // Função para gerar senha aleatória
 const generateRandomPassword = (length) => {
@@ -23,6 +32,8 @@ export function FormCad({ onAddUser }) {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [isToggleButtonOn, setToggleButtonOn] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
 
     const windowWidth = Dimensions.get("window").width;
 
@@ -30,8 +41,6 @@ export function FormCad({ onAddUser }) {
         setToggleButtonOn(!isToggleButtonOn);
         setType(isToggleButtonOn ? "consultor" : "admin");
     };
-    console.log("Tipo de usuário:", type);
-    console.log("Estado do botão:", isToggleButtonOn);
 
     const handleGeneratePassword = () => {
         const newPassword = generateRandomPassword(11);
@@ -51,7 +60,8 @@ export function FormCad({ onAddUser }) {
             setEmail("");
             setPassword("");
         } else {
-            alert("Por favor, preencha todos os campos.");
+            setModalMessage("Por favor, preencha todos os campos.");
+            setModalVisible(true);
         }
     };
 
@@ -63,7 +73,6 @@ export function FormCad({ onAddUser }) {
                 isToggleButtonOn={isToggleButtonOn}
                 onToggle={handleToggle}
             />
-            {/* Container Formulário */}
             <View style={[stylesFormCad.formContainer, { width: windowWidth }]}>
                 <View style={stylesFormCad.inputContainer}>
                     <TextInput
@@ -90,22 +99,50 @@ export function FormCad({ onAddUser }) {
                         value={password}
                         secureTextEntry={!showPassword}
                     />
-                </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
-                    <TouchableOpacity onPress={handleGeneratePassword}>
-                        <Text style={stylesFormCad.forgotPassword}>
-                            Gerar senha
-                        </Text>
-                    </TouchableOpacity>
-                    <Text
-                        style={stylesFormCad.forgotPassword}
+                    <TouchableOpacity
+                        style={stylesFormCad.eyeIcon}
                         onPress={() => setShowPassword(!showPassword)}
                     >
-                        {showPassword ? "Ocultar senha" : "Mostrar senha"}
-                    </Text>
+                        <FontAwesome
+                            name={showPassword ? "eye" : "eye-slash"}
+                            size={20}
+                            color="#C0C0C0"
+                        />
+                    </TouchableOpacity>
                 </View>
+                <TouchableOpacity onPress={handleGeneratePassword}>
+                    <Text style={stylesFormCad.forgotPassword}>
+                        Gerar senha
+                    </Text>
+                </TouchableOpacity>
                 <ButtonSmall button="Cadastrar" onPress={handleAddUser} />
             </View>
+            <Modal
+                transparent={true}
+                animationType="slide"
+                visible={modalVisible}
+                onRequestClose={() => {
+                    setModalVisible(!modalVisible);
+                }}
+            >
+                <View style={stylesFormCad.modalOverlay}>
+                    <View style={stylesFormCad.modalContainer}>
+                        <FontAwesome
+                            name="exclamation-circle"
+                            size={40}
+                            color={Styles.colors.vermelho}
+                            style={stylesFormCad.modalIcon}
+                        />
+                        <Text style={stylesFormCad.modalText}>{modalMessage}</Text>
+                        <TouchableOpacity
+                            style={stylesFormCad.modalButton}
+                            onPress={() => setModalVisible(false)}
+                        >
+                            <Text style={stylesFormCad.modalButtonText}>OK</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 }
