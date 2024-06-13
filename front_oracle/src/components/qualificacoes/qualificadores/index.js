@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { View, Text } from "react-native";
 import stylesQualificadores from "./qualificadores.styles";
 import { CardQlt } from "../cardQlt";
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { useFocusEffect } from "@react-navigation/native";
 import Connection from "../../../connection";
 import { ActivityIndicator } from "react-native-paper";
 import { colors } from "../../../styles";
@@ -14,6 +14,7 @@ export function Qualificadores() {
     const [loading, setLoading] = useState(true);
     const [userID, setUserID] = useState(null);
     const [expertise_id, setExpertiseID] = useState(null);
+    const [allChecked, setAllChecked] = useState(false); // Novo estado para rastrear checkboxes
     const conn = Connection();
 
     const fetchUserID = async () => {
@@ -55,9 +56,6 @@ export function Qualificadores() {
         fetchExpertiseID(); // Chama fetchUserID quando o componente é montado
     }, []);
 
-    // console.log(userID);
-    // console.log(expertise_id);
-
     const fetchQualification = async () => {
         if (userID && expertise_id !== null) {
             try {
@@ -66,6 +64,7 @@ export function Qualificadores() {
                 );
                 setQualificationData(response.data);
                 setLoading(false);
+                checkAllChecked(response.data); // Verifica se todos os checkboxes estão marcados ao carregar os dados
             } catch (error) {
                 console.error("Error fetching qualification:", error);
             }
@@ -84,19 +83,27 @@ export function Qualificadores() {
         }
     };
 
-    // console.log(qualificationData.expertise_id)
-    // console.log(qualificationData.user_id)
-    // console.log(qualificationData)
-
     useEffect(() => {
         fetchQualification(); // Chama fetchQualification quando userID muda
     }, [userID, expertise_id]);
 
     useFocusEffect(
-        React.useCallback(() => {
+        useCallback(() => {
             fetchQualification(); // Atualiza as qualification ao focar na tela
         }, [userID, expertise_id]) // Reexecuta sempre que o userID mudar
     );
+
+    console.log(allChecked)
+
+    const checkAllChecked = (qualifications) => {
+        const allCompleted = qualifications.every(q => q.completed);
+        setAllChecked(allCompleted);
+    };
+
+    const handleOptionChange = () => {
+        // Atualiza a verificação de todos os checkboxes sempre que uma opção mudar
+        fetchQualification();
+    };
 
     if (loading) {
         return (
@@ -106,9 +113,6 @@ export function Qualificadores() {
         );
     }
 
-    // console.log(userID);
-    //  console.log(qualificationData);
-
     return (
         <View>
             <View style={stylesQualificadores.container}>
@@ -116,11 +120,11 @@ export function Qualificadores() {
                     <CardQlt
                         key={qualification.qualification_id}
                         qualification={qualification}
+                        onOptionChange={handleOptionChange} // Passa a função de callback para atualizar o estado
                     />
                 ))}
             </View>
-            <BotaoQlf button="Salvar" onPress={updateExpertise} />
-
+            <BotaoQlf button="Salvar" onPress={updateExpertise} disabled={!allChecked} />
         </View>
     );
 }

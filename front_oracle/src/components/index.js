@@ -26,7 +26,11 @@ import { FormEditParc } from "./editar_parc/form/index";
 import { FormEditarAdm } from "./editarAdm/formularioAdm/index";
 import { FormEditConsultor } from "./editarConsul/formConsultor/index";
 import { FormEditPerfil} from "./editar_perfil/formPerfil/index"
-
+import { ListaExpertises } from "./expertises/lista/listaExpertises";
+import { CardExpertises } from "./expertises/cards/cardExpertises";
+import { BotaoTrack } from "./expertises/botao";
+import { Grafico } from "./desenvolvimento_parc/grafico";
+import { Relatorio } from "./desenvolvimento_parc/relatorio/index"
 
 
 export {
@@ -58,4 +62,9 @@ export {
     FormEditarAdm,
     FormEditConsultor,
     FormEditPerfil,
+    ListaExpertises,
+    CardExpertises,
+    BotaoTrack, 
+    Grafico,
+    Relatorio,
 };
