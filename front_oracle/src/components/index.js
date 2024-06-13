@@ -31,7 +31,8 @@ import { CardExpertises } from "./expertises/cards/cardExpertises";
 import { BotaoTrack } from "./expertises/botao";
 import { Grafico } from "./desenvolvimento_parc/grafico";
 import { Relatorio } from "./desenvolvimento_parc/relatorio/index"
-
+import { FormRecuperar } from "./recuperarSenha/form/index";
+import { TituloVoltar } from "./login/tituloVoltar/index";
 
 export {
     Cabecalho,
@@ -67,4 +68,6 @@ export {
     BotaoTrack, 
     Grafico,
     Relatorio,
+    FormRecuperar,
+    TituloVoltar,
 };

@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { View, TextInput, TouchableOpacity, Text } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import stylesForm from "./form.styles";
-import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
 export function Form({ onEmailChange, onPasswordChange }) {
     const [email, setEmail] = useState(""); // Estado para armazenar o email digitado
     const [password, setPassword] = useState(""); // Estado para armazenar a senha digitada
     const [showPassword, setShowPassword] = useState(false); // Estado para controlar a exibição da senha
+    const navigation = useNavigation();
 
     // Função para atualizar o estado do email
     const handleEmailChange = (text) => {
@@ -62,7 +63,9 @@ export function Form({ onEmailChange, onPasswordChange }) {
                     />
                 </TouchableOpacity>
             </View>
-            <Text style={stylesForm.forgotPassword}>Esqueci minha senha</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("RecuperarSenha")}>
+                <Text style={stylesForm.forgotPassword}>Esqueci minha senha</Text>
+            </TouchableOpacity>
         </View>
     );
 }

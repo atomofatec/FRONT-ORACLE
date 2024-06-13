@@ -39,6 +39,11 @@ export default function App() {
                     component={Rotas.RoutesParc}
                     options={{ headerShown: false }}
                 />
+                <Stack.Screen
+                    name="RecuperarSenha"
+                    component={Views.RecuperarSenha}
+                    options={{ headerShown: false }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );
