@@ -1,7 +1,19 @@
 import React, { useState } from "react";
-import { View, TextInput, Dimensions, Text } from "react-native";
+import { View, TextInput, Dimensions, Text, TouchableOpacity } from "react-native";
 import stylesForm from "./form.styles";
 import { ButtonSmall } from "../../common/buttonSmall";
+
+// Função para gerar senha aleatória
+const generateRandomPassword = (length) => {
+    const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters.charAt(randomIndex);
+    }
+    return result;
+};
 
 export function FormCadParc({ onAddUser }) {
     const [nome, setNome] = useState("");
@@ -25,6 +37,11 @@ export function FormCadParc({ onAddUser }) {
         } else {
             alert("Por favor, preencha todos os campos.");
         }
+    };
+
+    const handleGeneratePassword = () => {
+        const newPassword = generateRandomPassword(11);
+        setPassword(newPassword);
     };
 
     return (
@@ -60,7 +77,19 @@ export function FormCadParc({ onAddUser }) {
                         secureTextEntry={!showPassword}
                     />
                 </View>
-                <Text style={stylesForm.forgotPassword}>Gerar senha</Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
+                    <TouchableOpacity onPress={handleGeneratePassword}>
+                        <Text style={stylesForm.forgotPassword}>
+                            Gerar senha
+                        </Text>
+                    </TouchableOpacity>
+                    <Text
+                        style={stylesForm.forgotPassword}
+                        onPress={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? "Ocultar senha" : "Mostrar senha"}
+                    </Text>
+                </View>
                 <ButtonSmall button="Cadastrar" onPress={handleAddUser} />
             </View>
         </View>
