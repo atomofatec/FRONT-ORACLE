@@ -44,6 +44,11 @@ export default function App() {
                     component={Views.RecuperarSenha}
                     options={{ headerShown: false }}
                 />
+                <Stack.Screen
+                    name="AlterarSenha"
+                    component={Views.AlterarSenha}
+                    options={{ headerShown: false }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );

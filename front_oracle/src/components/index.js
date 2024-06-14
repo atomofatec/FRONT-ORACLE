@@ -30,8 +30,11 @@ import { Grafico } from "./desenvolvimento_parc/grafico";
 import { Relatorio } from "./desenvolvimento_parc/relatorio/index"
 import { FormRecuperar } from "./recuperarSenha/form/index";
 import { TituloVoltar } from "./login/tituloVoltar/index";
+import { FormAlterarSenha } from "./recuperarSenha/form/formAlterarSenha";
+import { Tracks } from "./tracks/lista";
 
 export {
+    Tracks,
     Cabecalho,
     CabecalhoLogin,
     Title,
@@ -64,4 +67,5 @@ export {
     Relatorio,
     FormRecuperar,
     TituloVoltar,
+    FormAlterarSenha,
 };
