@@ -6,14 +6,15 @@ import {
     Text,
     TouchableOpacity,
     ActivityIndicator,
+    Modal,
 } from "react-native";
 import stylesFormEditParc from "./formEditParc.styles";
-import { Ionicons } from "@expo/vector-icons";
 import { ButtonSmall } from "../../common/buttonSmall";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Styles from "../../../styles";
 import Connection from "../../../connection";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 export function FormEditParc() {
     const [nome, setNome] = useState("");
@@ -23,6 +24,11 @@ export function FormEditParc() {
     const [isToggleButtonOn, setToggleButtonOn] = useState(false);
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
+    const [modalIcon, setModalIcon] = useState("");
+    const [modalIconColor, setModalIconColor] = useState("");
+
     const navigation = useNavigation();
     const conn = Connection();
     console.log(nome);
@@ -98,7 +104,10 @@ export function FormEditParc() {
                 email: email,
             });
             console.log("User atualizado:", response.data);
-            alert("Parceiro atualizado com sucesso!");
+            setModalMessage("Parceiro atualizado com sucesso!");
+            setModalIcon("check-circle");
+            setModalIconColor(Styles.colors.vermelho);
+            setModalVisible(true);
         } catch (error) {
             console.error("Erro ao atualizar user:", error);
         }
@@ -111,7 +120,10 @@ export function FormEditParc() {
                 data: { userType: "consultor" }, // Incluí o corpo da solicitação com o tipo de usuário
             });
             navigation.goBack();
-            alert("Parceiro excluído com sucesso!");
+            setModalMessage("Parceiro excluído com sucesso!");
+            setModalIcon("check-circle");
+            setModalIconColor(Styles.colors.vermelho);
+            setModalVisible(true);
             console.log("User deletado:", response.data);
         } catch (error) {
             console.error("Erro ao deletar user:", error);
@@ -160,17 +172,43 @@ export function FormEditParc() {
                 <View style={stylesFormEditParc.inputContainer}>
                     <TextInput
                         style={stylesFormEditParc.input}
-                        placeholder="********"
+                        placeholder="***********"
                         editable={false}
                     />
                 </View>
-                <View style={stylesFormEditParc.rowContainer}>
-                    <TouchableOpacity onPress={handleDelete}>
-                        <Text style={stylesFormEditParc.delete}>Excluir</Text>
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity onPress={handleDelete}>
+                    <Text style={stylesFormEditParc.delete}>Excluir</Text>
+                </TouchableOpacity>
                 <ButtonSmall button="Salvar" onPress={handlePress} />
             </View>
+            <Modal
+                transparent={true}
+                animationType="slide"
+                visible={modalVisible}
+                onRequestClose={() => setModalVisible(false)}
+            >
+                <View style={stylesFormEditParc.modalOverlay}>
+                    <View style={stylesFormEditParc.modalContainer}>
+                        <FontAwesome
+                            name={modalIcon}
+                            size={40}
+                            color={modalIconColor}
+                            style={stylesFormEditParc.modalIcon}
+                        />
+                        <Text style={stylesFormEditParc.modalText}>
+                            {modalMessage}
+                        </Text>
+                        <TouchableOpacity
+                            style={stylesFormEditParc.modalButton}
+                            onPress={() => setModalVisible(false)}
+                        >
+                            <Text style={stylesFormEditParc.modalButtonText}>
+                                OK
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 }

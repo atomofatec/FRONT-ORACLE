@@ -6,6 +6,7 @@ import {
     Text,
     TouchableOpacity,
     ActivityIndicator,
+    Modal,
 } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import stylesFormEditarAdm from "./formAdm.styles";
@@ -14,6 +15,7 @@ import { ButtonSmall } from "../../common/buttonSmall";
 import Connection from "../../../connection";
 import * as Styles from "../../../styles";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { FontAwesome } from "@expo/vector-icons";
 
 export function FormEditarAdm() {
     const [nome, setNome] = useState("");
@@ -23,6 +25,10 @@ export function FormEditarAdm() {
     const [admID, setAdmID] = useState(null);
     const conn = Connection();
     const navigation = useNavigation();
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
+    const [modalIcon, setModalIcon] = useState("");
+    const [modalIconColor, setModalIconColor] = useState("");
 
     const windowWidth = Dimensions.get("window").width;
 
@@ -73,7 +79,9 @@ export function FormEditarAdm() {
 
     const updateUserData = async () => {
         if (!admID) {
-            alert("ID do administrador não encontrado.");
+            setModalMessage("ID do administrador não encontrado.");
+            setModalIcon("times-circle");
+            setModalVisible(true);
             return;
         }
         setLoading(true);
@@ -84,10 +92,15 @@ export function FormEditarAdm() {
                 email: email,
             });
             console.log("User atualizado:", response.data);
-            alert("Dados atualizados!");
+            setModalMessage("Dados atualizados!");
+            setModalIcon("check-circle");
+            setModalIconColor(Styles.colors.vermelho);
+            setModalVisible(true);
         } catch (error) {
             console.error("Error updating user data:", error);
-            alert(`Erro ao atualizar dados! Status code: ${error.response?.status || 'unknown'}`);
+            setModalMessage(`Erro ao atualizar dados! Status code: ${error.response?.status || 'unknown'}`);
+            setModalIcon("times-circle");
+            setModalVisible(true);
         } finally {
             setLoading(false);
         }
@@ -109,7 +122,10 @@ export function FormEditarAdm() {
                 email: email,
             });
             console.log("User atualizado:", response.data);
-            alert("Usuário atualizado com sucesso!");
+            setModalMessage("Usuário atualizado com sucesso!");
+            setModalIcon("check-circle");
+            setModalIconColor(Styles.colors.vermelho);
+            setModalVisible(true);
         } catch (error) {
             console.error("Erro ao atualizar user:", error);
         }
@@ -121,7 +137,10 @@ export function FormEditarAdm() {
                 data: { userType: "consultor" }, // Incluí o corpo da solicitação com o tipo de usuário
             });
             navigation.goBack();
-            alert("Usuário excluído com sucesso!");
+            setModalMessage("Usuário excluído com sucesso!");
+            setModalIcon("check-circle");
+            setModalIconColor(Styles.colors.vermelho);
+            setModalVisible(true);
             console.log("User deletado:", response.data);
         } catch (error) {
             console.error("Erro ao deletar user:", error);
@@ -161,17 +180,43 @@ export function FormEditarAdm() {
                 <View style={stylesFormEditarAdm.inputContainer}>
                     <TextInput
                         style={stylesFormEditarAdm.input}
-                        placeholder="********"
+                        placeholder="***********"
                         editable={false}
                     />
                 </View>
-                <View style={stylesFormEditarAdm.rowContainer}>
-                    <TouchableOpacity onPress={handleDelete} style={stylesFormEditarAdm.delete}>
-                        <Text style={stylesFormEditarAdm.texto}>Excluir</Text>
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity onPress={handleDelete}>
+                    <Text style={stylesFormEditarAdm.texto}>Excluir</Text>
+                </TouchableOpacity>
                 <ButtonSmall button="Salvar" onPress={handlePress} />
             </View>
+            <Modal
+                transparent={true}
+                animationType="slide"
+                visible={modalVisible}
+                onRequestClose={() => setModalVisible(false)}
+            >
+                <View style={stylesFormEditarAdm.modalOverlay}>
+                    <View style={stylesFormEditarAdm.modalContainer}>
+                        <FontAwesome
+                            name={modalIcon}
+                            size={40}
+                            color={modalIconColor}
+                            style={stylesFormEditarAdm.modalIcon}
+                        />
+                        <Text style={stylesFormEditarAdm.modalText}>
+                            {modalMessage}
+                        </Text>
+                        <TouchableOpacity
+                            style={stylesFormEditarAdm.modalButton}
+                            onPress={() => setModalVisible(false)}
+                        >
+                            <Text style={stylesFormEditarAdm.modalButtonText}>
+                                OK
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 }

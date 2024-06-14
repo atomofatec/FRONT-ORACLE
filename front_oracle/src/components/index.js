@@ -30,6 +30,10 @@ import { Grafico } from "./desenvolvimento_parc/grafico";
 import { Relatorio } from "./desenvolvimento_parc/relatorio/index"
 import { FormRecuperar } from "./recuperarSenha/form/index";
 import { TituloVoltar } from "./login/tituloVoltar/index";
+import { Tracks } from "./tracks/lista/index";
+import { Qualificadores } from "./qualificacoes/qualificadores/index";
+import { CardQlt } from "./qualificacoes/cardQlt/index";
+import { BotaoQlf } from "./qualificacoes/botao/index";
 
 export {
     Cabecalho,
@@ -64,4 +68,8 @@ export {
     Relatorio,
     FormRecuperar,
     TituloVoltar,
+    Tracks,
+    Qualificadores,
+    CardQlt,
+    BotaoQlf,
 };
