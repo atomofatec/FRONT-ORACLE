@@ -37,7 +37,6 @@ import { CardQlt } from "./qualificacoes/cardQlt/index";
 import { BotaoQlf } from "./qualificacoes/botao/index";
 
 export {
-    Tracks,
     Cabecalho,
     CabecalhoLogin,
     Title,
