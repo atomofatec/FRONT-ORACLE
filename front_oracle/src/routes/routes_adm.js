@@ -71,7 +71,7 @@ export function RoutesAdm() {
                 }}
             />
             <Tab.Screen
-                name="Editar Usuário"
+                name="EditarUser"
                 component={Views.EditarUser}
                 options={{ tabBarButton: () => null, headerShown: false }}
             />

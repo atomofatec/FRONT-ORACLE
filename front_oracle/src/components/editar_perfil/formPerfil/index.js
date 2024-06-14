@@ -96,6 +96,7 @@ export function FormEditPerfil() {
         if (!userID) {
             setModalMessage("ID do usuário não encontrado.");
             setModalIcon("times-circle");
+            setModalIconColor(Styles.colors.vermelho);
             setModalVisible(true);
             return;
         }
@@ -188,11 +189,9 @@ export function FormEditPerfil() {
                         />
                     </TouchableOpacity>
                 </View>
-                <View style={stylesFormPerfil.rowContainer}>
-                    <TouchableOpacity onPress={deleteUser}>
-                        <Text style={stylesFormPerfil.delete}>Excluir</Text>
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity onPress={deleteUser}>
+                    <Text style={stylesFormPerfil.delete}>Excluir</Text>
+                </TouchableOpacity>
                 <ButtonSmall button="Salvar" onPress={updateUserData} />
             </View>
             <Modal

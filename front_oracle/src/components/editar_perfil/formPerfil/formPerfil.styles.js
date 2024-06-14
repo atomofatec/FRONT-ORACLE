@@ -41,6 +41,11 @@ const stylesFormPerfil = StyleSheet.create({
         marginBottom: 10,
         alignSelf: "flex-end",
     },
+    delete: {
+        color: "#B1B1B1",
+        marginBottom: 20,
+        alignSelf: "flex-end",
+    },
     // Estilos do Modal Personalizado
     modalOverlay: {
         flex: 1,
