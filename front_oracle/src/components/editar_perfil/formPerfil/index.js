@@ -13,12 +13,15 @@ import { ButtonSmall } from "../../common/buttonSmall";
 import * as Styles from "../../../styles";
 import stylesFormPerfil from "./formPerfil.styles";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from "axios";
+import axios from 'axios';
+import Connection from "../../../connection";
 
 export function FormEditPerfil() {
+    const conn = Connection();
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [oldPassword, setOldPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -28,13 +31,16 @@ export function FormEditPerfil() {
     const [modalMessage, setModalMessage] = useState("");
     const [modalIcon, setModalIcon] = useState("");
     const [modalIconColor, setModalIconColor] = useState("");
+    const [isPasswordEditable, setIsPasswordEditable] = useState(false);
 
     const windowWidth = Dimensions.get("window").width;
+
+    console.log(oldPassword);
 
     useEffect(() => {
         const fetchUserID = async () => {
             try {
-                const id = await AsyncStorage.getItem("user_id");
+                const id = await AsyncStorage.getItem("userID");
                 setUserID(id);
                 if (id) {
                     fetchUserData(id);
@@ -50,10 +56,12 @@ export function FormEditPerfil() {
     const fetchUserData = async (id) => {
         setLoading(true);
         try {
-            const response = await axios.get(`partner/${id}`);
+            const response = await conn.get(`partner/${id}`);
             if (response.data) {
                 setNome(response.data.user_name || "");
                 setEmail(response.data.email || "");
+                setPassword(response.data.password || "");
+                setOldPassword(response.data.password || "");
             } else {
                 console.error("Invalid response structure", response);
             }
@@ -73,19 +81,39 @@ export function FormEditPerfil() {
         }
         setLoading(true);
         try {
-            const response = await axios.put(`/partner/${userID}`, {
-                user_name: nome,
-                email: email,
-                password: password === confirmPassword ? password : undefined,
-            });
-            setModalMessage("Dados atualizados com sucesso!");
-            setModalIcon("check-circle");
-            setModalIconColor(Styles.colors.vermelho);
-            setModalVisible(true);
+            if (isPasswordEditable && password === confirmPassword && password !== "") {
+                await conn.put(`/users/${userID}/password`, {
+                    oldPassword: oldPassword,
+                    newPassword: password,
+                });
+                await conn.put(`/partners/${userID}`, {
+                    name: nome,
+                    email: email,
+                });
+                setModalMessage("Dados atualizados com sucesso!");
+                setModalIcon("check-circle");
+                setModalIconColor(Styles.colors.vermelho);
+                setModalVisible(true);
+            } else if (isPasswordEditable && password !== confirmPassword) {
+                setModalMessage("Senhas não conferem!");
+                setModalIcon("times-circle");
+                setModalIconColor(Styles.colors.vermelho);
+                setModalVisible(true);
+            } else {
+                await conn.put(`/partners/${userID}`, {
+                    name: nome,
+                    email: email,
+                });
+                setModalMessage("Dados atualizados com sucesso!");
+                setModalIcon("check-circle");
+                setModalIconColor(Styles.colors.vermelho);
+                setModalVisible(true);
+            }
         } catch (error) {
             console.error("Error updating user data:", error);
             setModalMessage("Erro ao atualizar dados!");
             setModalIcon("times-circle");
+            setModalIconColor(Styles.colors.vermelho);
             setModalVisible(true);
         } finally {
             setLoading(false);
@@ -158,6 +186,7 @@ export function FormEditPerfil() {
                         onChangeText={(text) => setPassword(text)}
                         value={password}
                         secureTextEntry={!showPassword}
+                        editable={isPasswordEditable}
                     />
                     <TouchableOpacity
                         style={stylesFormPerfil.eyeIcon}
@@ -169,6 +198,9 @@ export function FormEditPerfil() {
                             color="#C0C0C0"
                         />
                     </TouchableOpacity>
+                    <TouchableOpacity onPress={() => setIsPasswordEditable(true)}>
+                        <Ionicons name="pencil" size={18} color="#C74634" />
+                    </TouchableOpacity>
                 </View>
                 <View style={stylesFormPerfil.inputContainer}>
                     <TextInput
@@ -177,6 +209,7 @@ export function FormEditPerfil() {
                         onChangeText={(text) => setConfirmPassword(text)}
                         value={confirmPassword}
                         secureTextEntry={!showConfirmPassword}
+                        editable={isPasswordEditable}
                     />
                     <TouchableOpacity
                         style={stylesFormPerfil.eyeIcon}
@@ -187,6 +220,9 @@ export function FormEditPerfil() {
                             size={20}
                             color="#C0C0C0"
                         />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => setIsPasswordEditable(true)}>
+                        <Ionicons name="pencil" size={18} color="#C74634" />
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity onPress={deleteUser}>

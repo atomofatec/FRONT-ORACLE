@@ -7,34 +7,33 @@ import {
     Text,
     TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
 import * as Components from "../../components/index";
 import stylesRecuperarSenha from "./RecuperarSenha.style";
 import Connection from "../../connection";
-import { useNavigation } from "@react-navigation/native";
-import * as Styles from "../../styles/index";
 import { FontAwesome } from "@expo/vector-icons";
+import * as Styles from "../../styles/index";
+import React, { useState } from "react";
 
-export function RecuperarSenha() {
+export function AlterarSenha() {
     const conn = Connection();
-    const navigation = useNavigation();
-    const windowWidth = Dimensions.get("window").width;
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
     const [modalIcon, setModalIcon] = useState("");
     const [modalIconColor, setModalIconColor] = useState("");
+    const windowWidth = Dimensions.get("window").width;
 
-    const sendEmail = async (emailData) => {
+    const alterarSenha = async (alterarSenhaData) => {
+        console.log(alterarSenhaData);
         try {
-            const response = await conn.post("/password-reset-request", {
-                email: emailData.email,
+            const response = await conn.post("/reset-password", {
+                token: alterarSenhaData.token,
+                newPassword: alterarSenhaData.novaSenha,
             });
-            setModalMessage("Email de validação enviado!");
+            setModalMessage("Senha alterada com sucesso!");
             setModalIcon("check-circle");
             setModalIconColor(Styles.colors.vermelho);
             setModalVisible(true);
             console.log(response);
-            navigation.navigate("AlterarSenha");
         } catch (error) {
             console.error("Error:", error);
             if (error.response) {
@@ -44,7 +43,7 @@ export function RecuperarSenha() {
                 console.error("Status Code:", error.response.status);
                 console.error("Error Data:", error.response.data);
             } else {
-                setModalMessage("Não foi possível enviar o email.");
+                setModalMessage("Erro ao alterar senha.");
                 setModalIcon("times-circle");
                 setModalIconColor(Styles.colors.vermelho);
             }
@@ -62,7 +61,7 @@ export function RecuperarSenha() {
                     ]}
                 >
                     <Components.TituloVoltar title="RECUPERE SUA SENHA" />
-                    <Components.FormRecuperar sendEmail={sendEmail} />
+                    <Components.FormAlterarSenha alterarSenha={alterarSenha} />
                 </View>
             <Modal
                 transparent={true}

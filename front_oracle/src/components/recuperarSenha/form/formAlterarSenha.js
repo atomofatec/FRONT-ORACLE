@@ -6,23 +6,25 @@ import { ButtonLarge } from "../../common/buttonLarge";
 import { FontAwesome } from "@expo/vector-icons";
 import * as Styles from "../../../styles/index";
 
-export function FormRecuperar({ sendEmail }) {
-    const [email, setEmail] = useState(""); // Estado para armazenar o email digitado
-    const [confirmEmail, setConfirmEmail] = useState(""); // Estado para armazenar o email de confirmação
+export function FormAlterarSenha({ alterarSenha }) {
+    const [token, setToken] = useState(""); // Estado para armazenar o token digitado
+    console.log(token);
+    const [novaSenha, setNovaSenha] = useState(""); // Estado para armazenar a nova senha
+    console.log(novaSenha);
     const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
 
-    const handleSendEmail = () => {
-        if (email === confirmEmail && email && confirmEmail != "") {
-            const emailData = {
-                email: email,
+    const handleChangePassword = () => {
+        if (token && novaSenha) {
+            const alterarSenhaData = {
+                token: token,
+                novaSenha: novaSenha,
             };
-            sendEmail(emailData);
-            navigation.navigate("AlterarSenha");
-            console.log("Email salvo");
+            alterarSenha(alterarSenhaData);
+            navigation.navigate("Login");
         } else {
-            setModalMessage("Emails não conferem.");
+            setModalMessage("Por favor, preencha todos os campos.");
             setModalVisible(true);
         }
     };
@@ -30,27 +32,30 @@ export function FormRecuperar({ sendEmail }) {
     return (
             <View style={stylesFormRecuperar.formcontainer}>
                 <Text style={stylesFormRecuperar.texto}>
-                    Enviaremos um email para a troca de senha
+                    Insira o token recebido no email.
                 </Text>
                 <View style={stylesFormRecuperar.inputContainer}>
                     <TextInput
                         style={stylesFormRecuperar.input}
-                        placeholder="Email"
-                        onChangeText={setEmail}
-                        value={email}
-                        keyboardType="email-address"
+                        placeholder="Token"
+                        onChangeText={setToken}
+                        value={token}
+                        keyboardType="default"
                     />
                 </View>
                 <View style={stylesFormRecuperar.inputContainer}>
                     <TextInput
                         style={stylesFormRecuperar.input}
-                        placeholder="Confirmar Email"
-                        value={confirmEmail}
-                        onChangeText={setConfirmEmail}
-                        keyboardType="email-address"
+                        placeholder="Nova Senha"
+                        value={novaSenha}
+                        onChangeText={setNovaSenha}
+                        keyboardType="default"
                     />
                 </View>
-                <ButtonLarge button="ENVIAR" handlePress={handleSendEmail} />
+                <ButtonLarge
+                    button="ENVIAR"
+                    handlePress={handleChangePassword}
+                />
             <Modal
                 transparent={true}
                 animationType="slide"
