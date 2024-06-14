@@ -31,7 +31,10 @@ import { Relatorio } from "./desenvolvimento_parc/relatorio/index"
 import { FormRecuperar } from "./recuperarSenha/form/index";
 import { TituloVoltar } from "./login/tituloVoltar/index";
 import { FormAlterarSenha } from "./recuperarSenha/form/formAlterarSenha";
-import { Tracks } from "./tracks/lista";
+import { Tracks } from "./tracks/lista/index";
+import { Qualificadores } from "./qualificacoes/qualificadores/index";
+import { CardQlt } from "./qualificacoes/cardQlt/index";
+import { BotaoQlf } from "./qualificacoes/botao/index";
 
 export {
     Tracks,
@@ -68,4 +71,8 @@ export {
     FormRecuperar,
     TituloVoltar,
     FormAlterarSenha,
+    Tracks,
+    Qualificadores,
+    CardQlt,
+    BotaoQlf,
 };

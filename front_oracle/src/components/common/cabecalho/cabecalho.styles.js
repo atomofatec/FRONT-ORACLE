@@ -25,6 +25,29 @@ const stylesCabecalho = StyleSheet.create({
         fontFamily: Styles.fonts.Inter,
         marginLeft: 10,
     },
+    modalOverlay: {
+        flex: 1,
+    },
+    modalContent: {
+        position: 'absolute',
+        top: 60,
+        right: 20,
+        backgroundColor: 'white',
+        borderRadius: 10,
+        padding: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 5,
+    },
+    menuItem: {
+        padding: 10,
+    },
+    menuItemText: {
+        fontSize: 16,
+        color: 'black',
+    },
 });
 
 export default stylesCabecalho;

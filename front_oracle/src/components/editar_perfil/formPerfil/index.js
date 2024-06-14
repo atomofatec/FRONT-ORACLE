@@ -6,6 +6,7 @@ import {
     Text,
     TouchableOpacity,
     ActivityIndicator,
+    Modal,
 } from "react-native";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { ButtonSmall } from "../../common/buttonSmall";
@@ -23,6 +24,10 @@ export function FormEditPerfil() {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [userID, setUserID] = useState(null);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
+    const [modalIcon, setModalIcon] = useState("");
+    const [modalIconColor, setModalIconColor] = useState("");
 
     const windowWidth = Dimensions.get("window").width;
 
@@ -61,7 +66,9 @@ export function FormEditPerfil() {
 
     const updateUserData = async () => {
         if (!userID) {
-            alert("ID do usuário não encontrado.");
+            setModalMessage("ID do usuário não encontrado.");
+            setModalIcon("times-circle");
+            setModalVisible(true);
             return;
         }
         setLoading(true);
@@ -71,10 +78,15 @@ export function FormEditPerfil() {
                 email: email,
                 password: password === confirmPassword ? password : undefined,
             });
-            alert("Dados atualizados com sucesso!");
+            setModalMessage("Dados atualizados com sucesso!");
+            setModalIcon("check-circle");
+            setModalIconColor(Styles.colors.vermelho);
+            setModalVisible(true);
         } catch (error) {
             console.error("Error updating user data:", error);
-            alert("Erro ao atualizar dados!");
+            setModalMessage("Erro ao atualizar dados!");
+            setModalIcon("times-circle");
+            setModalVisible(true);
         } finally {
             setLoading(false);
         }
@@ -82,16 +94,24 @@ export function FormEditPerfil() {
 
     const deleteUser = async () => {
         if (!userID) {
-            alert("ID do usuário não encontrado.");
+            setModalMessage("ID do usuário não encontrado.");
+            setModalIcon("times-circle");
+            setModalIconColor(Styles.colors.vermelho);
+            setModalVisible(true);
             return;
         }
         setLoading(true);
         try {
             await axios.delete(`/partners/${userID}`);
-            alert("Usuário excluído com sucesso!");
+            setModalMessage("Usuário excluído com sucesso!");
+            setModalIcon("check-circle");
+            setModalIconColor(Styles.colors.vermelho);
+            setModalVisible(true);
         } catch (error) {
             console.error("Error deleting user:", error);
-            alert("Erro ao excluir usuário!");
+            setModalMessage("Erro ao excluir usuário!");
+            setModalIcon("times-circle");
+            setModalVisible(true);
         } finally {
             setLoading(false);
         }
@@ -169,13 +189,39 @@ export function FormEditPerfil() {
                         />
                     </TouchableOpacity>
                 </View>
-                <View style={stylesFormPerfil.rowContainer}>
-                    <TouchableOpacity onPress={deleteUser}>
-                        <Text style={stylesFormPerfil.delete}>Excluir</Text>
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity onPress={deleteUser}>
+                    <Text style={stylesFormPerfil.delete}>Excluir</Text>
+                </TouchableOpacity>
                 <ButtonSmall button="Salvar" onPress={updateUserData} />
             </View>
+            <Modal
+                transparent={true}
+                animationType="slide"
+                visible={modalVisible}
+                onRequestClose={() => setModalVisible(false)}
+            >
+                <View style={stylesFormPerfil.modalOverlay}>
+                    <View style={stylesFormPerfil.modalContainer}>
+                        <FontAwesome
+                            name={modalIcon}
+                            size={40}
+                            color={modalIconColor}
+                            style={stylesFormPerfil.modalIcon}
+                        />
+                        <Text style={stylesFormPerfil.modalText}>
+                            {modalMessage}
+                        </Text>
+                        <TouchableOpacity
+                            style={stylesFormPerfil.modalButton}
+                            onPress={() => setModalVisible(false)}
+                        >
+                            <Text style={stylesFormPerfil.modalButtonText}>
+                                OK
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 }

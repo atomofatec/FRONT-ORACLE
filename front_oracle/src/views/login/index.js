@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { View, Dimensions } from "react-native";
+import {
+    View,
+    Dimensions,
+    Text,
+    TouchableOpacity,
+    Modal,
+} from "react-native";
 import * as Components from "../../components/index";
 import stylesLogin from "./login.styles";
 import { useNavigation } from "@react-navigation/native";
 import Connection from "../../connection";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { FontAwesome } from "@expo/vector-icons";
+import * as Styles from "../../styles/index";
 
 export function Login() {
     const windowWidth = Dimensions.get("window").width;
@@ -12,6 +20,10 @@ export function Login() {
     const [password, setPassword] = useState("");
     const navigation = useNavigation();
     const conn = Connection();
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
+    const [modalIcon, setModalIcon] = useState("");
+    const [modalIconColor, setModalIconColor] = useState("");
 
     const handleLogin = async () => {
         try {
@@ -33,11 +45,12 @@ export function Login() {
                     navigation.navigate("Parc"); // Navegar para página de parceiro
                 }
             } else {
-                alert("Usuário ou senha inválidos");
+                setModalMessage("Usuário ou senha inválidos");
+                setModalVisible(true);
             }
         } catch (error) {
-            console.error("Erro ao fazer login:", error);
-            alert("Erro ao fazer login. Por favor, tente novamente.");
+            setModalMessage("Erro ao fazer login. Por favor, tente novamente.");
+            setModalVisible(true);
         }
     };
 
@@ -63,6 +76,32 @@ export function Login() {
                     handlePress={handleLogin}
                 />
             </View>
+            <Modal
+                transparent={true}
+                animationType="slide"
+                visible={modalVisible}
+                onRequestClose={() => {
+                    setModalVisible(!modalVisible);
+                }}
+            >
+                <View style={stylesLogin.modalOverlay}>
+                    <View style={stylesLogin.modalContainer}>
+                        <FontAwesome
+                            name="exclamation-circle"
+                            size={40}
+                            color={Styles.colors.vermelho}
+                            style={stylesLogin.modalIcon}
+                        />
+                        <Text style={stylesLogin.modalText}>{modalMessage}</Text>
+                        <TouchableOpacity
+                            style={stylesLogin.modalButton}
+                            onPress={() => setModalVisible(false)}
+                        >
+                            <Text style={stylesLogin.modalButtonText}>OK</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 }
